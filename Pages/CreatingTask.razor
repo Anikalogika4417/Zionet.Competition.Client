@@ -1,0 +1,102 @@
+@page "/task-creator"
+@using ClientEntity
+@inject DataService data
+@inject HttpClient Http
+
+@using System 
+@using System.IO
+@using System.Net.Http.Headers
+
+<PageTitle>Create a task</PageTitle>
+
+<h1>Tasks:</h1>
+    <table>
+        <tr>
+            <th>Task</th>
+            <th>Description</th>
+            <th>File name</th>
+            <th>Points</th>
+            <th>Duration</th>
+        </tr>
+        @foreach (var item in Tasks)
+{
+        <tr>
+            <td>@item.task_name</td>
+            <td>@item.task_description</td>
+            <td>@item.task_file_name</td>
+            <td>@item.task_points</td>
+            <td>@item.task_duration</td>
+        </tr>
+}
+    </table>
+    <InputFile OnChange="@OnInputFileChange" />
+    @if (fileNames.Count > 0)
+{
+    <ul>
+        @foreach (var fileName in fileNames)
+        {
+            <li>
+                File: @fileName
+                <br>
+                <span>
+                    Stored File Name: @GetStoredFileName(fileName)
+                </span>
+                @* <button @onclick="@(() => DownloadFile(GetStoredFileName(fileName), fileName))">Download file</button> *@
+            </li>
+        }
+    </ul>
+}
+    
+
+@code {
+    List<MCategory> Categories = new List<MCategory>();
+    List<MTask> Tasks = new List<MTask>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        Categories = await data.GetCategory();
+        Tasks = await data.GetTask();
+    }
+
+    private int maxAllowedFiles = int.MaxValue;
+    private long maxFileSize = long.MaxValue;
+    private List<string> fileNames = new();
+    private List<UploadResult> uploadResults = new();
+
+    private async Task OnInputFileChange(InputFileChangeEventArgs e)
+    {
+        using var content = new MultipartFormDataContent();
+
+        foreach (var file in e.GetMultipleFiles(maxAllowedFiles))
+        {
+            var fileContent = new StreamContent(file.OpenReadStream(maxFileSize));
+            fileContent.Headers.ContentType = new MediaTypeHeaderValue(file.ContentType);
+
+            fileNames.Add(file.Name);
+
+            content.Add(
+                content: fileContent,
+                name: "\"files\"",
+                fileName: file.Name);
+        }
+
+        var response = await Http.PostAsync("https://localhost:44361/api/TestFile", content);
+        var newUploadResults = await response.Content.ReadFromJsonAsync<List<UploadResult>>();
+
+        if(newUploadResults is not null)
+        {
+            uploadResults = uploadResults.Concat(newUploadResults).ToList();
+        }
+    }
+
+    private string? GetStoredFileName(string fileName)
+    {
+        var uploadResult = uploadResults.SingleOrDefault(f => f.FileName == fileName);
+        if (uploadResult is not null)
+            return uploadResult.StoredFileName;
+
+        return "File not found.";
+    }
+
+    
+}
