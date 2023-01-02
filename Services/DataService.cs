@@ -2,6 +2,7 @@ using System.Net.Http.Json;
 using ClientEntity;
 using Microsoft.AspNetCore.Components.Forms;
 
+
 namespace Zionet.Competition.Client.Services
 {
     public class DataService
@@ -28,5 +29,6 @@ namespace Zionet.Competition.Client.Services
         public async Task PostTask(MTask task) {
             await http.PostAsJsonAsync<MTask>($"https://localhost:44361/api/TestTask", task);
         }
+
     }
 }

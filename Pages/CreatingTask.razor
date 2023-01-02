@@ -20,20 +20,16 @@
     <InputFile OnChange="@OnInputFileChange" />
 
 
-    @if (fileNames.Count > 0)
+    @if (fileName != "")
 {
     <ul>
-        @foreach (var fileName in fileNames)
-        {
+        
             <li>
                 File: @fileName
                 <br>
-                <span>
-                    Stored File Name: @GetStoredFileName(fileName)
-                </span>
                 @* <button @onclick="@(() => DownloadFile(GetStoredFileName(fileName), fileName))">Download file</button> *@
             </li>
-        }
+        
     </ul>
 }
 <br>
@@ -49,7 +45,7 @@
     
     private int maxAllowedFiles = int.MaxValue;
     private long maxFileSize = long.MaxValue;
-    private List<string> fileNames = new();
+    private string fileName = "";
     private List<UploadResult> uploadResults = new();
 
     MultipartFormDataContent globalContent = new MultipartFormDataContent();
@@ -58,12 +54,12 @@
 
 
     string inputFileName;
-HttpClient http;
 
     async Task UploadAll()
     {
+        var response = await Http.PostAsync("https://localhost:44361/api/TestFile", globalContent);
         await data.PostTask(initiolizeTask(tasks));
-        @* var response = await Http.PostAsync("https://localhost:44361/api/TestFile", globalContent); *@
+
     }
     
 
@@ -83,21 +79,14 @@ HttpClient http;
 
     private async Task OnInputFileChange(InputFileChangeEventArgs e)
     {
-        using var content = new MultipartFormDataContent();
 
         foreach (var file in e.GetMultipleFiles(maxAllowedFiles))
         {
             var fileContent = new StreamContent(file.OpenReadStream(maxFileSize));
             fileContent.Headers.ContentType = new MediaTypeHeaderValue(file.ContentType);
 
-            fileNames.Add(file.Name);
-
+            fileName = file.Name;
             inputFileName = file.Name;
-
-            content.Add(
-                content: fileContent,
-                name: "\"files\"",
-                fileName: file.Name);
             
             globalContent.Add(
                 content: fileContent,
@@ -105,8 +94,7 @@ HttpClient http;
                 fileName: file.Name);
         }
 
-        @* var response = await Http.PostAsync("https://localhost:44361/api/TestFile", globalContent);
-        var newUploadResults = await response.Content.ReadFromJsonAsync<List<UploadResult>>();
+        @* var newUploadResults = await response.Content.ReadFromJsonAsync<List<UploadResult>>();
 
         if(newUploadResults is not null)
         {
