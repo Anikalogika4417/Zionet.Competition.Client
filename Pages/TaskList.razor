@@ -1,0 +1,49 @@
+@page "/taskList"
+@using ClientEntity
+@inject DataService data
+@inject HttpClient Http
+
+@using System 
+@using System.IO
+@using System.Net.Http.Headers
+
+<PageTitle>Create a task</PageTitle>
+
+<h1>Tasks:</h1>
+    <table>
+        <tr>
+            <th>Task</th>
+            <th>Description</th>
+            <th>File name</th>
+            <th>Points</th>
+            <th>Duration</th>
+        </tr>
+        @foreach (var item in Tasks)
+{
+        <tr>
+            <td>@item.task_name</td>
+            <td>@item.task_description</td>
+            <td>@item.task_file_name</td>
+            <td>@item.task_points</td>
+            <td>@item.task_duration</td>
+        </tr>
+}
+    </table>
+    
+    
+    <NavLink href="taskCreator">
+                <span class="oi oi-list-rich" aria-hidden="true"></span> Create
+    </NavLink>
+    
+
+@code {
+    List<MCategory> Categories = new List<MCategory>();
+    List<MTask> Tasks = new List<MTask>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        Categories = await data.GetCategory();
+        Tasks = await data.GetTask();
+    }
+    
+}

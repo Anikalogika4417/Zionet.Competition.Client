@@ -25,8 +25,8 @@ namespace Zionet.Competition.Client.Services
                 ($"https://localhost:44361/api/Task");
         }
 
-        // public async void UploadFile(IBrowserFile file) {
-        //     await http.PostAsJsonAsync<IBrowserFile>($"https://localhost:44361/SaveFile", file);
-        // }
+        public async Task PostTask(MTask task) {
+            await http.PostAsJsonAsync<MTask>($"https://localhost:44361/api/TestTask", task);
+        }
     }
 }

@@ -8,224 +8,6 @@
   "ProjectWorkspaceState": {
     "TagHelpers": [
       {
-        "HashCode": -1810416780,
-        "Kind": "Components.Component",
-        "Name": "Zionet.Competition.Client.Pages.CreatingTask",
-        "AssemblyName": "Zionet.Competition.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "CreatingTask"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Zionet.Competition.Client.Pages.CreatingTask"
-        }
-      },
-      {
-        "HashCode": -1268939051,
-        "Kind": "Components.Component",
-        "Name": "Zionet.Competition.Client.Pages.CreatingTask",
-        "AssemblyName": "Zionet.Competition.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Zionet.Competition.Client.Pages.CreatingTask"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Zionet.Competition.Client.Pages.CreatingTask",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": 109428019,
-        "Kind": "Components.Component",
-        "Name": "Zionet.Competition.Client.Pages.Counter",
-        "AssemblyName": "Zionet.Competition.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Counter"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Zionet.Competition.Client.Pages.Counter"
-        }
-      },
-      {
-        "HashCode": -27516179,
-        "Kind": "Components.Component",
-        "Name": "Zionet.Competition.Client.Pages.Counter",
-        "AssemblyName": "Zionet.Competition.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Zionet.Competition.Client.Pages.Counter"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Zionet.Competition.Client.Pages.Counter",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": 1318992523,
-        "Kind": "Components.Component",
-        "Name": "Zionet.Competition.Client.Pages.FetchData",
-        "AssemblyName": "Zionet.Competition.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "FetchData"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Zionet.Competition.Client.Pages.FetchData"
-        }
-      },
-      {
-        "HashCode": 691805237,
-        "Kind": "Components.Component",
-        "Name": "Zionet.Competition.Client.Pages.FetchData",
-        "AssemblyName": "Zionet.Competition.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Zionet.Competition.Client.Pages.FetchData"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Zionet.Competition.Client.Pages.FetchData",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": 956852515,
-        "Kind": "Components.Component",
-        "Name": "Zionet.Competition.Client.Pages.Index",
-        "AssemblyName": "Zionet.Competition.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Index"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Zionet.Competition.Client.Pages.Index"
-        }
-      },
-      {
-        "HashCode": -1067377800,
-        "Kind": "Components.Component",
-        "Name": "Zionet.Competition.Client.Pages.Index",
-        "AssemblyName": "Zionet.Competition.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Zionet.Competition.Client.Pages.Index"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Zionet.Competition.Client.Pages.Index",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": -1830472758,
-        "Kind": "Components.Component",
-        "Name": "Zionet.Competition.Client.App",
-        "AssemblyName": "Zionet.Competition.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "App"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Zionet.Competition.Client.App"
-        }
-      },
-      {
-        "HashCode": 1958450139,
-        "Kind": "Components.Component",
-        "Name": "Zionet.Competition.Client.App",
-        "AssemblyName": "Zionet.Competition.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Zionet.Competition.Client.App"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Zionet.Competition.Client.App",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
-        "HashCode": 881266617,
-        "Kind": "Components.Component",
-        "Name": "Zionet.Competition.Client.Shared.SurveyPrompt",
-        "AssemblyName": "Zionet.Competition.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "SurveyPrompt"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Title",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Title"
-            }
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Zionet.Competition.Client.Shared.SurveyPrompt"
-        }
-      },
-      {
-        "HashCode": -585548492,
-        "Kind": "Components.Component",
-        "Name": "Zionet.Competition.Client.Shared.SurveyPrompt",
-        "AssemblyName": "Zionet.Competition.Client",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Zionet.Competition.Client.Shared.SurveyPrompt"
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Component",
-            "Name": "Title",
-            "TypeName": "System.String",
-            "Metadata": {
-              "Common.PropertyName": "Title"
-            }
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.IComponent",
-          "Common.TypeName": "Zionet.Competition.Client.Shared.SurveyPrompt",
-          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
-        }
-      },
-      {
         "HashCode": -1790844208,
         "Kind": "Components.Component",
         "Name": "Zionet.Competition.Client.Shared.MainLayout",
@@ -351,6 +133,257 @@
         "Metadata": {
           "Runtime.Name": "Components.IComponent",
           "Common.TypeName": "Zionet.Competition.Client.Shared.NavMenu",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 881266617,
+        "Kind": "Components.Component",
+        "Name": "Zionet.Competition.Client.Shared.SurveyPrompt",
+        "AssemblyName": "Zionet.Competition.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "SurveyPrompt"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Title",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Title"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Zionet.Competition.Client.Shared.SurveyPrompt"
+        }
+      },
+      {
+        "HashCode": -585548492,
+        "Kind": "Components.Component",
+        "Name": "Zionet.Competition.Client.Shared.SurveyPrompt",
+        "AssemblyName": "Zionet.Competition.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Zionet.Competition.Client.Shared.SurveyPrompt"
+          }
+        ],
+        "BoundAttributes": [
+          {
+            "Kind": "Components.Component",
+            "Name": "Title",
+            "TypeName": "System.String",
+            "Metadata": {
+              "Common.PropertyName": "Title"
+            }
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Zionet.Competition.Client.Shared.SurveyPrompt",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -1830472758,
+        "Kind": "Components.Component",
+        "Name": "Zionet.Competition.Client.App",
+        "AssemblyName": "Zionet.Competition.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "App"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Zionet.Competition.Client.App"
+        }
+      },
+      {
+        "HashCode": 1958450139,
+        "Kind": "Components.Component",
+        "Name": "Zionet.Competition.Client.App",
+        "AssemblyName": "Zionet.Competition.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Zionet.Competition.Client.App"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Zionet.Competition.Client.App",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 1318992523,
+        "Kind": "Components.Component",
+        "Name": "Zionet.Competition.Client.Pages.FetchData",
+        "AssemblyName": "Zionet.Competition.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "FetchData"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Zionet.Competition.Client.Pages.FetchData"
+        }
+      },
+      {
+        "HashCode": 691805237,
+        "Kind": "Components.Component",
+        "Name": "Zionet.Competition.Client.Pages.FetchData",
+        "AssemblyName": "Zionet.Competition.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Zionet.Competition.Client.Pages.FetchData"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Zionet.Competition.Client.Pages.FetchData",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 956852515,
+        "Kind": "Components.Component",
+        "Name": "Zionet.Competition.Client.Pages.Index",
+        "AssemblyName": "Zionet.Competition.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Index"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Zionet.Competition.Client.Pages.Index"
+        }
+      },
+      {
+        "HashCode": -1067377800,
+        "Kind": "Components.Component",
+        "Name": "Zionet.Competition.Client.Pages.Index",
+        "AssemblyName": "Zionet.Competition.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Zionet.Competition.Client.Pages.Index"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Zionet.Competition.Client.Pages.Index",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": 109428019,
+        "Kind": "Components.Component",
+        "Name": "Zionet.Competition.Client.Pages.Counter",
+        "AssemblyName": "Zionet.Competition.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Counter"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Zionet.Competition.Client.Pages.Counter"
+        }
+      },
+      {
+        "HashCode": -27516179,
+        "Kind": "Components.Component",
+        "Name": "Zionet.Competition.Client.Pages.Counter",
+        "AssemblyName": "Zionet.Competition.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Zionet.Competition.Client.Pages.Counter"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Zionet.Competition.Client.Pages.Counter",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -2113444771,
+        "Kind": "Components.Component",
+        "Name": "Zionet.Competition.Client.Pages.TaskList",
+        "AssemblyName": "Zionet.Competition.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "TaskList"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Zionet.Competition.Client.Pages.TaskList"
+        }
+      },
+      {
+        "HashCode": -1271766275,
+        "Kind": "Components.Component",
+        "Name": "Zionet.Competition.Client.Pages.TaskList",
+        "AssemblyName": "Zionet.Competition.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Zionet.Competition.Client.Pages.TaskList"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Zionet.Competition.Client.Pages.TaskList",
+          "Components.NameMatch": "Components.FullyQualifiedNameMatch"
+        }
+      },
+      {
+        "HashCode": -1810416780,
+        "Kind": "Components.Component",
+        "Name": "Zionet.Competition.Client.Pages.CreatingTask",
+        "AssemblyName": "Zionet.Competition.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "CreatingTask"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Zionet.Competition.Client.Pages.CreatingTask"
+        }
+      },
+      {
+        "HashCode": -1268939051,
+        "Kind": "Components.Component",
+        "Name": "Zionet.Competition.Client.Pages.CreatingTask",
+        "AssemblyName": "Zionet.Competition.Client",
+        "CaseSensitive": true,
+        "TagMatchingRules": [
+          {
+            "TagName": "Zionet.Competition.Client.Pages.CreatingTask"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "Components.IComponent",
+          "Common.TypeName": "Zionet.Competition.Client.Pages.CreatingTask",
           "Components.NameMatch": "Components.FullyQualifiedNameMatch"
         }
       },
@@ -13937,6 +13970,11 @@
       "FilePath": "c:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\_Imports.razor",
       "TargetPath": "_Imports.razor",
       "FileKind": "componentImport"
+    },
+    {
+      "FilePath": "c:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\Pages\\TaskList.razor",
+      "TargetPath": "Pages\\TaskList.razor",
+      "FileKind": "component"
     },
     {
       "FilePath": "c:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\Shared\\SurveyPrompt.razor",

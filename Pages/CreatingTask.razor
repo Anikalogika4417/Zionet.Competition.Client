@@ -1,4 +1,4 @@
-@page "/task-creator"
+@page "/taskCreator"
 @using ClientEntity
 @inject DataService data
 @inject HttpClient Http
@@ -8,28 +8,18 @@
 @using System.Net.Http.Headers
 
 <PageTitle>Create a task</PageTitle>
+    <input @bind="tasks.task_name" type="text" placeholder="Task name" />
+    <br>
+    <input @bind="tasks.task_description" type="text" placeholder="Task Description" />
+    <br>
+    <input @bind="tasks.task_points" type="text" /> - Points
+    <br>
+    <input @bind="tasks.task_duration" type="text" /> - Duration
+    <br>
 
-<h1>Tasks:</h1>
-    <table>
-        <tr>
-            <th>Task</th>
-            <th>Description</th>
-            <th>File name</th>
-            <th>Points</th>
-            <th>Duration</th>
-        </tr>
-        @foreach (var item in Tasks)
-{
-        <tr>
-            <td>@item.task_name</td>
-            <td>@item.task_description</td>
-            <td>@item.task_file_name</td>
-            <td>@item.task_points</td>
-            <td>@item.task_duration</td>
-        </tr>
-}
-    </table>
     <InputFile OnChange="@OnInputFileChange" />
+
+
     @if (fileNames.Count > 0)
 {
     <ul>
@@ -46,22 +36,50 @@
         }
     </ul>
 }
+<br>
+<br>
+<br>
+<button @onclick="@(() => UploadAll())">Create a task</button>
+
     
 
 @code {
-    List<MCategory> Categories = new List<MCategory>();
-    List<MTask> Tasks = new List<MTask>();
 
-    protected override async Task OnInitializedAsync()
-    {
-        Categories = await data.GetCategory();
-        Tasks = await data.GetTask();
-    }
-
+    //public string id_category { get; set;} //Drop-down list
+    
     private int maxAllowedFiles = int.MaxValue;
     private long maxFileSize = long.MaxValue;
     private List<string> fileNames = new();
     private List<UploadResult> uploadResults = new();
+
+    MultipartFormDataContent globalContent = new MultipartFormDataContent();
+
+    MTask tasks = new MTask();    
+
+
+    string inputFileName;
+HttpClient http;
+
+    async Task UploadAll()
+    {
+        await data.PostTask(initiolizeTask(tasks));
+        @* var response = await Http.PostAsync("https://localhost:44361/api/TestFile", globalContent); *@
+    }
+    
+
+    private MTask initiolizeTask(MTask inputTask){
+        MTask fullTask = new MTask();
+        fullTask.task_name = inputTask.task_name;
+        fullTask.task_description = inputTask.task_description;
+        fullTask.task_file_name = inputFileName;
+        fullTask.task_points = inputTask.task_points;
+        fullTask.task_duration = inputTask.task_duration;
+        fullTask.id_category = 1;
+        fullTask.is_bonus_task = false;
+
+        return fullTask;
+    }
+
 
     private async Task OnInputFileChange(InputFileChangeEventArgs e)
     {
@@ -74,19 +92,26 @@
 
             fileNames.Add(file.Name);
 
+            inputFileName = file.Name;
+
             content.Add(
+                content: fileContent,
+                name: "\"files\"",
+                fileName: file.Name);
+            
+            globalContent.Add(
                 content: fileContent,
                 name: "\"files\"",
                 fileName: file.Name);
         }
 
-        var response = await Http.PostAsync("https://localhost:44361/api/TestFile", content);
+        @* var response = await Http.PostAsync("https://localhost:44361/api/TestFile", globalContent);
         var newUploadResults = await response.Content.ReadFromJsonAsync<List<UploadResult>>();
 
         if(newUploadResults is not null)
         {
             uploadResults = uploadResults.Concat(newUploadResults).ToList();
-        }
+        } *@
     }
 
     private string? GetStoredFileName(string fileName)
