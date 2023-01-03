@@ -2,6 +2,7 @@
 @using ClientEntity
 @inject DataService data
 @inject HttpClient Http
+@inject NavigationManager NavManager
 
 @using System 
 @using System.IO
@@ -16,21 +17,39 @@
     <br>
     <input @bind="tasks.task_duration" type="text" /> - Duration
     <br>
+    Choose category:
+    <select id="list_of_category" required="required" @onchange="@OnListCategoryChange" >
+        <option value="">Choose the value</option>
+        @for (var i = 0; i<CategoryList.Count; i++)
+        {
+            <option value="@i">@CategoryList[i].category_name</option>   
+        }
+    </select>
+    <br><br>
+    Choosen category:
+    @if(inputCategory.category_name != ""){
+        @inputCategory.category_name
+        @inputCategory.id
+    }
 
+
+    @* @if(inputCategories.Length != 0){
+        @for (var i = 0; i<inputCategories.Length;i++)
+        {
+            @if(inputCategories[i].category_name != ""){
+                @inputCategories[i];
+            }  
+        }
+    } *@
+    <br>
     <InputFile OnChange="@OnInputFileChange" />
 
 
     @if (fileName != "")
 {
-    <ul>
-        
-            <li>
-                File: @fileName
-                <br>
-                @* <button @onclick="@(() => DownloadFile(GetStoredFileName(fileName), fileName))">Download file</button> *@
-            </li>
-        
-    </ul>
+    @* File: @fileName; *@
+    <br>
+    @* <button @onclick="@(() => DownloadFile(GetStoredFileName(fileName), fileName))">Download file</button> *@
 }
 <br>
 <br>
@@ -40,9 +59,7 @@
     
 
 @code {
-
-    //public string id_category { get; set;} //Drop-down list
-    
+  
     private int maxAllowedFiles = int.MaxValue;
     private long maxFileSize = long.MaxValue;
     private string fileName = "";
@@ -50,16 +67,39 @@
 
     MultipartFormDataContent globalContent = new MultipartFormDataContent();
 
-    MTask tasks = new MTask();    
-
+    MTask tasks = new MTask();   
+    List<MCategory> CategoryList = new List<MCategory>();
+    MCategory inputCategory = new  MCategory();
 
     string inputFileName;
+    int index = 0;
+
+    protected override async Task OnInitializedAsync()
+    {
+        CategoryList = await data.GetCategory();
+    }
 
     async Task UploadAll()
     {
         var response = await Http.PostAsync("https://localhost:44361/api/TestFile", globalContent);
         await data.PostTask(initiolizeTask(tasks));
+        NavManager.NavigateTo("/taskList");
+    }
 
+//TODO Сделать обработку повторяющихся эл-в + обновление категории, при выборе
+    private void OnListCategoryChange (ChangeEventArgs e){
+        
+        if(e.Value != ""){
+            var IndexSelectedCategory = int.Parse(e.Value.ToString());
+            inputCategory = CategoryList[IndexSelectedCategory];
+        }
+
+        @* if(index < 3 && e.Value != ""){
+            var IndexSelectedCategory = int.Parse(e.Value.ToString());
+            inputCategories[index] = CategoryList[IndexSelectedCategory];
+            Console.WriteLine("El-t was added" + inputCategories[index].category_name);
+            index++;  
+        } *@
     }
     
 
@@ -70,7 +110,7 @@
         fullTask.task_file_name = inputFileName;
         fullTask.task_points = inputTask.task_points;
         fullTask.task_duration = inputTask.task_duration;
-        fullTask.id_category = 1;
+        fullTask.id_category = inputCategory.id; 
         fullTask.is_bonus_task = false;
 
         return fullTask;
