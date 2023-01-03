@@ -11,7 +11,7 @@ namespace ClientEntity
     
     public class MCategory
     {
-        public int id {get; }
+        public int id {get; set;}
          public string category_name { get; set; }
         public int id_create_user { get; set; }
         public int id_update_user { get; set; }
@@ -22,7 +22,7 @@ namespace ClientEntity
 
     public class MTask
     {
-        public int id {get; }
+        public int id {get; set;}
         public string task_name { get; set; }
         public string task_description { get; set; } 
         public string task_file_name { get; set; } 

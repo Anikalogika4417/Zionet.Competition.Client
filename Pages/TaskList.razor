@@ -37,12 +37,10 @@
     
 
 @code {
-    List<MCategory> Categories = new List<MCategory>();
     List<MTask> Tasks = new List<MTask>();
 
     protected override async Task OnInitializedAsync()
     {
-        Categories = await data.GetCategory();
         Tasks = await data.GetTask();
     }
     
