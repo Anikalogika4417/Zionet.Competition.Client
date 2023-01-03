@@ -31,30 +31,12 @@
         @inputCategory.category_name
         @inputCategory.id
     }
-
-
-    @* @if(inputCategories.Length != 0){
-        @for (var i = 0; i<inputCategories.Length;i++)
-        {
-            @if(inputCategories[i].category_name != ""){
-                @inputCategories[i];
-            }  
-        }
-    } *@
     <br>
     <InputFile OnChange="@OnInputFileChange" />
-
-
-    @if (fileName != "")
-{
-    @* File: @fileName; *@
-    <br>
-    @* <button @onclick="@(() => DownloadFile(GetStoredFileName(fileName), fileName))">Download file</button> *@
-}
 <br>
 <br>
 <br>
-<button @onclick="@(() => UploadAll())">Create a task</button>
+<button @onclick="@(() => UploadAll())">Save</button>
 
     
 
@@ -62,7 +44,7 @@
   
     private int maxAllowedFiles = int.MaxValue;
     private long maxFileSize = long.MaxValue;
-    private string fileName = "";
+    string inputFileName = "";
     private List<UploadResult> uploadResults = new();
 
     MultipartFormDataContent globalContent = new MultipartFormDataContent();
@@ -71,14 +53,21 @@
     List<MCategory> CategoryList = new List<MCategory>();
     MCategory inputCategory = new  MCategory();
 
-    string inputFileName;
-    int index = 0;
-
+    @*----------------Downloading all Categories for drop-down list----------------*@
     protected override async Task OnInitializedAsync()
     {
         CategoryList = await data.GetCategory();
     }
 
+    @*----------------Changing input category by choosen it from drop-down list----------------*@
+    private void OnListCategoryChange (ChangeEventArgs e){
+        if(e.Value != ""){
+            var IndexSelectedCategory = int.Parse(e.Value.ToString());
+            inputCategory = CategoryList[IndexSelectedCategory];
+        }
+    }
+
+    @*----------------Uploading all values from form by clicking Save----------------*@
     async Task UploadAll()
     {
         var response = await Http.PostAsync("https://localhost:44361/api/TestFile", globalContent);
@@ -86,23 +75,7 @@
         NavManager.NavigateTo("/taskList");
     }
 
-//TODO Сделать обработку повторяющихся эл-в + обновление категории, при выборе
-    private void OnListCategoryChange (ChangeEventArgs e){
-        
-        if(e.Value != ""){
-            var IndexSelectedCategory = int.Parse(e.Value.ToString());
-            inputCategory = CategoryList[IndexSelectedCategory];
-        }
-
-        @* if(index < 3 && e.Value != ""){
-            var IndexSelectedCategory = int.Parse(e.Value.ToString());
-            inputCategories[index] = CategoryList[IndexSelectedCategory];
-            Console.WriteLine("El-t was added" + inputCategories[index].category_name);
-            index++;  
-        } *@
-    }
-    
-
+    @*----------------Initionalizing task before sending----------------*@
     private MTask initiolizeTask(MTask inputTask){
         MTask fullTask = new MTask();
         fullTask.task_name = inputTask.task_name;
@@ -116,16 +89,13 @@
         return fullTask;
     }
 
-
+    @*----------------Making global content from file uploader for sending----------------*@
     private async Task OnInputFileChange(InputFileChangeEventArgs e)
     {
-
         foreach (var file in e.GetMultipleFiles(maxAllowedFiles))
         {
             var fileContent = new StreamContent(file.OpenReadStream(maxFileSize));
             fileContent.Headers.ContentType = new MediaTypeHeaderValue(file.ContentType);
-
-            fileName = file.Name;
             inputFileName = file.Name;
             
             globalContent.Add(
@@ -133,23 +103,5 @@
                 name: "\"files\"",
                 fileName: file.Name);
         }
-
-        @* var newUploadResults = await response.Content.ReadFromJsonAsync<List<UploadResult>>();
-
-        if(newUploadResults is not null)
-        {
-            uploadResults = uploadResults.Concat(newUploadResults).ToList();
-        } *@
     }
-
-    private string? GetStoredFileName(string fileName)
-    {
-        var uploadResult = uploadResults.SingleOrDefault(f => f.FileName == fileName);
-        if (uploadResult is not null)
-            return uploadResult.StoredFileName;
-
-        return "File not found.";
-    }
-
-    
 }
