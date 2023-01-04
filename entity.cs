@@ -36,4 +36,23 @@ namespace ClientEntity
         public DateTime update_date { get; set; }
         public int id_status { get; set; }
     }
+
+    public class RequestBonusToTask
+    {
+        public string id_main_task { get; set; }
+
+    }
+
+    public class MBonusToTask
+    {
+        public int id {get; set;}
+        public int id_main_task { get; set; }
+        public int id_bonus_task { get; set; }
+        public int id_create_user { get; set; }
+        public int id_update_user { get; set; }
+        public DateTime create_date { get; set; }
+        public DateTime update_date { get; set; }
+        public int id_status { get; set; }
+
+    }
 }

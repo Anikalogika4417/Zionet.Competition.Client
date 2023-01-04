@@ -29,6 +29,8 @@
       "Microsoft.Extensions.Primitives.dll": "sha256-q4ruoDSCjV\/QJY9ZkzV6uxvEvZUVrDbyUjU3SSh5SlE=",
       "Microsoft.JSInterop.dll": "sha256-T+pG2hbrk10uql1R419lLDE6hBrt97SyDPfQOqHJlZ0=",
       "Microsoft.JSInterop.WebAssembly.dll": "sha256-GDmvW5LjkyTqyRZAdmYZ1EYwAsZ5NBruoynTP069E2w=",
+      "Newtonsoft.Json.dll": "sha256-mRd6TL4DYldo1ko9czkjEDcoiPdMPrJxz3dekwV6OOY=",
+      "Smart.Blazor.dll": "sha256-sttHanXF8GZ8URpq\/zUulzLpM3PpC4vquthpZEYMDLc=",
       "System.IO.Pipelines.dll": "sha256-P\/MqD0fCBd5bgTM16JC1QC\/Zz7s+CwViyzmDFkBG4\/c=",
       "Microsoft.CSharp.dll": "sha256-GhERxeDKNq+W+cSRzWmwGTi+JNQZOlZHtn1A06oKs6k=",
       "Microsoft.VisualBasic.Core.dll": "sha256-vqbWRCHKPctOHoxXWiZ0jMdRppe3klbyn1hFC3E+I74=",
@@ -198,13 +200,13 @@
       "mscorlib.dll": "sha256-UH9jptJH1wZ3XMBPuMMAEaUKpfRxc5AgXkLdAFAvNVE=",
       "netstandard.dll": "sha256-+jUzj0FB0YcoBUeSkSNEjhVDTG08qbZ2twfCBMbzT+Q=",
       "System.Private.CoreLib.dll": "sha256-l+\/quNqfNCSUDSMJcp0+IxlSdOdnAtwVVWMXmYGHMpg=",
-      "Zionet.Competition.Client.dll": "sha256-xo0WVayZmpqzbhqMeLVNvABNHxenPDXTHMlElITMVLc="
+      "Zionet.Competition.Client.dll": "sha256-m0FB7Pz\/n5iq2UA0OIGAslCA5pa3YJVUPB936nucFNg="
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
-      "Zionet.Competition.Client.pdb": "sha256-s5e7\/+4tFFjeEjvHhII9l1rNbO0NpIVRdtoBcSZ\/SEU="
+      "Zionet.Competition.Client.pdb": "sha256-v5u7u7MCaNmXMQnF2j6\/wdQzAi1IS\/RzB2p3HMHa8ZI="
     },
     "runtime": {
       "dotnet.7.0.1.9nabnxd0wo.js": "sha256-jjax3FMRXzFAziWowdtJf6vipP2xXAaA5gD6VBYB6Y0=",

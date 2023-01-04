@@ -826,3 +826,11 @@ C:\Users\ignps\Desktop\Programms\Zionet.Competition.Client\obj\Debug\net7.0\Zion
 C:\Users\ignps\Desktop\Programms\Zionet.Competition.Client\obj\Debug\net7.0\refint\Zionet.Competition.Client.dll
 C:\Users\ignps\Desktop\Programms\Zionet.Competition.Client\obj\Debug\net7.0\Zionet.Competition.Client.pdb
 C:\Users\ignps\Desktop\Programms\Zionet.Competition.Client\obj\Debug\net7.0\ref\Zionet.Competition.Client.dll
+C:\Users\ignps\Desktop\Programms\Zionet.Competition.Client\bin\Debug\net7.0\wwwroot\_framework\Newtonsoft.Json.dll
+C:\Users\ignps\Desktop\Programms\Zionet.Competition.Client\bin\Debug\net7.0\wwwroot\_framework\Smart.Blazor.dll
+C:\Users\ignps\Desktop\Programms\Zionet.Competition.Client\bin\Debug\net7.0\wwwroot\_framework\Newtonsoft.Json.dll.gz
+C:\Users\ignps\Desktop\Programms\Zionet.Competition.Client\bin\Debug\net7.0\wwwroot\_framework\Smart.Blazor.dll.gz
+C:\Users\ignps\Desktop\Programms\Zionet.Competition.Client\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\Users\ignps\Desktop\Programms\Zionet.Competition.Client\bin\Debug\net7.0\Smart.Blazor.dll
+C:\Users\ignps\Desktop\Programms\Zionet.Competition.Client\obj\Debug\net7.0\build-gz\dNJUCKRu.gz
+C:\Users\ignps\Desktop\Programms\Zionet.Competition.Client\obj\Debug\net7.0\build-gz\mvbwx588.gz

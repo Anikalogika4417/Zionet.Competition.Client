@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "j8ny2BtsmOKhEKoitYgLNox2YI+/6YVnMnRuPylQNFEjYvYnbbicgSZjXe42BAziz+sXM91AqmGo50ngYI4xhw==",
+  "dgSpecHash": "sm3t6oYSGBw/MhAX+eTO2I0FejZfS1yCgYjo/Xo4NW+yenmukW0gH7fBXs2EO2hAGZHYeI0aJgenoDdIPdyiiQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\Zionet.Competition.Client.csproj",
   "expectedPackageFiles": [
@@ -12,6 +12,7 @@
     "C:\\Users\\ignps\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly\\7.0.1\\microsoft.aspnetcore.components.webassembly.7.0.1.nupkg.sha512",
     "C:\\Users\\ignps\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly.devserver\\7.0.1\\microsoft.aspnetcore.components.webassembly.devserver.7.0.1.nupkg.sha512",
     "C:\\Users\\ignps\\.nuget\\packages\\microsoft.aspnetcore.metadata\\7.0.1\\microsoft.aspnetcore.metadata.7.0.1.nupkg.sha512",
+    "C:\\Users\\ignps\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\ignps\\.nuget\\packages\\microsoft.extensions.configuration\\7.0.0\\microsoft.extensions.configuration.7.0.0.nupkg.sha512",
     "C:\\Users\\ignps\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\7.0.0\\microsoft.extensions.configuration.abstractions.7.0.0.nupkg.sha512",
     "C:\\Users\\ignps\\.nuget\\packages\\microsoft.extensions.configuration.binder\\7.0.1\\microsoft.extensions.configuration.binder.7.0.1.nupkg.sha512",
@@ -28,6 +29,8 @@
     "C:\\Users\\ignps\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\microsoft.extensions.primitives.7.0.0.nupkg.sha512",
     "C:\\Users\\ignps\\.nuget\\packages\\microsoft.jsinterop\\7.0.1\\microsoft.jsinterop.7.0.1.nupkg.sha512",
     "C:\\Users\\ignps\\.nuget\\packages\\microsoft.jsinterop.webassembly\\7.0.1\\microsoft.jsinterop.webassembly.7.0.1.nupkg.sha512",
+    "C:\\Users\\ignps\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\ignps\\.nuget\\packages\\smart.blazor\\14.4.39\\smart.blazor.14.4.39.nupkg.sha512",
     "C:\\Users\\ignps\\.nuget\\packages\\system.io.pipelines\\7.0.0\\system.io.pipelines.7.0.0.nupkg.sha512",
     "C:\\Users\\ignps\\.nuget\\packages\\system.text.encodings.web\\7.0.0\\system.text.encodings.web.7.0.0.nupkg.sha512",
     "C:\\Users\\ignps\\.nuget\\packages\\system.text.json\\7.0.0\\system.text.json.7.0.0.nupkg.sha512",

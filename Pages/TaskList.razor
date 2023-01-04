@@ -12,24 +12,64 @@
 <h1>Tasks:</h1>
     <table>
         <tr>
+            <th> </th>
             <th>Task</th>
-            <th>Description</th>
-            <th>File name</th>
             <th>Points</th>
             <th>Duration</th>
+            <th>File name</th>
+            <th>Has Bonus Task</th>
         </tr>
-        @foreach (var item in Tasks)
-{
-        <tr>
-            <td>@item.task_name</td>
-            <td>@item.task_description</td>
-            <td>@item.task_file_name</td>
-            <td>@item.task_points</td>
-            <td>@item.task_duration</td>
-        </tr>
-}
+        @for (var i=0;i<ListOfTasks.Count;i++)
+        {       
+            <tr>
+                <td>
+                    <input  type="radio" 
+                            id="@i" 
+                            name="taskList" 
+                            value="@ListOfTasks[i].id"
+                            @onchange="@OnListTaskChange">
+                </td>                
+                <td>
+                    <label for="@i">
+                        @ListOfTasks[i].task_name
+                    </label>
+                </td>
+                <td>
+                    <label for="@i">
+                        @ListOfTasks[i].task_points
+                    </label>
+                </td>
+                <td>
+                    <label for="@i">
+                        @ListOfTasks[i].task_duration
+                    </label>
+                </td>
+                <td>
+                    <label for="@i">
+                        @ListOfTasks[i].task_file_name
+                    </label>
+                </td>
+                @foreach (var bonusToTask in ListOfBonusToTask)
+                {
+                    @if(ListOfTasks[i].id == bonusToTask.id_main_task){
+                        <td>
+                            <label for="@i">
+                                true
+                            </label>
+                        </td>            
+                    }
+                    else{
+                        <td>
+                            <label for="@i">
+                                false
+                            </label>
+                        </td>            
+                    }
+                }
+            </tr>
+        }
     </table>
-    
+
     
     <NavLink href="taskCreator">
                 <span class="oi oi-list-rich" aria-hidden="true"></span> Create
@@ -37,11 +77,23 @@
     
 
 @code {
-    List<MTask> Tasks = new List<MTask>();
+    List<MTask> ListOfTasks = new List<MTask>();
+    MTask choosenTask = new MTask();
+    List<MBonusToTask> ListOfBonusToTask = new List<MBonusToTask>();
 
     protected override async Task OnInitializedAsync()
     {
-        Tasks = await data.GetTask();
+        ListOfTasks = await data.GetMainTasks();
+        ListOfBonusToTask = await data.GetAllBonusTask();
     }
+
+    private void OnListTaskChange(ChangeEventArgs e){
+        if(e.Value != ""){
+            var IndexSelectedTask = ListOfTasks.FindIndex(p => p.id == int.Parse(e.Value.ToString()));
+            choosenTask = ListOfTasks[IndexSelectedTask];
+            Console.WriteLine(choosenTask.task_name);
+        }
+    }
+
     
 }
