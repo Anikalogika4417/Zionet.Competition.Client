@@ -1,0 +1,57 @@
+@page "/task/{id:int}"
+@using ClientEntity
+@inject DataService data
+
+<div>
+    @if(!loadingStatus){
+        <h1>Loading...</h1>
+    }
+    else{
+        <div>
+            <h1>Main Task</h1>
+            <TaskItem mode="Watch" curentTask="@mainTask"/>
+            @* @if(mainTask != null){
+                <div>@mainTask.task_name</div>
+            } *@
+            @* <div>@mainTask.task_name</div> *@
+        </div>
+        <div>
+            <h1>Bonus Task</h1>
+            @if(bonusTask != null){
+                <TaskItem mode="Watch" curentTask="@bonusTask"/>
+            }
+        </div>
+    }
+</div>
+
+
+@code{
+    [Parameter]
+    public int id { get; set; }
+    MTask mainTask = new MTask();
+    MTask bonusTask = new MTask();
+    public bool loadingStatus = false;
+    
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        bonusTask = null;
+        mainTask = null;
+
+        var mainTasks = await data.GetTaskById(id);
+        var connectionMainAndBonusTasks = await data.GetBonusTaskByMainId(id);
+        var bonusTasks = await data.GetTaskById(connectionMainAndBonusTasks[0].id_bonus_task);
+        await CreateOneTask(mainTasks, bonusTasks);
+        await ChangeLoadStatus();
+    }
+
+    private async Task CreateOneTask(List<MTask> _mainTasks, List<MTask> _bonusTasks){
+        mainTask = _mainTasks[0];
+        bonusTask = _bonusTasks[0];
+    } 
+
+    private async Task ChangeLoadStatus(){
+        loadingStatus = true;
+    } 
+}

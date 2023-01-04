@@ -14,6 +14,7 @@
         <tr>
             <th> </th>
             <th>Task</th>
+            <th> </th>
             <th>Points</th>
             <th>Duration</th>
             <th>File name</th>
@@ -33,6 +34,11 @@
                     <label for="@i">
                         @ListOfTasks[i].task_name
                     </label>
+                </td>
+                <td>
+                    <NavLink href="@($"task/{@ListOfTasks[i].id}")">
+                        See details..
+                    </NavLink>
                 </td>
                 <td>
                     <label for="@i">
@@ -72,8 +78,23 @@
 
     
     <NavLink href="taskCreator">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Create
+                <span class="oi oi-list-rich" aria-hidden="true"></span>Create new task
     </NavLink>
+    <br>
+
+    @if(choosenTask != null){
+        <NavLink href="taskCreator">
+                <span class="oi oi-list-rich" aria-hidden="true"></span>Edit
+        </NavLink>
+        <br>
+        @if(ListOfBonusToTask.FindIndex(p =>p.id_main_task==choosenTask.id) == -1)
+        {
+            <NavLink href="taskCreator">
+                <span class="oi oi-list-rich" aria-hidden="true"></span>Add Bonus task
+            </NavLink>
+        }
+    }
+    
     
 
 @code {
@@ -85,6 +106,7 @@
     {
         ListOfTasks = await data.GetMainTasks();
         ListOfBonusToTask = await data.GetAllBonusTask();
+        choosenTask = null;
     }
 
     private void OnListTaskChange(ChangeEventArgs e){

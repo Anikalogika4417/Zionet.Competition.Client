@@ -1,0 +1,151 @@
+@using ClientEntity
+@inject DataService data
+@inject HttpClient Http
+
+@using System 
+@using System.IO
+@using System.Net.Http.Headers
+
+
+@switch (mode)
+{
+    case "Edit": {
+        <div>
+            <input @bind="curentTask.task_name" type="text"/>
+            <br>
+            <input @bind="curentTask.task_description" type="text" />
+            <br>
+            <input @bind="curentTask.task_points" type="text"/> - Points
+            <br>
+            <input @bind="curentTask.task_duration" type="text"/> - Duration
+            <br>
+            File:
+            @if(curentTask.task_file_name != null){
+                <div>@curentTask.task_file_name</div> 
+                <button @onclick="@(() => OnFileRemove())">Remove!</button>
+            }
+            else{
+                <InputFile OnChange="@OnInputFileChange" />
+            }
+            <br>
+            Choosen category:
+            @categoryName
+            
+            <select id="list_of_category_edit" required="required" @bind="@categoryName" >
+                <option value="">Choose the value</option>
+                @for (var i = 0; i<CategoryList.Count; i++)
+                {
+                    <option value="@CategoryList[i].category_name">@CategoryList[i].category_name</option>   
+                }
+            </select>
+
+        </div>
+        break;
+    }
+    case "Watch": {
+        <div>
+            Task Name: @curentTask.task_name
+            <br>
+            Task Description: @curentTask.task_description
+            <br>
+            Task Points: @curentTask.task_points
+            <br>
+            Task Duration: @curentTask.task_duration
+            <br>
+            Task File: @curentTask.task_file_name
+            <br>
+            Task Category: @categoryName
+            <br>
+            @* TODO Download button *@
+        </div>
+        break;
+    }    
+    default:
+        <div>No made choosen</div>
+        break;
+}
+<button @onclick="@(() => OnModeChage())">@buttonName</button>
+
+    
+
+
+
+@code{
+    [Parameter]
+    public MTask curentTask {get; set;}
+
+    [Parameter]
+    public string mode {get; set;}
+    List<MCategory> CategoryList = new List<MCategory>();
+
+    private int maxAllowedFiles = int.MaxValue;
+    private long maxFileSize = long.MaxValue;
+    string inputFileName = "";
+    private List<UploadResult> uploadResults = new();
+
+    MultipartFormDataContent globalContent = new MultipartFormDataContent();
+
+    string categoryName = "";
+    string buttonName = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        CategoryList = await data.GetCategory();
+        categoryName = CategoryList[CategoryList.FindIndex(p =>p.id==curentTask.id_category)].category_name;
+        buttonName = mode == "Watch"? "Edit": "Save";
+    }
+
+
+
+    @*----------------Changing mode and button name by button----------------*@
+    private async Task OnModeChage (){
+        mode = mode == "Edit"? "Watch": "Edit";
+        buttonName = mode == "Watch"? "Edit": "Save";
+        if(mode == "Watch"){
+            await SaveAll();
+        }
+    }
+
+    @*----------------Save all values from form by clicking Save----------------*@
+    async Task SaveAll()
+    {
+        @* var response = await Http.PostAsync("https://localhost:44361/api/TestFile", globalContent); *@
+        await data.UpdateTask(initiolizeTask(curentTask));
+    }
+
+    @*----------------Making global content from file uploader for sending----------------*@
+    private async Task OnInputFileChange(InputFileChangeEventArgs e)
+    {
+        foreach (var file in e.GetMultipleFiles(maxAllowedFiles))
+        {
+            var fileContent = new StreamContent(file.OpenReadStream(maxFileSize));
+            fileContent.Headers.ContentType = new MediaTypeHeaderValue(file.ContentType);
+            curentTask.task_file_name = file.Name;
+            
+            globalContent.Add(
+                content: fileContent,
+                name: "\"files\"",
+                fileName: file.Name);
+        }
+    }
+
+    @*----------------Initionalizing task before sending----------------*@
+    private MTask initiolizeTask(MTask inputTask){
+        MTask fullTask = new MTask();
+        fullTask.id = inputTask.id;
+        fullTask.task_name = inputTask.task_name;
+        fullTask.task_description = inputTask.task_description;
+        fullTask.task_file_name = inputTask.task_file_name;
+        fullTask.task_points = inputTask.task_points;
+        fullTask.task_duration = inputTask.task_duration;
+        fullTask.id_category = CategoryList[CategoryList.FindIndex(p =>p.category_name==categoryName)].id; 
+        fullTask.is_bonus_task = inputTask.is_bonus_task;
+
+        return fullTask;
+    }
+
+    private async Task OnFileRemove(){
+        curentTask.task_file_name = null;
+        //TODO Удалять файл!!!
+    }
+}
