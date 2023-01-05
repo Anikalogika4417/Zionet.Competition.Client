@@ -61,7 +61,7 @@
         break;
     }    
     default:
-        <div>No made choosen</div>
+        <div>No mode choosen</div>
         break;
 }
 <button @onclick="@(() => OnModeChage())">@buttonName</button>
@@ -77,25 +77,19 @@
     [Parameter]
     public string mode {get; set;}
     List<MCategory> CategoryList = new List<MCategory>();
-
     private int maxAllowedFiles = int.MaxValue;
     private long maxFileSize = long.MaxValue;
-    string inputFileName = "";
-    private List<UploadResult> uploadResults = new();
-
     MultipartFormDataContent globalContent = new MultipartFormDataContent();
-
     string categoryName = "";
     string buttonName = "";
 
+    @*----------------Downloading categories, defining catagory name and button name ----------------*@
     protected override async Task OnInitializedAsync()
     {
         CategoryList = await data.GetCategory();
         categoryName = CategoryList[CategoryList.FindIndex(p =>p.id==curentTask.id_category)].category_name;
         buttonName = mode == "Watch"? "Edit": "Save";
     }
-
-
 
     @*----------------Changing mode and button name by button----------------*@
     private async Task OnModeChage (){
@@ -109,11 +103,11 @@
     @*----------------Save all values from form by clicking Save----------------*@
     async Task SaveAll()
     {
-        @* var response = await Http.PostAsync("https://localhost:44361/api/TestFile", globalContent); *@
         await data.UpdateTask(initiolizeTask(curentTask));
     }
 
-    @*----------------Making global content from file uploader for sending----------------*@
+    
+    @*----------------Making global content from file uploader----------------*@
     private async Task OnInputFileChange(InputFileChangeEventArgs e)
     {
         foreach (var file in e.GetMultipleFiles(maxAllowedFiles))
@@ -127,6 +121,9 @@
                 name: "\"files\"",
                 fileName: file.Name);
         }
+        //TODO Сделать отправку файла сразу
+        @* var response = await Http.PostAsync("https://localhost:44361/api/TestFile", globalContent); *@
+
     }
 
     @*----------------Initionalizing task before sending----------------*@
@@ -140,12 +137,14 @@
         fullTask.task_duration = inputTask.task_duration;
         fullTask.id_category = CategoryList[CategoryList.FindIndex(p =>p.category_name==categoryName)].id; 
         fullTask.is_bonus_task = inputTask.is_bonus_task;
-
         return fullTask;
     }
 
+    @*----------------Deleting file by clicking Remove!----------------*@
     private async Task OnFileRemove(){
         curentTask.task_file_name = null;
         //TODO Удалять файл!!!
     }
+
+    //TODO Добавить возможночть скачивания файла
 }

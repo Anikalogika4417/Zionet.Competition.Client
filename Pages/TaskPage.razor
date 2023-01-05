@@ -33,7 +33,7 @@
     public bool loadingStatus = false;
     
 
-
+    @*----------------Downloading main task, bonus task and connection beetwen them----------------*@
     protected override async Task OnInitializedAsync()
     {
         bonusTask = null;
@@ -46,11 +46,13 @@
         await ChangeLoadStatus();
     }
 
+    @*----------------Choosing the first element in lists of main and bonus tasks----------------*@
     private async Task CreateOneTask(List<MTask> _mainTasks, List<MTask> _bonusTasks){
         mainTask = _mainTasks[0];
         bonusTask = _bonusTasks[0];
     } 
 
+    @*----------------Change load status when loading data ends----------------*@
     private async Task ChangeLoadStatus(){
         loadingStatus = true;
     } 

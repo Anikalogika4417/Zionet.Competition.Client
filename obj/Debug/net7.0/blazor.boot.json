@@ -200,13 +200,13 @@
       "mscorlib.dll": "sha256-UH9jptJH1wZ3XMBPuMMAEaUKpfRxc5AgXkLdAFAvNVE=",
       "netstandard.dll": "sha256-+jUzj0FB0YcoBUeSkSNEjhVDTG08qbZ2twfCBMbzT+Q=",
       "System.Private.CoreLib.dll": "sha256-l+\/quNqfNCSUDSMJcp0+IxlSdOdnAtwVVWMXmYGHMpg=",
-      "Zionet.Competition.Client.dll": "sha256-cny5z38dXADHQ\/HHI8LyskdD8KKGySu0UDJ6rTVAXMc="
+      "Zionet.Competition.Client.dll": "sha256-W83WsWDPBqJOSzd+0gtmPIpblmGgQFO1\/jVhQAfh5ow="
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
-      "Zionet.Competition.Client.pdb": "sha256-pmPZpJnwD8p34oSzjGtqkvOAuNy8hrmjs2hIrR2bNKY="
+      "Zionet.Competition.Client.pdb": "sha256-HT0gjQdod6FNci7d4wlA8V9hfwMKMbR4IFm2SFpr2q4="
     },
     "runtime": {
       "dotnet.7.0.1.9nabnxd0wo.js": "sha256-jjax3FMRXzFAziWowdtJf6vipP2xXAaA5gD6VBYB6Y0=",
