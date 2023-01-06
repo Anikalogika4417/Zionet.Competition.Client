@@ -1,6 +1,7 @@
 using System.Net.Http.Json;
 using ClientEntity;
 using Microsoft.AspNetCore.Components.Forms;
+using System.Text.Json;
 
 
 namespace Zionet.Competition.Client.Services
@@ -20,6 +21,18 @@ namespace Zionet.Competition.Client.Services
                 ($"https://localhost:44361/api/Category");
         }
 
+        public async Task<List<MCompetition>> GetCompetitions()
+        {
+            return await http.GetFromJsonAsync<List<MCompetition>>
+                ($"https://localhost:44361/api/Competition");
+        }
+
+        public async Task<List<MCompetition>> GetCompetitionById(int id_competition)
+        {
+            return await http.GetFromJsonAsync<List<MCompetition>>
+                ($"https://localhost:44361/api/Competition/ById?_id={id_competition}");
+        }
+
         public async Task<List<MTask>> GetMainTasks()
         {
             return await http.GetFromJsonAsync<List<MTask>>
@@ -30,6 +43,12 @@ namespace Zionet.Competition.Client.Services
         {
             return await http.GetFromJsonAsync<List<MTask>>
                 ($"https://localhost:44361/api/Task/ById?_id={id_task}");
+        }
+
+        public async Task<List<MConnectionCompToTask>> GetTasksByIdComp(int id_comp)
+        {
+            return await http.GetFromJsonAsync<List<MConnectionCompToTask>>
+                ($"https://localhost:44361/api/TaskToCompetition/ByIdComp?_id={id_comp}");
         }
 
         
@@ -52,7 +71,14 @@ namespace Zionet.Competition.Client.Services
 
 
         public async Task PostTask(MTask task) {
-            await http.PostAsJsonAsync<MTask>($"https://localhost:44361/api/TestTask", task);
+            var a = await http.PostAsJsonAsync<MTask>($"https://localhost:44361/api/TestTask", task);
+        }
+        public async Task GetFiles() {
+            var a = await http.GetFromJsonAsync<List<MUploadFile>>($"https://localhost:44361/api/TestFile");
+            foreach (var taska in a)
+                    {
+                        Console.WriteLine(taska.FileName);
+                    }
         }
 
     }
