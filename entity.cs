@@ -53,6 +53,38 @@ namespace ClientEntity
         public DateTime create_date { get; set; }
         public DateTime update_date { get; set; }
         public int id_status { get; set; }
+    }
 
+    public class MUploadFile
+    {
+        public int Id { get; set; }
+        public string? FileName { get; set; }
+        public string? StoredFileName { get; set; }
+        public string? ContentType { get; set; }
+    }
+
+    public class MCompetition
+    {
+        public int id { get; set; }
+        public string competition_name { get; set; }
+        public DateTime competition_start { get; set; }
+        public DateTime competition_end { get; set; }
+        public int task_quantity { get; set; }
+        public int id_create_user { get; set; }
+        public int id_update_user { get; set; }
+        public DateTime create_date { get; set; }
+        public DateTime update_date { get; set; }
+        public int id_status { get; set; }
+    }
+
+    public class MConnectionCompToTask {
+        public int id { get; set; }
+        public int id_task { get; set; }
+        public int id_competition { get; set; }
+        public int id_create_user { get; set; }
+        public int id_update_user { get; set; }
+        public DateTime create_date { get; set; }
+        public DateTime update_date { get; set; }
+        public int id_status { get; set; }
     }
 }

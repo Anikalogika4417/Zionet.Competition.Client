@@ -120,10 +120,14 @@
                 content: fileContent,
                 name: "\"files\"",
                 fileName: file.Name);
+
         }
         //TODO Сделать отправку файла сразу
         @* var response = await Http.PostAsync("https://localhost:44361/api/TestFile", globalContent); *@
-
+        @* foreach (var file in response) *@
+                    @* { *@
+                        @* Console.WriteLine(response); *@
+                    @* } *@
     }
 
     @*----------------Initionalizing task before sending----------------*@

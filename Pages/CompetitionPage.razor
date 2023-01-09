@@ -1,0 +1,41 @@
+@page "/Competition/{id:int}"
+@using ClientEntity
+@inject DataService data
+
+<div>
+    @if(!loadingStatus){
+        <h1>Loading...</h1>
+    }
+    else{
+        <div>
+            <h1>@curentCompetition.competition_name</h1>
+            <CompetitionItem curentComp="@curentCompetition"/>
+        </div>
+    }
+</div>
+
+@code{
+    [Parameter]
+    public int id { get; set; }
+    MCompetition curentCompetition = new MCompetition();
+    public bool loadingStatus = false;
+    
+
+    @*----------------Downloading currentCompetition----------------*@
+    protected override async Task OnInitializedAsync()
+    {
+        var allCompetitions = await data.GetCompetitionById(id);
+        await CreateOneCompetition(allCompetitions);
+        await ChangeLoadStatus();
+    }
+
+    @*----------------Choosing the first element in list of competitions----------------*@
+    private async Task CreateOneCompetition(List<MCompetition> _allCompetitions){
+        curentCompetition = _allCompetitions[0];
+    } 
+
+    @*----------------Change load status when loading data ends----------------*@
+    private async Task ChangeLoadStatus(){
+        loadingStatus = true;
+    } 
+}

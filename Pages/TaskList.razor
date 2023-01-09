@@ -1,4 +1,5 @@
 @page "/taskList"
+@page "/Competition/{compId:int}/tasks"
 @using ClientEntity
 @inject DataService data
 @inject HttpClient Http
@@ -96,6 +97,8 @@
     
 
 @code {
+    [Parameter]
+    public int? compId { get; set; }
     List<MTask> ListOfTasks = new List<MTask>();
     MTask choosenTask = new MTask();
     List<MBonusToTask> ListOfBonusToTask = new List<MBonusToTask>();
@@ -106,6 +109,23 @@
         ListOfTasks = await data.GetMainTasks();
         ListOfBonusToTask = await data.GetAllBonusTask();
         choosenTask = null;
+        if(compId != null){
+            var linksCompToMainTask = await data.GetTasksByIdComp((int)compId);
+            ListOfTasks = await findAllTask(linksCompToMainTask);
+        }
+    }
+
+    @*----------------Find all tasks for spesial competition----------------*@
+    private async Task<List<MTask>> findAllTask(List<MConnectionCompToTask> links){
+        var newList = new List<MTask>();
+        foreach (var link in links)
+        {
+            var a = ListOfTasks.FindIndex(p => p.id == link.id_task);
+            if(a != -1){
+                newList.Add(ListOfTasks[a]);
+            }          
+        }
+        return newList;
     }
 
     @*----------------Changing choosen task by radio button----------------*@

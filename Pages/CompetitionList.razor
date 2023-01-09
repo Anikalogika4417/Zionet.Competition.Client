@@ -1,0 +1,79 @@
+@page "/CompetitionList"
+@using ClientEntity
+@inject DataService data
+@inject HttpClient Http
+
+
+
+<PageTitle>Competition List</PageTitle>
+
+<h1>Competitions:</h1>
+    <table>
+        <tr>
+            <th> </th>
+            <th>Competition name</th>
+            <th> </th>
+            <th>Competition start time</th>
+            <th>Competition end time</th>
+            <th>Quantity of concurrent tasks for one group</th>
+        </tr>
+        @for (var i=0;i<ListOfCompetitions.Count;i++)
+        {       
+            <tr>
+                <td>
+                    <input  type="radio" 
+                            id="@i+competitionList" 
+                            name="competitionList" 
+                            value="@ListOfCompetitions[i].id"
+                            @onchange="@OnListCompetitionChange">
+                </td>                
+                <td>
+                    <label for="@i">
+                        @ListOfCompetitions[i].competition_name
+                    </label>
+                </td>
+                <td>
+                    <NavLink href="@($"Competition/{@ListOfCompetitions[i].id}")">
+                        See details..
+                    </NavLink>
+                </td>
+                <td>
+                    <label for="@i">
+                        @ListOfCompetitions[i].competition_start
+                    </label>
+                </td>
+                <td>
+                    <label for="@i">
+                        @ListOfCompetitions[i].competition_end
+                    </label>
+                </td>
+                <td>
+                    <label for="@i">
+                        @ListOfCompetitions[i].task_quantity
+                    </label>
+                </td>
+            </tr>
+        }
+    </table>
+
+@code
+{
+    List<MCompetition> ListOfCompetitions = new List<MCompetition>();
+    MCompetition choosenCompetition = new MCompetition();
+    
+    @*----------------Downloading all competitions----------------*@
+    protected override async Task OnInitializedAsync()
+    {
+        ListOfCompetitions = await data.GetCompetitions();
+        choosenCompetition = null;
+    }
+
+    @*----------------Changing choosen competition by radio button----------------*@
+    private void OnListCompetitionChange(ChangeEventArgs e){
+        if(e.Value != ""){
+            var IndexSelectedCompetition = ListOfCompetitions.FindIndex(p => p.id == int.Parse(e.Value.ToString()));
+            choosenCompetition = ListOfCompetitions[IndexSelectedCompetition];
+            Console.WriteLine(choosenCompetition.competition_name);
+        }
+    }
+}

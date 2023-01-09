@@ -20,12 +20,28 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ignps/Desktop/Programms/Zionet.Competition.Client/Pages/Counter.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
+[C:/Users/ignps/Desktop/Programms/Zionet.Competition.Client/Pages/CategoryItem.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0ZWdvcnlJdGVtLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ignps/Desktop/Programms/Zionet.Competition.Client/Pages/CreatingTask.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3JlYXRpbmdUYXNrLnJhem9y
+[C:/Users/ignps/Desktop/Programms/Zionet.Competition.Client/Pages/CategoryList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0ZWdvcnlMaXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ignps/Desktop/Programms/Zionet.Competition.Client/Pages/CompetitionItem.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcGV0aXRpb25JdGVtLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ignps/Desktop/Programms/Zionet.Competition.Client/Pages/CompetitionList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcGV0aXRpb25MaXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ignps/Desktop/Programms/Zionet.Competition.Client/Pages/CompetitionPage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcGV0aXRpb25QYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ignps/Desktop/Programms/Zionet.Competition.Client/Pages/Counter.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ignps/Desktop/Programms/Zionet.Competition.Client/Pages/FetchData.razor]
@@ -34,6 +50,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/ignps/Desktop/Programms/Zionet.Competition.Client/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ignps/Desktop/Programms/Zionet.Competition.Client/Pages/TaskCreating.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGFza0NyZWF0aW5nLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ignps/Desktop/Programms/Zionet.Competition.Client/Pages/TaskItem.razor]

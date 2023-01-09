@@ -1,0 +1,114 @@
+@page "/CategoryList"
+@* @page "/Competition/{compId:int}/categories" *@
+@using ClientEntity
+@inject DataService data
+
+<PageTitle>Category List</PageTitle>
+
+<h1>Categories:</h1>
+    <table>
+        <tr>
+            <th> </th>
+            <th>Category name</th>
+        </tr>
+        @for (var i=0;i<ListOfCategories.Count;i++)
+        {       
+            <tr>
+                <td>
+                    @if(choosenCategory != null && curMode == "Edit"){
+                        <input  type="radio" 
+                        id="@i+categoryList" 
+                        name="categoryList" 
+                        value="@ListOfCategories[i].id"
+                        @onchange="@OnListCategoryChange"
+                        disabled>
+                    }
+                    else{
+                        <input  type="radio" 
+                        id="@i+categoryList" 
+                        name="categoryList" 
+                        value="@ListOfCategories[i].id"
+                        @onchange="@OnListCategoryChange">
+                    }
+                </td>                
+                <td>
+                    <label for="@i+categoryList">
+                        <div>
+                        @if(choosenCategory != null && ListOfCategories[i].id == choosenCategory.id){
+                            @* Two-way binding doesn't work((( *@
+                            @* <CategoryItem @bind-CurentCategory="choosenCategory.category_name" mode="@curMode"/> *@
+                            
+                            @switch (curMode)
+                            {
+                                case "Edit": {
+                                    <div>
+                                        <input @bind="choosenCategory.category_name" type="text"/>
+                                        <br>
+                                    </div>
+                                    break;
+                                }
+                                case "Watch": {
+                                    <div>
+                                        @ListOfCategories[i].category_name
+                                        <br>
+                                    </div>
+                                    break;
+                                }    
+                                default:
+                                    <div>No mode choosen</div>
+                                    break;
+                            }
+                        }
+                        else{
+                            @ListOfCategories[i].category_name
+                        }
+                        </div>
+                    </label>
+                </td>
+            </tr>
+        }
+    </table>
+
+    <button @onclick="@(() => OnModeChage())">@buttonName</button>
+
+@code
+{
+    List<MCategory> ListOfCategories = new List<MCategory>();
+    MCategory choosenCategory= new MCategory();
+    public string curMode;
+    private string buttonName = "";
+    
+    @*----------------Downloading all competitions----------------*@
+    protected override async Task OnInitializedAsync()
+    {
+        ListOfCategories = await data.GetCategory();
+        choosenCategory = null;
+        curMode = "Watch";
+        buttonName = "Edit";
+    }
+
+    @*----------------Changing choosen competition by radio button----------------*@
+    private void OnListCategoryChange(ChangeEventArgs e){
+        if(e.Value != ""){
+            var IndexSelectedCategory = ListOfCategories.FindIndex(p => p.id == int.Parse(e.Value.ToString()));
+            choosenCategory = ListOfCategories[IndexSelectedCategory];
+        }
+    }
+
+    @*----------------Changing mode and button name by button----------------*@
+    private async Task OnModeChage (){
+        curMode = curMode == "Edit"? "Watch": "Edit";
+        buttonName = curMode == "Watch"? "Edit": "Save";
+        if(curMode == "Watch"){
+            await SaveAll();
+        }
+    }
+
+    @*----------------Save all values from form by clicking Save----------------*@
+    private async Task SaveAll()
+    {
+        ListOfCategories[ListOfCategories.FindIndex((p)=>p.id == choosenCategory.id)].category_name = choosenCategory.category_name;
+        Console.WriteLine(ListOfCategories[ListOfCategories.FindIndex((p)=>p.id == choosenCategory.id)].category_name);
+    }
+
+}

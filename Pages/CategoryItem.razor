@@ -1,0 +1,32 @@
+@inject DataService data
+@inject HttpClient Http
+
+@switch (mode)
+{
+    case "Edit": {
+        <div>
+            <input @bind="CurentCategory" type="text"/>
+            <br>
+        </div>
+        break;
+    }
+    case "Watch": {
+        <div>
+            @CurentCategory
+            <br>
+        </div>
+        break;
+    }    
+    default:
+        <div>No mode choosen</div>
+        break;
+}
+
+@code{
+    [Parameter]
+    public string CurentCategory {get; set;}
+    [Parameter]
+    public EventCallback<string> CurentCategoryChanged { get; set; }
+    [Parameter]
+    public string mode {get; set; }
+}
