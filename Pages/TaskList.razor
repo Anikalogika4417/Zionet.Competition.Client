@@ -7,6 +7,7 @@
 @using System 
 @using System.IO
 @using System.Net.Http.Headers
+@inject NavigationManager NavManager
 
 <PageTitle>Create a task</PageTitle>
 
@@ -14,11 +15,24 @@
           Data="@ListOfTasks"
           ReadData="@OnReadData"
           TotalItems="@totalTasks"
+          CommandMode="DataGridCommandMode.ButtonRow"
+          @bind-SelectedRows="selectedTask"
           PageSize="5"
           ShowPager
           Responsive>
-<DataGridCommandColumn />
-    <DataGridColumn Field="@nameof(MTask.task_name)" Caption="Name" Sortable="true" />
+    <DataGridColumn Field="@nameof(MTask.task_name)" Caption="Name" Sortable="true">
+        <DisplayTemplate>
+            @{
+                var idCont = ( context as MTask )?.id;
+                var nameCont = ( context as MTask )?.task_name;
+                var link = "task/"+idCont;
+
+                <Blazorise.Link To=@link>
+                    @nameCont
+                </Blazorise.Link>
+            }
+        </DisplayTemplate>
+    </DataGridColumn>
     <DataGridColumn Field="@nameof(MTask.task_points)" Caption="Points" Sortable="true" />
     <DataGridColumn Field="@nameof(MTask.task_duration)" Caption="Duration" Sortable="true" />
     <DataGridColumn Field="@nameof(MTask.task_file_name)" Caption="File name" Sortable="true" />
@@ -29,7 +43,9 @@
 
             if ( ListOfBonusToTask.FindIndex((p)=>p.id_main_task == dateCont) == -1 )
             {
-                @($"NO")
+                <NewCommandTemplate>
+                    <Button Color="Color.Success" Clicked="@onAddBTTaskClcik">Add task</Button>
+                </NewCommandTemplate>
             }
             else{
                 @($"YES")
@@ -38,6 +54,7 @@
     </DisplayTemplate>
     </DataGridColumn>
 </DataGrid>
+
 
 @* 
 <h1>Tasks:</h1>
@@ -134,6 +151,8 @@
     List<MBonusToTask> ListOfBonusToTask = new List<MBonusToTask>();
 
     private int totalTasks;
+    private List<MTask> selectedTask = new List<MTask>(); 
+
 
     private async Task OnReadData( DataGridReadDataEventArgs<MTask> e )
     {
@@ -190,5 +209,10 @@
             var IndexSelectedTask = ListOfTasks.FindIndex(p => p.id == int.Parse(e.Value.ToString()));
             choosenTask = ListOfTasks[IndexSelectedTask];
         }
+    }
+
+    //TODO Поправить! Сейчас ведет на создание таски main. Не Бонусной!!!
+    private void onAddBTTaskClcik(){
+        NavManager.NavigateTo("/taskCreator");
     }
 }
