@@ -20,6 +20,9 @@
             @if(bonusTask != null){
                 <TaskItem mode="Watch" curentTask="@bonusTask"/>
             }
+            else{
+                <button>Add bonus task</button>
+            }
         </div>
     }
 </div>
@@ -41,8 +44,13 @@
 
         var mainTasks = await data.GetTaskById(id);
         var connectionMainAndBonusTasks = await data.GetBonusTaskByMainId(id);
-        var bonusTasks = await data.GetTaskById(connectionMainAndBonusTasks[0].id_bonus_task);
-        await CreateOneTask(mainTasks, bonusTasks);
+        if(connectionMainAndBonusTasks.Count != 0){
+            var bonusTasks = await data.GetTaskById(connectionMainAndBonusTasks[0].id_bonus_task);
+            await CreateOneTask(mainTasks, bonusTasks);
+        }
+        else{
+            await CreateOneTask(mainTasks);
+        }
         await ChangeLoadStatus();
     }
 
@@ -50,6 +58,10 @@
     private async Task CreateOneTask(List<MTask> _mainTasks, List<MTask> _bonusTasks){
         mainTask = _mainTasks[0];
         bonusTask = _bonusTasks[0];
+    } 
+
+    private async Task CreateOneTask(List<MTask> _mainTasks){
+        mainTask = _mainTasks[0];
     } 
 
     @*----------------Change load status when loading data ends----------------*@

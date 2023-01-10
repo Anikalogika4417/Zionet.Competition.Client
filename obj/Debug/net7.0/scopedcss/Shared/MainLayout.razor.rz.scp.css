@@ -79,3 +79,8 @@ main[b-gm56utcszi] {
         padding-right: 1.5rem !important;
     }
 }
+
+
+.flex-group-container[b-gm56utcszi] {
+    display: flex;
+}

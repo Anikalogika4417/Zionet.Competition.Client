@@ -80,6 +80,11 @@ main[b-gm56utcszi] {
         padding-right: 1.5rem !important;
     }
 }
+
+
+.flex-group-container[b-gm56utcszi] {
+    display: flex;
+}
 /* /Shared/NavMenu.razor.rz.scp.css */
 .navbar-toggler[b-ni2utksini] {
     background-color: rgba(255, 255, 255, 0.1);

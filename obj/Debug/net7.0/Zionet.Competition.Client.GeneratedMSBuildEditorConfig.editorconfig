@@ -20,6 +20,10 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/ignps/Desktop/Programms/Zionet.Competition.Client/Pages/Authentication.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aGVudGljYXRpb24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/ignps/Desktop/Programms/Zionet.Competition.Client/Pages/CategoryItem.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0ZWdvcnlJdGVtLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
@@ -48,6 +52,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/ignps/Desktop/Programms/Zionet.Competition.Client/Pages/GroupItem.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JvdXBJdGVtLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ignps/Desktop/Programms/Zionet.Competition.Client/Pages/GroupList.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JvdXBMaXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/ignps/Desktop/Programms/Zionet.Competition.Client/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
@@ -66,6 +78,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/ignps/Desktop/Programms/Zionet.Competition.Client/Pages/TaskPage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGFza1BhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/ignps/Desktop/Programms/Zionet.Competition.Client/Shared/AccessControl.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXEFjY2Vzc0NvbnRyb2wucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ignps/Desktop/Programms/Zionet.Competition.Client/Shared/SurveyPrompt.razor]

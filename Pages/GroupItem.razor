@@ -1,0 +1,22 @@
+@using ClientEntity
+
+<div>
+    <h1>@curGroup.group_name</h1>
+    @if(quantityParticipants == 0){
+        <p>No Participants</p>
+    }
+</div>
+
+@code{
+    [Parameter]
+    public MGroup curGroup {get; set;}
+    private int quantityParticipants = 0;
+
+
+    @*----------------Downloading currentCompetition----------------*@
+    protected override async Task OnInitializedAsync()
+    {
+        //TODO сделать загрузку юзеров по id группы
+    }
+
+}

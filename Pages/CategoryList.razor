@@ -1,7 +1,8 @@
 @page "/CategoryList"
-@* @page "/Competition/{compId:int}/categories" *@
+@page "/Competition/{compId:int}/categories"
 @using ClientEntity
 @inject DataService data
+@inject NavigationManager uriHelper;
 
 <PageTitle>Category List</PageTitle>
 
@@ -70,13 +71,27 @@
     </table>
 
     <button @onclick="@(() => OnModeChage())">@buttonName</button>
+    @if(createFlag == false){
+        <button @onclick="@(() => OnAddClick())">Add</button>
+    }
+    else{
+        <h1>New Category:</h1>
+        <input @bind="newCategory" type="text"/>
+        <button @onclick="@(() => OnSaveClick())">Save category</button>
+    }
 
 @code
 {
+    [Parameter]
+    public int? compId { get; set; }
     List<MCategory> ListOfCategories = new List<MCategory>();
     MCategory choosenCategory= new MCategory();
     public string curMode;
     private string buttonName = "";
+    private bool createFlag = false;
+    private string newCategory = "Category name";
+    private string currUrl = "";
+    private bool refreshStatus = false;
     
     @*----------------Downloading all competitions----------------*@
     protected override async Task OnInitializedAsync()
@@ -85,6 +100,31 @@
         choosenCategory = null;
         curMode = "Watch";
         buttonName = "Edit";
+        if(compId != null){
+            var linksCompToCategory = await data.GetCategoriesByIdComp((int)compId);
+            ListOfCategories = await findAllCategories(linksCompToCategory);
+        }
+    }
+
+    @*----------------Find all categories for spesial competition----------------*@
+    private async Task<List<MCategory>> findAllCategories(List<MConnectionCompToCategory> links){
+        var newList = new List<MCategory>();
+        foreach (var link in links)
+        {
+            var a = ListOfCategories.FindIndex(p => p.id == link.id_category);
+            if(a != -1){
+                newList.Add(ListOfCategories[a]);
+            }          
+        }
+        return newList;
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
     }
 
     @*----------------Changing choosen competition by radio button----------------*@
@@ -108,7 +148,26 @@
     private async Task SaveAll()
     {
         ListOfCategories[ListOfCategories.FindIndex((p)=>p.id == choosenCategory.id)].category_name = choosenCategory.category_name;
-        Console.WriteLine(ListOfCategories[ListOfCategories.FindIndex((p)=>p.id == choosenCategory.id)].category_name);
+        await data.PutCategory(ListOfCategories[ListOfCategories.FindIndex((p)=>p.id == choosenCategory.id)]);
     }
 
+    @*----------------Add button form for adding new category----------------*@
+    private async Task OnAddClick(){
+        createFlag = true;
+    }
+
+    @*----------------Save button form for saving new category----------------*@
+    private async Task OnSaveClick(){
+        await data.PostCategory(InitiateCategory(newCategory));
+        createFlag = false;
+        newCategory = "Category name";
+        uriHelper.NavigateTo(uriHelper.Uri, forceLoad: true);
+    }
+
+    @*----------------Initiate category for saving----------------*@
+    private MCategory InitiateCategory(string _newCategory){
+        var newLine = new MCategory();
+        newLine.category_name=_newCategory;
+        return newLine;
+    }
 }

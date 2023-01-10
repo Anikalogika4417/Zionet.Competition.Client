@@ -1,0 +1,34 @@
+@page "/GroupList"
+@page "/Competition/{compId:int}/groups"
+@using ClientEntity
+@inject DataService data
+@inject NavigationManager uriHelper;
+
+<PageTitle>Group List</PageTitle>
+
+<h1>Groups:</h1>
+<div class="flex-group-container">
+    @foreach (var item in ListOfGroups)
+        {
+            <div>
+                <GroupItem curGroup="@item"/>        
+            </div>
+        }
+</div>
+
+
+@code
+{
+    [Parameter]
+    public int? compId { get; set; }
+    List<MGroup> ListOfGroups = new List<MGroup>();
+
+    @*----------------Downloading all competitions----------------*@
+    protected override async Task OnInitializedAsync()
+    {
+        ListOfGroups = await data.GetGroups();
+        if(compId != null){
+            ListOfGroups = await data.GetGroupsByIdComp((int)compId);
+        }
+    }
+}
