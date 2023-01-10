@@ -10,6 +10,36 @@
 
 <PageTitle>Create a task</PageTitle>
 
+<DataGrid TItem="MTask"
+          Data="@ListOfTasks"
+          ReadData="@OnReadData"
+          TotalItems="@totalTasks"
+          PageSize="5"
+          ShowPager
+          Responsive>
+<DataGridCommandColumn />
+    <DataGridColumn Field="@nameof(MTask.task_name)" Caption="Name" Sortable="true" />
+    <DataGridColumn Field="@nameof(MTask.task_points)" Caption="Points" Sortable="true" />
+    <DataGridColumn Field="@nameof(MTask.task_duration)" Caption="Duration" Sortable="true" />
+    <DataGridColumn Field="@nameof(MTask.task_file_name)" Caption="File name" Sortable="true" />
+    <DataGridColumn Field="@nameof(MTask.task_file_name)" Caption="Bonus Task" Sortable="true">
+    <DisplayTemplate>
+        @{
+            var dateCont = ( context as MTask )?.id;
+
+            if ( ListOfBonusToTask.FindIndex((p)=>p.id_main_task == dateCont) == -1 )
+            {
+                @($"NO")
+            }
+            else{
+                @($"YES")
+            }
+        }
+    </DisplayTemplate>
+    </DataGridColumn>
+</DataGrid>
+
+@* 
 <h1>Tasks:</h1>
     <table>
         <tr>
@@ -75,7 +105,7 @@
                 }
             </tr>
         }
-    </table>
+    </table> *@
 
     <NavLink href="taskCreator">
                 <span class="oi oi-list-rich" aria-hidden="true"></span>Create new task
@@ -102,6 +132,32 @@
     List<MTask> ListOfTasks = new List<MTask>();
     MTask choosenTask = new MTask();
     List<MBonusToTask> ListOfBonusToTask = new List<MBonusToTask>();
+
+    private int totalTasks;
+
+    private async Task OnReadData( DataGridReadDataEventArgs<MTask> e )
+    {
+        if ( !e.CancellationToken.IsCancellationRequested )
+        {
+            List<MTask> response = null;
+
+            // this can be call to anything, in this case we're calling a fictional api
+            //var response = await Http.GetJsonAsync<Employee[]>( $"some-api/employees?page={e.Page}&pageSize={e.PageSize}" );
+            if ( e.ReadDataMode is DataGridReadDataMode.Virtualize )
+                response = (await data.GetMainTasks()).Skip( e.VirtualizeOffset ).Take( e.VirtualizeCount ).ToList();
+            else if ( e.ReadDataMode is DataGridReadDataMode.Paging )
+                response = (await data.GetMainTasks()).Skip( ( e.Page - 1 ) * e.PageSize ).Take( e.PageSize ).ToList();
+            else
+                throw new Exception( "Unhandled ReadDataMode" );
+
+            if ( !e.CancellationToken.IsCancellationRequested )
+            {
+                totalTasks = (await data.GetMainTasks()).Count;
+                ListOfTasks = new List<MTask>( response ); // an actual data for the current page
+            }
+        }
+    }
+
 
     @*----------------Downloading main task and all bonus tasks----------------*@
     protected override async Task OnInitializedAsync()

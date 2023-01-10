@@ -87,4 +87,27 @@ namespace ClientEntity
         public DateTime update_date { get; set; }
         public int id_status { get; set; }
     }
+
+    public class MConnectionCompToCategory {
+        public int id { get; set; }
+        public int id_category { get; set; }
+        public int id_competition { get; set; }
+        public int id_create_user { get; set; }
+        public int id_update_user { get; set; }
+        public DateTime create_date { get; set; }
+        public DateTime update_date { get; set; }
+        public int id_status { get; set; }
+    }
+
+    public class MGroup {
+        public int id { get; set; }
+        public string group_name { get; set; }
+        public string group_icon { get; set; }
+        public int id_competition { get; set; }
+        public int id_create_user { get; set; }
+        public int id_update_user { get; set; }
+        public DateTime create_date { get; set; }
+        public DateTime update_date { get; set; }
+        public int id_status { get; set; }
+    }
 }

@@ -73,6 +73,14 @@
       "PackagePath": "staticwebassets\\index.html"
     },
     {
+      "Id": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\wwwroot\\sample-data\\appsettings.json",
+      "PackagePath": "staticwebassets\\sample-data\\appsettings.json"
+    },
+    {
+      "Id": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\wwwroot\\sample-data\\favicon.ico",
+      "PackagePath": "staticwebassets\\sample-data\\favicon.ico"
+    },
+    {
       "Id": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\wwwroot\\sample-data\\weather.json",
       "PackagePath": "staticwebassets\\sample-data\\weather.json"
     },

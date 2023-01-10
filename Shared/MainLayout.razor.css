@@ -79,3 +79,8 @@ main {
         padding-right: 1.5rem !important;
     }
 }
+
+
+.flex-group-container {
+    display: flex;
+}
