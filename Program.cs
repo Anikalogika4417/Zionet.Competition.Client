@@ -5,6 +5,7 @@ using Zionet.Competition.Client;
 using Blazorise;
 using Blazorise.Bootstrap;
 using Blazorise.Icons.FontAwesome;
+using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 
 
 
@@ -31,11 +32,11 @@ namespace Zionet.Competition.Client
                 .AddFontAwesomeIcons();
             // builder.Services.AddBlazorBootstrap();
 
-            // builder.Services.AddOidcAuthentication(options =>
-            // {
-            //     builder.Configuration.Bind("Auth0", options.ProviderOptions);
-            //     options.ProviderOptions.ResponseType = "code";
-            // });
+            builder.Services.AddOidcAuthentication(options =>
+            {
+                builder.Configuration.Bind("Auth0", options.ProviderOptions);
+                options.ProviderOptions.ResponseType = "code";
+            });
 
 
             // builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });

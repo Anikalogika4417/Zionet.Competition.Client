@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "RFxe2DbRofvQsLjwivckwxyiRhvKtZN9iBEfzKcih8A=",
+  "Hash": "1AMDNolNPwXSbIlvW1z/NbtadyL/lv/A0osLfDXv1jA=",
   "Source": "Zionet.Competition.Client",
   "BasePath": "/",
   "Mode": "Root",
@@ -712,6 +712,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\vendors\\Pickr.js"
+    },
+    {
+      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly.authentication\\7.0.2\\staticwebassets\\AuthenticationService.js",
+      "SourceId": "Microsoft.AspNetCore.Components.WebAssembly.Authentication",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly.authentication\\7.0.2\\staticwebassets\\",
+      "BasePath": "_content/Microsoft.AspNetCore.Components.WebAssembly.Authentication",
+      "RelativePath": "AuthenticationService.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly.authentication\\7.0.2\\staticwebassets\\AuthenticationService.js"
     },
     {
       "Identity": "C:\\Users\\ignps\\.nuget\\packages\\smart.blazor\\14.4.39\\staticwebassets\\css\\bootstrap\\_bootstrap_vars_dark.scss",
@@ -18510,7 +18527,24 @@
       "AssetTraitValue": "runtime",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\microsoft.aspnetcore.authorization\\7.0.1\\lib\\net7.0\\Microsoft.AspNetCore.Authorization.dll"
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\microsoft.aspnetcore.authorization\\7.0.2\\lib\\net7.0\\Microsoft.AspNetCore.Authorization.dll"
+    },
+    {
+      "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Authorization.dll",
+      "SourceId": "Zionet.Competition.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Components.Authorization.dll",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "BlazorWebAssemblyResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\microsoft.aspnetcore.components.authorization\\7.0.2\\lib\\net7.0\\Microsoft.AspNetCore.Components.Authorization.dll"
     },
     {
       "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.dll",
@@ -18527,7 +18561,7 @@
       "AssetTraitValue": "runtime",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\microsoft.aspnetcore.components\\7.0.1\\lib\\net7.0\\Microsoft.AspNetCore.Components.dll"
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\microsoft.aspnetcore.components\\7.0.2\\lib\\net7.0\\Microsoft.AspNetCore.Components.dll"
     },
     {
       "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Forms.dll",
@@ -18544,7 +18578,7 @@
       "AssetTraitValue": "runtime",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\microsoft.aspnetcore.components.forms\\7.0.1\\lib\\net7.0\\Microsoft.AspNetCore.Components.Forms.dll"
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\microsoft.aspnetcore.components.forms\\7.0.2\\lib\\net7.0\\Microsoft.AspNetCore.Components.Forms.dll"
     },
     {
       "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Web.dll",
@@ -18561,7 +18595,24 @@
       "AssetTraitValue": "runtime",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\microsoft.aspnetcore.components.web\\7.0.1\\lib\\net7.0\\Microsoft.AspNetCore.Components.Web.dll"
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\microsoft.aspnetcore.components.web\\7.0.2\\lib\\net7.0\\Microsoft.AspNetCore.Components.Web.dll"
+    },
+    {
+      "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll",
+      "SourceId": "Zionet.Competition.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "BlazorWebAssemblyResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly.authentication\\7.0.2\\lib\\net7.0\\Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll"
     },
     {
       "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.WebAssembly.dll",
@@ -18595,7 +18646,7 @@
       "AssetTraitValue": "runtime",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\microsoft.aspnetcore.metadata\\7.0.1\\lib\\net7.0\\Microsoft.AspNetCore.Metadata.dll"
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\microsoft.aspnetcore.metadata\\7.0.2\\lib\\net7.0\\Microsoft.AspNetCore.Metadata.dll"
     },
     {
       "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.CSharp.dll",
@@ -18867,7 +18918,7 @@
       "AssetTraitValue": "runtime",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\microsoft.jsinterop\\7.0.1\\lib\\net7.0\\Microsoft.JSInterop.dll"
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\microsoft.jsinterop\\7.0.2\\lib\\net7.0\\Microsoft.JSInterop.dll"
     },
     {
       "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.JSInterop.WebAssembly.dll",
@@ -21845,6 +21896,23 @@
       "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.Data.Common.dll"
     },
     {
+      "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\build-gz\\+6ssoLWt.gz",
+      "SourceId": "Zionet.Competition.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.WebAssembly.Authentication.dll"
+    },
+    {
       "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\build-gz\\+CWfMouf.gz",
       "SourceId": "Zionet.Competition.Client",
       "SourceType": "Computed",
@@ -23069,6 +23137,23 @@
       "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.Data.DataSetExtensions.dll"
     },
     {
+      "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\build-gz\\fwluTqUV.gz",
+      "SourceId": "Zionet.Competition.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Metadata.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Metadata.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Metadata.dll"
+    },
+    {
       "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\build-gz\\fXo3I6Ci.gz",
       "SourceId": "Zionet.Competition.Client",
       "SourceType": "Computed",
@@ -23596,23 +23681,6 @@
       "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.Net.Sockets.dll"
     },
     {
-      "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\build-gz\\K3URs9dN.gz",
-      "SourceId": "Zionet.Competition.Client",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/Microsoft.AspNetCore.Components.Web.dll.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "RelatedAsset": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Web.dll",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Web.dll"
-    },
-    {
       "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\build-gz\\KDVxz2i7.gz",
       "SourceId": "Zionet.Competition.Client",
       "SourceType": "Computed",
@@ -23781,23 +23849,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.Runtime.InteropServices.dll"
-    },
-    {
-      "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\build-gz\\LvX5CYaV.gz",
-      "SourceId": "Zionet.Competition.Client",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/Microsoft.JSInterop.dll.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "RelatedAsset": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.JSInterop.dll",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.JSInterop.dll"
     },
     {
       "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\build-gz\\m3xdCDaS.gz",
@@ -24106,6 +24157,23 @@
       "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.WebAssembly.dll"
     },
     {
+      "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\build-gz\\oxXcyF3d.gz",
+      "SourceId": "Zionet.Competition.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Components.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.dll"
+    },
+    {
       "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\build-gz\\OzC6MkaR.gz",
       "SourceId": "Zionet.Competition.Client",
       "SourceType": "Computed",
@@ -24138,6 +24206,23 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.Diagnostics.TraceSource.dll"
+    },
+    {
+      "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\build-gz\\Pbaxavqw.gz",
+      "SourceId": "Zionet.Competition.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Components.Forms.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Forms.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Forms.dll"
     },
     {
       "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\build-gz\\PbJi11az.gz",
@@ -24274,23 +24359,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\blazor.webassembly.js"
-    },
-    {
-      "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\build-gz\\PY8Xb+8p.gz",
-      "SourceId": "Zionet.Competition.Client",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/Microsoft.AspNetCore.Components.dll.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "RelatedAsset": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.dll",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.dll"
     },
     {
       "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\build-gz\\Q5RwP7+4.gz",
@@ -24769,6 +24837,23 @@
       "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.IO.UnmanagedMemoryStream.dll"
     },
     {
+      "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\build-gz\\U4cmkiym.gz",
+      "SourceId": "Zionet.Competition.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Components.Authorization.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Authorization.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Authorization.dll"
+    },
+    {
       "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\build-gz\\v4fUo4qd.gz",
       "SourceId": "Zionet.Competition.Client",
       "SourceType": "Computed",
@@ -24990,38 +25075,38 @@
       "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.Threading.Tasks.dll"
     },
     {
-      "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\build-gz\\x6cZc7xr.gz",
+      "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\build-gz\\X8W6UVyB.gz",
       "SourceId": "Zionet.Competition.Client",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\",
       "BasePath": "/",
-      "RelativePath": "_framework/Microsoft.AspNetCore.Metadata.dll.gz",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Authorization.dll.gz",
       "AssetKind": "Build",
       "AssetMode": "All",
       "AssetRole": "Alternative",
-      "RelatedAsset": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Metadata.dll",
+      "RelatedAsset": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Authorization.dll",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Metadata.dll"
+      "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Authorization.dll"
     },
     {
-      "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\build-gz\\XG5oY1+V.gz",
+      "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\build-gz\\xdtb0OiR.gz",
       "SourceId": "Zionet.Competition.Client",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\",
       "BasePath": "/",
-      "RelativePath": "_framework/Microsoft.AspNetCore.Components.Forms.dll.gz",
+      "RelativePath": "_framework/Microsoft.AspNetCore.Components.Web.dll.gz",
       "AssetKind": "Build",
       "AssetMode": "All",
       "AssetRole": "Alternative",
-      "RelatedAsset": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Forms.dll",
+      "RelatedAsset": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Web.dll",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Forms.dll"
+      "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Web.dll"
     },
     {
       "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\build-gz\\Xg68wfWO.gz",
@@ -25075,6 +25160,23 @@
       "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.Extensions.FileProviders.Abstractions.dll"
     },
     {
+      "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\build-gz\\xmOwluA2.gz",
+      "SourceId": "Zionet.Competition.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.JSInterop.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.JSInterop.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.JSInterop.dll"
+    },
+    {
       "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\build-gz\\xSZgNAZ0.gz",
       "SourceId": "Zionet.Competition.Client",
       "SourceType": "Computed",
@@ -25107,23 +25209,6 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\icudt_no_CJK.dat"
-    },
-    {
-      "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\build-gz\\YGZsZ3Ox.gz",
-      "SourceId": "Zionet.Competition.Client",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/Microsoft.AspNetCore.Authorization.dll.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "RelatedAsset": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Authorization.dll",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Authorization.dll"
     },
     {
       "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\build-gz\\YjN0dlW6.gz",
