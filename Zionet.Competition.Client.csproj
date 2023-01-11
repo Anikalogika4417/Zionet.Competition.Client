@@ -16,6 +16,20 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Authentication" Version="7.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.1" PrivateAssets="all" />
     <PackageReference Include="Smart.Blazor" Version="14.4.39" />
+
+    <PackageReference Include="FluentlyHttpClient.Entity" Version="3.9.2" />
+    <PackageReference Include="JSON" Version="1.0.1" />
+    <PackageReference Include="Json.Net" Version="1.0.33" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+    <PackageReference Include="RestClient.Net" Version="5.1.0" />
+
   </ItemGroup>
+
+  <ItemGroup>
+      <None Update="Pages\FetchData.razor.scss">
+        <DependentUpon>FetchData.razor</DependentUpon>
+      </None>
+    </ItemGroup>
 
 </Project>

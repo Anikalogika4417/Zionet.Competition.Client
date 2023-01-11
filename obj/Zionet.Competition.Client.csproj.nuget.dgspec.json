@@ -56,6 +56,18 @@
               "target": "Package",
               "version": "[1.1.5, )"
             },
+            "FluentlyHttpClient.Entity": {
+              "target": "Package",
+              "version": "[3.9.2, )"
+            },
+            "JSON": {
+              "target": "Package",
+              "version": "[1.0.1, )"
+            },
+            "Json.Net": {
+              "target": "Package",
+              "version": "[1.0.33, )"
+            },
             "Microsoft.AspNetCore.Components.Authorization": {
               "target": "Package",
               "version": "[7.0.2, )"
@@ -72,6 +84,18 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[7.0.1, )"
+            },
+            "Microsoft.Extensions.Http": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.2, )"
+            },
+            "RestClient.Net": {
+              "target": "Package",
+              "version": "[5.1.0, )"
             },
             "Smart.Blazor": {
               "target": "Package",
