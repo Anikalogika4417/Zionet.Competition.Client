@@ -1,27 +1,48 @@
 ﻿[
   {
-    "date": "2022-01-06",
-    "temperatureC": 1,
-    "summary": "Freezing"
+    "created_at":"2023-01-05T11:45:55.417Z",
+    "email":"nastya.kuzich.02@mail.ru",
+    "email_verified":false,
+    "identities":[{
+      "connection":"Username-Password-Authentication",
+      "provider":"auth0",
+      "user_id":"63b6b8736b625aacfaf855d0",
+      "isSocial":false}],
+    "name":"nastya.kuzich.02@mail.ru",
+    "nickname":"nastya.kuzich.02",
+    "picture":"https://s.gravatar.com/avatar/a72a3b61c98b4d30f9f46f8d07bd8c09?s=480&r=pg&d=https%3A%2F%2Fcdn.auth0.com%2Favatars%2Fna.png",
+    "updated_at":"2023-01-07T15:36:30.067Z",
+    "user_id":"auth0|63b6b8736b625aacfaf855d0",
+    "last_login":"2023-01-07T15:36:30.067Z",
+    "last_ip":"84.228.228.122",
+    "logins_count":2,
+    "app_metadata":{
+      "roles":["admin"]
+    }
   },
   {
-    "date": "2022-01-07",
-    "temperatureC": 14,
-    "summary": "Bracing"
-  },
-  {
-    "date": "2022-01-08",
-    "temperatureC": -13,
-    "summary": "Freezing"
-  },
-  {
-    "date": "2022-01-09",
-    "temperatureC": -16,
-    "summary": "Balmy"
-  },
-  {
-    "date": "2022-01-10",
-    "temperatureC": -2,
-    "summary": "Chilly"
-  }
-]
+    "created_at":"2023-01-05T10:38:35.271Z",
+    "email":"anastasiya.kuzich@gmail.com",
+    "email_verified":true,
+    "family_name":"Kuzich",
+    "given_name":"Anastasiya",
+    "identities":[{
+      "provider":"google-oauth2",
+      "access_token":"ya29.a0AX9GBdWDXZve9jaVdNu3C7R3k89LIrnEi0rNCxLjKG43p_pbFzpV0mYTTPfCI82IZtJcKEsBHrRvPj1eXzqNMoBt8g8acIzF30NQR-tmp1BSqe5aiXZnTQdK9Zn871lcJ4KkFTLZcuLOZov4W0VBXqdcqgOq9AaCgYKAb4SARISFQHUCsbCdiu3pUPAi9ponDpRxqnCHg0165",
+      "expires_in":3598,
+      "user_id":"103216833604087800544",
+      "connection":"google-oauth2",
+      "isSocial":true}],
+    "locale":"en",
+    "name":"Anastasiya Kuzich",
+    "nickname":"anastasiya.kuzich",
+    "picture":"https://lh3.googleusercontent.com/a/AEdFTp7qJ9-vN6H9Zsj2_Ra5D90TXK5-V-iKa8frWZ2Qog=s96-c",
+    "updated_at":"2023-01-07T15:35:15.562Z",
+    "user_id":"google-oauth2|103216833604087800544",
+    "last_login":"2023-01-07T15:35:15.043Z",
+    "last_ip":"84.228.228.122",
+    "logins_count":5,
+    "app_metadata":{
+      "roles":["user"]
+    }
+  }]

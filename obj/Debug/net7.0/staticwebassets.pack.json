@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\Zionet.Competition.Client.styles.css"
     },
     {
+      "Id": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\wwwroot\\appsettings.json",
+      "PackagePath": "staticwebassets\\appsettings.json"
+    },
+    {
       "Id": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\wwwroot\\css\\app.css",
       "PackagePath": "staticwebassets\\css\\app.css"
     },
@@ -61,6 +65,10 @@
       "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.woff"
     },
     {
+      "Id": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
       "Id": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\wwwroot\\favicon.png",
       "PackagePath": "staticwebassets\\favicon.png"
     },
@@ -75,14 +83,6 @@
     {
       "Id": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
-    },
-    {
-      "Id": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\wwwroot\\sample-data\\appsettings.json",
-      "PackagePath": "staticwebassets\\sample-data\\appsettings.json"
-    },
-    {
-      "Id": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\wwwroot\\sample-data\\favicon.ico",
-      "PackagePath": "staticwebassets\\sample-data\\favicon.ico"
     },
     {
       "Id": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\wwwroot\\sample-data\\weather.json",
