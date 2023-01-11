@@ -11,7 +11,19 @@
           Data="@ListOfCompetitions"
           Responsive>
 <DataGridCommandColumn />
-    <DataGridColumn Field="@nameof(MCompetition.competition_name)" Caption="Name" Sortable="true" />
+    <DataGridColumn Field="@nameof(MCompetition.competition_name)" Caption="Name" Sortable="true">
+        <DisplayTemplate>
+            @{
+                var idCont = ( context as MCompetition )?.id;
+                var nameCont = ( context as MCompetition )?.competition_name;
+                var link = "Competition/"+idCont;
+
+                <Blazorise.Link To=@link>
+                    @nameCont
+                </Blazorise.Link>
+            }
+        </DisplayTemplate>
+    </DataGridColumn>
     <DataGridColumn Field="@nameof(MCompetition.competition_start)" Caption="Start" Sortable="true" />
     <DataGridColumn Field="@nameof(MCompetition.competition_end)" Caption="End" Sortable="true" />
     <DataGridColumn Field="@nameof(MCompetition.task_quantity)" Caption="Quantity of tasks" Sortable="true" />

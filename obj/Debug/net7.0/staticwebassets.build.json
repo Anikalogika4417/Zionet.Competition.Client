@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "1AMDNolNPwXSbIlvW1z/NbtadyL/lv/A0osLfDXv1jA=",
+  "Hash": "Dk+X/dMxQDd9k+Wxh7yVX1QPzoWM2O29pwsD/JhqqXQ=",
   "Source": "Zionet.Competition.Client",
   "BasePath": "/",
   "Mode": "Root",
@@ -25685,6 +25685,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.png"
+    },
+    {
+      "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\wwwroot\\human.svg",
+      "SourceId": "Zionet.Competition.Client",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "human.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\human.svg"
     },
     {
       "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\wwwroot\\icon-192.png",

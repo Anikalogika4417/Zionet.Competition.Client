@@ -97,7 +97,7 @@ namespace Zionet.Competition.Client.Services
         public async Task<List<MGroup>> GetGroupsByIdComp(int id_comp)
         {
             return await http.GetFromJsonAsync<List<MGroup>>
-                ($"https://localhost:44361/api/Group/ByIdComp?_id={id_comp}");
+                ($"https://localhost:44361/api/Group/ByCompId?_id={id_comp}");
         }
 
         public async Task PostTask(MTask task) {
