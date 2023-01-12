@@ -26,10 +26,10 @@
 
   </ItemGroup>
 
-  <ItemGroup>
+  <!-- <ItemGroup>
       <None Update="Pages\FetchData.razor.scss">
         <DependentUpon>FetchData.razor</DependentUpon>
       </None>
-    </ItemGroup>
+    </ItemGroup> -->
 
 </Project>

@@ -45,6 +45,12 @@ namespace Zionet.Competition.Client.Services
                 ($"https://localhost:44361/api/Competition/ById?_id={id_competition}");
         }
 
+        public async Task PutCompetition(MCompetition competition)
+        {
+            await http.PutAsJsonAsync<MCompetition>
+                ($"https://localhost:44361/api/Competition", competition);
+        }
+
         public async Task<List<MTask>> GetMainTasks()
         {
             return await http.GetFromJsonAsync<List<MTask>>

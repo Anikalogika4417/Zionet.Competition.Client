@@ -9,93 +9,93 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = browser
 build_property.RootNamespace = Zionet.Competition.Client
 build_property.RootNamespace = Zionet.Competition.Client
-build_property.ProjectDir = c:\Users\ignps\Desktop\Programms\Zionet.Competition.Client\
+build_property.ProjectDir = C:\Users\ignps\Desktop\Programms\Hanukah-project\Zionet.Competition.Client\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = c:\Users\ignps\Desktop\Programms\Zionet.Competition.Client
+build_property.MSBuildProjectDirectory = C:\Users\ignps\Desktop\Programms\Hanukah-project\Zionet.Competition.Client
 build_property._RazorSourceGeneratorDebug = 
 
-[c:/Users/ignps/Desktop/Programms/Zionet.Competition.Client/App.razor]
+[C:/Users/ignps/Desktop/Programms/Hanukah-project/Zionet.Competition.Client/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/ignps/Desktop/Programms/Zionet.Competition.Client/Pages/Authentication.razor]
+[C:/Users/ignps/Desktop/Programms/Hanukah-project/Zionet.Competition.Client/Pages/Authentication.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aGVudGljYXRpb24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/ignps/Desktop/Programms/Zionet.Competition.Client/Pages/CategoryItem.razor]
+[C:/Users/ignps/Desktop/Programms/Hanukah-project/Zionet.Competition.Client/Pages/CategoryItem.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0ZWdvcnlJdGVtLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/ignps/Desktop/Programms/Zionet.Competition.Client/Pages/CategoryList.razor]
+[C:/Users/ignps/Desktop/Programms/Hanukah-project/Zionet.Competition.Client/Pages/CategoryList.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0ZWdvcnlMaXN0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/ignps/Desktop/Programms/Zionet.Competition.Client/Pages/CompetitionItem.razor]
+[C:/Users/ignps/Desktop/Programms/Hanukah-project/Zionet.Competition.Client/Pages/CompetitionItem.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcGV0aXRpb25JdGVtLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/ignps/Desktop/Programms/Zionet.Competition.Client/Pages/CompetitionList.razor]
+[C:/Users/ignps/Desktop/Programms/Hanukah-project/Zionet.Competition.Client/Pages/CompetitionList.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcGV0aXRpb25MaXN0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/ignps/Desktop/Programms/Zionet.Competition.Client/Pages/CompetitionPage.razor]
+[C:/Users/ignps/Desktop/Programms/Hanukah-project/Zionet.Competition.Client/Pages/CompetitionPage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcGV0aXRpb25QYWdlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/ignps/Desktop/Programms/Zionet.Competition.Client/Pages/Counter.razor]
+[C:/Users/ignps/Desktop/Programms/Hanukah-project/Zionet.Competition.Client/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/ignps/Desktop/Programms/Zionet.Competition.Client/Pages/FetchData.razor]
+[C:/Users/ignps/Desktop/Programms/Hanukah-project/Zionet.Competition.Client/Pages/FetchData.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/ignps/Desktop/Programms/Zionet.Competition.Client/Pages/GroupItem.razor]
+[C:/Users/ignps/Desktop/Programms/Hanukah-project/Zionet.Competition.Client/Pages/GroupItem.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JvdXBJdGVtLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/ignps/Desktop/Programms/Zionet.Competition.Client/Pages/GroupList.razor]
+[C:/Users/ignps/Desktop/Programms/Hanukah-project/Zionet.Competition.Client/Pages/GroupList.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JvdXBMaXN0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/ignps/Desktop/Programms/Zionet.Competition.Client/Pages/Index.razor]
+[C:/Users/ignps/Desktop/Programms/Hanukah-project/Zionet.Competition.Client/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/ignps/Desktop/Programms/Zionet.Competition.Client/Pages/TaskCreating.razor]
+[C:/Users/ignps/Desktop/Programms/Hanukah-project/Zionet.Competition.Client/Pages/TaskCreating.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGFza0NyZWF0aW5nLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/ignps/Desktop/Programms/Zionet.Competition.Client/Pages/TaskItem.razor]
+[C:/Users/ignps/Desktop/Programms/Hanukah-project/Zionet.Competition.Client/Pages/TaskItem.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGFza0l0ZW0ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/ignps/Desktop/Programms/Zionet.Competition.Client/Pages/TaskList.razor]
+[C:/Users/ignps/Desktop/Programms/Hanukah-project/Zionet.Competition.Client/Pages/TaskList.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGFza0xpc3QucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/ignps/Desktop/Programms/Zionet.Competition.Client/Pages/TaskPage.razor]
+[C:/Users/ignps/Desktop/Programms/Hanukah-project/Zionet.Competition.Client/Pages/TaskPage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVGFza1BhZ2UucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/ignps/Desktop/Programms/Zionet.Competition.Client/Shared/AccessControl.razor]
+[C:/Users/ignps/Desktop/Programms/Hanukah-project/Zionet.Competition.Client/Shared/AccessControl.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXEFjY2Vzc0NvbnRyb2wucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/ignps/Desktop/Programms/Zionet.Competition.Client/Shared/SurveyPrompt.razor]
+[C:/Users/ignps/Desktop/Programms/Hanukah-project/Zionet.Competition.Client/Shared/SurveyPrompt.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/ignps/Desktop/Programms/Zionet.Competition.Client/_Imports.razor]
+[C:/Users/ignps/Desktop/Programms/Hanukah-project/Zionet.Competition.Client/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/ignps/Desktop/Programms/Zionet.Competition.Client/Shared/MainLayout.razor]
+[C:/Users/ignps/Desktop/Programms/Hanukah-project/Zionet.Competition.Client/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-gm56utcszi
 
-[c:/Users/ignps/Desktop/Programms/Zionet.Competition.Client/Shared/NavMenu.razor]
+[C:/Users/ignps/Desktop/Programms/Hanukah-project/Zionet.Competition.Client/Shared/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-ni2utksini
