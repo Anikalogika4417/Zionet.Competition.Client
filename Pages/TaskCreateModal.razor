@@ -1,0 +1,100 @@
+@using ClientEntity
+@using ClientEnum
+@inject DataService data
+@inject NavigationManager NavManager
+
+<Modal @bind-Visible="@modalVisible">
+    <ModalContent Centered>
+        <ModalHeader>
+            <ModalTitle>Create task</ModalTitle>
+            <CloseButton />
+        </ModalHeader>
+        <ModalBody>
+            <Field>
+                <FieldLabel>Task name</FieldLabel>
+                <TextEdit @bind-Text="newTask.task_name" Placeholder="Enter name..." />
+            </Field>
+            <Field>
+                <FieldLabel>Task description</FieldLabel>
+                <TextEdit @bind-Text="newTask.task_description" Placeholder="Enter description..." />
+            </Field>
+            <Field>
+                <FieldLabel>Task points</FieldLabel>
+                <NumericEdit @bind-Value="newTask.task_points" />
+            </Field>
+            <Field>
+                <FieldLabel>Task points</FieldLabel>
+                <NumericEdit @bind-Value="newTask.task_duration" />
+            </Field>
+            <Field>
+                <FieldLabel>Category</FieldLabel>
+                <Select @bind-SelectedValue="@newTask.id_category">
+                    @foreach (var category in CategoryList)
+                    {
+                        <SelectItem Value="@category.id">
+                            @category.category_name
+                        </SelectItem>
+                    }
+                </Select>
+            </Field>
+
+        </ModalBody>
+        <ModalFooter>
+            <Button Color="Color.Secondary" Clicked="@HideModal">Close</Button>
+            <Button Color="Color.Primary" Clicked="@SaveModal">Save Changes</Button>
+        </ModalFooter>
+    </ModalContent>
+</Modal>
+
+@code{
+    [Parameter]
+    public bool modalVisible {get; set; }
+    [Parameter]
+    public EventCallback<bool> modalVisibleChanged { get; set; }
+    [Parameter]
+    public int? id_competition {get; set; }
+    private MTask newTask = new MTask();   
+    private List<MCategory> CategoryList = new List<MCategory>();
+    private int idSelectedCategory;
+
+    @*----------------Downloading all Categories for drop-down list----------------*@
+    protected override async Task OnInitializedAsync()
+    {
+        //todo поправить, чтобы только компетишеновские
+        CategoryList = await data.GetCategory();
+    }
+
+    private async Task SaveModal()
+    {
+        await data.PostTask(initiolizeTask(newTask));
+        var lastId = await data.GetTaskIdByName(newTask.task_name);
+        Console.WriteLine(lastId);
+        if(id_competition != null){
+            await data.PostLinkTaskToCompetition(lastId, (int)id_competition);
+        }
+        NavManager.NavigateTo("/task/"+lastId);
+
+        modalVisible = false;
+    }
+
+    @*----------------Initionalizing task before sending----------------*@
+    private MTask initiolizeTask(MTask inputTask){
+        MTask fullTask = new MTask();
+
+        fullTask.task_name = inputTask.task_name;
+        fullTask.task_description = inputTask.task_description;
+        fullTask.task_file_name = "null";
+        fullTask.task_points = inputTask.task_points;
+        fullTask.task_duration = inputTask.task_duration;
+        fullTask.id_category = inputTask.id_category; 
+        fullTask.is_bonus_task = Convert.ToBoolean(ETask.Main);
+
+        return fullTask;
+    }
+
+    private void HideModal()
+    {
+        modalVisible = false;
+    }
+
+}

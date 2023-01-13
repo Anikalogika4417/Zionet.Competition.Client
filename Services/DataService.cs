@@ -63,6 +63,26 @@ namespace Zionet.Competition.Client.Services
                 ($"https://localhost:44361/api/Task/ById?_id={id_task}");
         }
 
+        public async Task<int> GetTaskIdByName(string task_name)
+        {
+            return await http.GetFromJsonAsync<int>
+                ($"https://localhost:44361/api/TestTask/ByName?taskName={task_name}");
+        }
+
+        public async Task PostLinkTaskToCompetition(int _id_task, int _id_comp)
+        {
+            var postBody = new 
+            { 
+                id_task = _id_task, 
+                id_competition = _id_comp
+            };
+            using var response = await http.PostAsJsonAsync("https://localhost:44361/api/TaskToCompetition", postBody);
+        }
+
+        
+
+        
+
         public async Task<List<MConnectionCompToTask>> GetTasksByIdComp(int id_comp)
         {
             return await http.GetFromJsonAsync<List<MConnectionCompToTask>>
