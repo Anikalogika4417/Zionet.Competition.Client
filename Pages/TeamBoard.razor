@@ -1,0 +1,140 @@
+@page "/GroupTable/{groupId:int}"
+@page "/GroupTable"
+@using ClientEntity
+@inject DataService data
+@inject NavigationManager NavigationManager;
+
+<Tabs SelectedTab="@selectedTab" SelectedTabChanged="@OnSelectedTabChanged">
+    <Items>
+        <Tab Name="home">Home</Tab>
+        <Tab Name="currTask">Current tasks</Tab>
+        <Tab Name="subTask">Submitted tasks</Tab>
+        <Tab Name="solvTask">Solved tasks</Tab>
+    </Items>
+    <Content>
+        <TabPanel Name="home">
+            <Card>
+                <CardBody>
+                    <Field >
+                        <Heading Size="HeadingSize.Is4">Group settings</Heading>
+                            
+                    </Field>
+                </CardBody>
+            </Card>
+        </TabPanel>
+        <TabPanel Name="currTask">
+            <Card>
+                <CardBody>
+                    <Field >
+                        <Heading Size="HeadingSize.Is4">Current tasks</Heading> 
+                        @if(listForTableCurr == null){
+                            <Paragraph>No data</Paragraph>
+                        } 
+                        else{
+                            <DataGrid   TItem="MTask"
+                                        Data="@listForTableCurr"
+                                        Responsive
+                                        PageSize="50"
+                                        FixedHeader
+                                        FixedHeaderDataGridMaxHeight="300px">
+                                <DataGridColumn Field="@nameof(MTask.task_name)" Caption="Name" Sortable="true" />
+                            </DataGrid>
+                        }
+                    </Field>
+                </CardBody>
+            </Card>
+        </TabPanel>
+        <TabPanel Name="subTask">
+            <Card>
+                <CardBody>
+                    <Field >
+                        <Heading Size="HeadingSize.Is4">Submitted tasks</Heading>  
+                        @if(listForTableSub == null){
+                            <Paragraph>No data</Paragraph>
+                        } 
+                        else{
+                            <DataGrid   TItem="MTask"
+                                        Data="@listForTableSub"
+                                        Responsive
+                                        PageSize="50"
+                                        FixedHeader
+                                        FixedHeaderDataGridMaxHeight="300px">
+                                <DataGridColumn Field="@nameof(MTask.task_name)" Caption="Name" Sortable="true" />
+                            </DataGrid>
+                        }
+                    </Field>
+                </CardBody>
+            </Card>
+        </TabPanel>
+        <TabPanel Name="solvTask">
+            <Card>
+                <CardBody>
+                    <Field >
+                        <Heading Size="HeadingSize.Is4">Solved tasks</Heading>    
+                        @if(listForTableSolv == null){
+                            <Paragraph>No data</Paragraph>
+                        } 
+                        else{
+                            <DataGrid   TItem="MTask"
+                                        Data="@listForTableSolv"
+                                        Responsive
+                                        PageSize="50"
+                                        FixedHeader
+                                        FixedHeaderDataGridMaxHeight="300px">
+                                <DataGridColumn Field="@nameof(MTask.task_name)" Caption="Name" Sortable="true" />
+                            </DataGrid>
+                        }
+                    </Field>
+                </CardBody>
+            </Card>
+        </TabPanel>
+    </Content>
+</Tabs>
+
+
+
+@code{
+    [Parameter]
+    public int groupId { get; set;}
+    private string selectedTab = "home";
+    private List<MConnectionTaskToGroup> listTaskToGroup = new List<MConnectionTaskToGroup>();
+    private List<MTask> listOfMainTasks = new List<MTask>();
+    private List<MTask> listForTableCurr = new List<MTask>();
+    private List<MTask> listForTableSub = new List<MTask>();
+    private List<MTask> listForTableSolv = new List<MTask>();
+
+    protected override async Task OnInitializedAsync()
+        {
+        listOfMainTasks = await data.GetMainTasks();
+        listTaskToGroup = await data.GetTasksToGroup();
+
+        foreach (var task in listOfMainTasks)
+        {
+            if(listTaskToGroup.FindIndex((p)=> p.id_task == task.id) != -1){
+                listForTableCurr.Add(task);
+            }
+        }
+
+        @* foreach (var task in listOfMainTasks)
+        {
+            if(listTaskToGroup.FindIndex((p)=> p.id_task == task.id) != -1){
+                listForTableSub.Add(task);
+            }
+        } *@
+
+        listForTableSub = null;
+
+        foreach (var task in listOfMainTasks)
+        {
+            if(listTaskToGroup.FindIndex((p)=> p.id_task == task.id) != -1){
+                listForTableSolv.Add(task);
+            }
+        }
+
+    }
+
+    private async Task OnSelectedTabChanged( string name )
+    {
+        selectedTab = name;
+    } 
+}

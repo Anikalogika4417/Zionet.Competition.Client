@@ -117,6 +117,12 @@ namespace Zionet.Competition.Client.Services
             await http.PutAsJsonAsync<MTask>($"https://localhost:44361/api/TestTask", task);
         }
 
+        public async Task<List<MConnectionTaskToGroup>> GetTasksToGroup()
+        {
+            return await http.GetFromJsonAsync<List<MConnectionTaskToGroup>>
+                ($"https://localhost:44361/api/TaskToGroup");
+        }
+
 
         public async Task<List<MGroup>> GetGroups()
         {

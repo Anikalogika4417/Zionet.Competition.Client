@@ -102,6 +102,22 @@ namespace ClientEntity
         public int id_status { get; set; }
     }
 
+    public class MConnectionTaskToGroup {
+        public int id { get; set; }
+        public int id_task { get; set; }
+        public int id_group { get; set; }
+        public DateTime start_time { get; set; }
+        public DateTime end_time { get; set; }
+        public int id_task_status { get; set; }
+        public string repo_link {get; set; }
+        public int grade { get; set; }
+        public int id_create_user { get; set; }
+        public int id_update_user { get; set; }
+        public DateTime create_date { get; set; }
+        public DateTime update_date { get; set; }
+        public int id_status { get; set; }
+    }
+
     public class MGroup {
         public int id { get; set; }
         public string group_name { get; set; }
