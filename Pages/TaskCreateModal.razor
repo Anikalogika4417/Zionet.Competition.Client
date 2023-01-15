@@ -68,7 +68,6 @@
     {
         await data.PostTask(initiolizeTask(newTask));
         var lastId = await data.GetTaskIdByName(newTask.task_name);
-        Console.WriteLine(lastId);
         if(id_competition != null){
             await data.PostLinkTaskToCompetition(lastId, (int)id_competition);
         }

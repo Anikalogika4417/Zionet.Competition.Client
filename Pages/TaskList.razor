@@ -138,10 +138,7 @@ else{
         }
     </table> *@
 
-    <NavLink href="taskCreator">
-                <span class="oi oi-list-rich" aria-hidden="true"></span>Create new task
-    </NavLink>
-    <br>
+
 
     @if(choosenTask != null){
         <NavLink href="@($"task/{@choosenTask.id}")">
@@ -164,14 +161,11 @@ else{
     private List<MTask> ListOfTasksForTable = new List<MTask>();
     MTask choosenTask = new MTask();
     List<MBonusToTask> ListOfBonusToTask = new List<MBonusToTask>();
-
     private int totalTasks;
     private List<MTask> selectedTask = new List<MTask>(); 
     private bool loadingStatus = true;
     private bool modeQuantity = true;
     private bool modalShow = false;
-
-
 
 
     @*----------------Downloading main task and all bonus tasks----------------*@

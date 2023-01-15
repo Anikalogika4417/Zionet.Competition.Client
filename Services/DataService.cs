@@ -27,10 +27,14 @@ namespace Zionet.Competition.Client.Services
                 ($"https://localhost:44361/api/Category", category);
         }
 
-        public async Task PostCategory(MCategory category)
+        public async Task PostCategory(string _category_name)
         {
-            await http.PostAsJsonAsync<MCategory>
-                ($"https://localhost:44361/api/Category", category);
+            var postBody = new 
+            { 
+                category_name = _category_name
+            };
+            using var response = await http.PostAsJsonAsync
+                ($"https://localhost:44361/api/Category", postBody);
         }
 
         public async Task<List<MCompetition>> GetCompetitions()
@@ -126,16 +130,14 @@ namespace Zionet.Competition.Client.Services
                 ($"https://localhost:44361/api/Group/ByCompId?_id={id_comp}");
         }
 
+        public async Task PostGroup(MGroup group)
+        {
+            await http.PostAsJsonAsync<MGroup>
+                ($"https://localhost:44361/api/Group", group);
+        }
+
         public async Task PostTask(MTask task) {
             var a = await http.PostAsJsonAsync<MTask>($"https://localhost:44361/api/TestTask", task);
         }
-        public async Task GetFiles() {
-            var a = await http.GetFromJsonAsync<List<MUploadFile>>($"https://localhost:44361/api/TestFile");
-            foreach (var taska in a)
-                    {
-                        Console.WriteLine(taska.FileName);
-                    }
-        }
-
     }
 }

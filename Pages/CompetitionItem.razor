@@ -89,14 +89,15 @@
     <CardBody>
          <Fields>
             <Field >
-                <Heading Size="HeadingSize.Is1">List of Categories</Heading>
-                <Link To=@linkToCategories>
-                    Category manager
-                </Link>
-                @* <TextEdit @bind-Text="curentComp.competition_name" Placeholder="Enter name" ReadOnly="@modeRead" /> *@
-            </Field>
-            <Field >
                 <Heading Size="HeadingSize.Is1">List of Groups</Heading>
+                <DataGrid   TItem="MGroup"
+                            Data="@ListOfGroups"
+                            Responsive
+                            PageSize="50"
+                            FixedHeader
+                            FixedHeaderDataGridMaxHeight="300px">
+                    <DataGridColumn Field="@nameof(MGroup.group_name)" Caption="Name" Sortable="true" />
+                </DataGrid>
                 <Link To=@linkToGroups>
                     Group manager
                 </Link>
@@ -116,6 +117,7 @@
     private bool modeRead = true;
     private string buttonName = "Edit"; 
     List<MTask> ListOfTasks = new List<MTask>();
+    private List<MGroup> ListOfGroups = new List<MGroup>();
     List<MBonusToTask> ListOfBonusToTask = new List<MBonusToTask>();
     private string linkToTasks;
     private string linkToCategories;
@@ -133,10 +135,12 @@
         linkToGroups = "/Competition/"+curentComp.id+"/groups";
 
         ListOfTasks = await data.GetMainTasks();
+        ListOfGroups = await data.GetGroupsByIdComp(curentComp.id);
         ListOfBonusToTask = await data.GetAllBonusTask();
         var linksCompToMainTask = await data.GetTasksByIdComp(curentComp.id);
         ListOfTasks = await findAllTask(linksCompToMainTask);
     }
+    
     @*----------------Find all tasks for spesial competition----------------*@
     private async Task<List<MTask>> findAllTask(List<MConnectionCompToTask> links){
         var newList = new List<MTask>();
@@ -149,10 +153,20 @@
         }
         return newList;
     }
-    private void onEditModeChange(){
+    private async Task onEditModeChange(){
+        if(modeRead == false){
+            curentComp.competition_start = initiateDate(curentComp.competition_start, startTime.Hours, startTime.Minutes);
+            curentComp.competition_end = initiateDate(curentComp.competition_end, endTime.Hours, endTime.Minutes);
+            await data.PutCompetition(curentComp);
+        }
         modeRead = modeRead == false? true: false;
         buttonName = modeRead == false? "Save": "Edit";
     }
+
+    private DateTime initiateDate(DateTime date, int hours = 0, int min = 0){
+        return new DateTime(date.Year, date.Month, date.Day, hours, min, 0);
+    }
+
 
     private void onAddBTTaskClcik(){
         //TODO Сделать ссылку, когда она будет готова

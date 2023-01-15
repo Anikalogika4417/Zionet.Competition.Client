@@ -28,45 +28,28 @@
     <DataGridColumn Field="@nameof(MCompetition.competition_start)" Caption="Start" Sortable="true" />
     <DataGridColumn Field="@nameof(MCompetition.competition_end)" Caption="End" Sortable="true" />
     <DataGridColumn Field="@nameof(MCompetition.task_quantity)" Caption="Quantity of tasks" Sortable="true" />
+    <DataGridColumn Field="@nameof(MCompetition.is_able_registrate)" Caption="Registrate status" Sortable="true">
+        <DisplayTemplate>
+            @{
+                var registStatus = ( context as MCompetition )?.is_able_registrate;
+                if(registStatus == true){
+                    @($"REGISTRATION IS OPEN")
+                }
+                else{
+                    @($"REGISTRATION IS CLOSED")
+                }
+            }
+        </DisplayTemplate>
+    </DataGridColumn>
 </DataGrid>
 
 
 <Button Color="Color.Danger" Disabled="(selectedCompetition is null)" Clicked="onDeleteClick">Delete</Button>
 <Button Color="Color.Primary" Disabled="(selectedCompetition is null)" Clicked="@ShowModal">Edit</Button>
 
-
-<Modal @bind-Visible="@modalVisible">
-    <ModalContent Centered>
-        <ModalHeader>
-            <ModalTitle>Competition edit</ModalTitle>
-            <CloseButton />
-        </ModalHeader>
-        <ModalBody>
-            <Field>
-                <FieldLabel>Name</FieldLabel>
-                <TextEdit @bind-Text="selectedCompetition.competition_name" Placeholder="Enter competition..." />
-            </Field>
-            <Field>
-                <FieldLabel>Quantity of tasks</FieldLabel>
-                <NumericEdit @bind-Value="selectedCompetition.task_quantity" />
-            </Field>
-            <Field>
-                <FieldLabel>Start time</FieldLabel>
-                <DateEdit TValue="DateTime" @bind-Date="@selectedCompetition.competition_start" Placeholder="Start competition..."/>
-                <TimeEdit TValue="TimeSpan" @bind-Time="@startTime" />
-            </Field>
-            <Field>
-                <FieldLabel>End time</FieldLabel>
-                <DateEdit TValue="DateTime" @bind-Date="@selectedCompetition.competition_end" Placeholder="End competition..."/>
-                <TimeEdit TValue="TimeSpan" @bind-Time="@endTime" />
-            </Field>
-        </ModalBody>
-        <ModalFooter>
-            <Button Color="Color.Secondary" Clicked="@HideModal">Close</Button>
-            <Button Color="Color.Primary" Clicked="@SaveModal">Save Changes</Button>
-        </ModalFooter>
-    </ModalContent>
-</Modal>
+@if(modalVisible == true){
+    <CompetitionEditModal @bind-editCompetition="selectedCompetition" @bind-modalVisible="modalVisible"/>
+}
 
 
 
@@ -74,53 +57,26 @@
 {
     List<MCompetition> ListOfCompetitions = new List<MCompetition>();
     MCompetition choosenCompetition = new MCompetition();
-    TimeSpan startTime;
-    TimeSpan endTime;
+    private bool modalVisible = false;
     private MCompetition selectedCompetition = new (){
         id=0,
         competition_name="no name",
         competition_start=new DateTime(),
         competition_end=new DateTime(),
         task_quantity=0,
+        sm_hash_code = "#lalala",
+        is_able_work = true,
+        is_able_registrate = true,
         id_create_user=1,
         id_update_user=1,
         create_date = new DateTime(),
         update_date = new DateTime(),
         id_status=2
     };
-
-    private bool modalVisible;
-
     private Task ShowModal()
     {
-        var sh = selectedCompetition.competition_start.Hour;
-        var sm = selectedCompetition.competition_start.Minute;
-        var eh = selectedCompetition.competition_end.Hour;
-        var em = selectedCompetition.competition_end.Minute;
-
-        startTime = new TimeSpan(sh,sm,0);
-        endTime = new TimeSpan(eh,em,0);
-
         modalVisible = true;
-
         return Task.CompletedTask;
-    }
-
-    private async Task SaveModal()
-    {
-        selectedCompetition.competition_start = initiateDate(selectedCompetition.competition_start, startTime.Hours, startTime.Minutes);
-        selectedCompetition.competition_end = initiateDate(selectedCompetition.competition_end, endTime.Hours, endTime.Minutes);
-        await data.PutCompetition(selectedCompetition);
-        modalVisible = false;
-    }
-
-    private void HideModal()
-    {
-        modalVisible = false;
-    }
-
-    private DateTime initiateDate(DateTime date, int hours = 0, int min = 0){
-        return new DateTime(date.Year, date.Month, date.Day, hours, min, 0);
     }
 
     private void onDeleteClick(){
@@ -136,6 +92,7 @@
         await base.OnInitializedAsync();
         selectedCompetition = ListOfCompetitions[0];
         modalVisible = false;
+
     }
 
     @*----------------Changing choosen competition by radio button----------------*@

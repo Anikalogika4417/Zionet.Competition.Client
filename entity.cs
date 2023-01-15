@@ -70,6 +70,9 @@ namespace ClientEntity
         public DateTime competition_start { get; set; }
         public DateTime competition_end { get; set; }
         public int task_quantity { get; set; }
+        public string sm_hash_code { get; set; }
+        public bool is_able_work { get; set; }
+        public bool is_able_registrate { get; set; }
         public int id_create_user { get; set; }
         public int id_update_user { get; set; }
         public DateTime create_date { get; set; }

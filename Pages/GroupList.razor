@@ -5,18 +5,12 @@
 
 <PageTitle>Group List</PageTitle>
 
-@* <h1>Groups:</h1>
-<div class="flex-group-container">
-    @foreach (var item in ListOfGroups)
-        {
-            <div>
-                <GroupItem curGroup="@item"/>        
-            </div>
-        }
-</div> *@
 
 <DropContainer TItem="DropItem" Items="@items" ItemsFilter="@((item, dropZone) => item.group_name == dropZone)" ItemDropped="@ItemDropped" Flex="Flex.Wrap.Grow.Is1">
     <ChildContent>
+        <DropZone TItem="DropItem" Name="Unsave users" Border="Border.Rounded" Background="Background.Light" Padding="Padding.Is3" Margin="Margin.Is3" Flex="Flex.Grow.Is1">
+            <Heading Size="HeadingSize.Is4" Margin="Margin.Is3.FromBottom">Unsave users</Heading>
+        </DropZone>  
         @foreach (var item in ListOfGroups)
         {
             <DropZone TItem="DropItem" Name="@item.group_name" Border="Border.Rounded" Background="Background.Light" Padding="Padding.Is3" Margin="Margin.Is3" Flex="Flex.Grow.Is1">
@@ -37,6 +31,8 @@
     </ItemTemplate>
 </DropContainer>
 
+@* <Button Clicked="onAddGroupClick"></Button> *@
+
 
 @code
 {
@@ -52,21 +48,10 @@
         public int id_user { get; set; }
         public string user_name { get; set; }
         public string image { get; set; }
-
         public string corEmail { get; set; }
-
     }
 
     private List<DropItem> items = new List<DropItem>();
-    @* {
-        new DropItem() { id_group = ListOfGroupsStat[0].id, group_name = ListOfGroupsStat[0].group_name, id_user = 1, user_name = "Misha", image = "wwwroot/human.svg", corEmail = "aaa@mail.com" },
-        new DropItem() { id_group = ListOfGroupsStat[0].id, group_name = ListOfGroupsStat[0].group_name, id_user = 2, user_name = "Maks", image = "wwwroot/human.svg", corEmail = "aaa@mail.com" },
-        new DropItem() { id_group = ListOfGroupsStat[1].id, group_name = ListOfGroupsStat[1].group_name, id_user = 3, user_name = "Lisa", image = "wwwroot/human.svg", corEmail = "aaa@mail.com" },
-        new DropItem() { id_group = ListOfGroupsStat[1].id, group_name = ListOfGroupsStat[1].group_name, id_user = 4, user_name = "Nastya", image = "wwwroot/human.svg", corEmail = "aaa@mail.com" },
-        new DropItem() { id_group = ListOfGroupsStat[2].id, group_name = ListOfGroupsStat[2].group_name, id_user = 5, user_name = "Olya", image = "wwwroot/human.svg", corEmail = "aaa@mail.com" },
-        new DropItem() { id_group = ListOfGroupsStat[2].id, group_name = ListOfGroupsStat[2].group_name, id_user = 6, user_name = "Anna", image = "wwwroot/human.svg", corEmail = "aaa@mail.com" },
-    }; *@
-
     private Task ItemDropped( DraggableDroppedEventArgs<DropItem> dropItem )
     {
         dropItem.Item.group_name = dropItem.DropZoneName;
