@@ -1,20 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\Zionet.Competition.Client.csproj": {}
+    "C:\\Users\\Nastya\\Documents\\zionetAnn\\Zionet.Competition.Client\\Zionet.Competition.Client.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\Zionet.Competition.Client.csproj": {
+    "C:\\Users\\Nastya\\Documents\\zionetAnn\\Zionet.Competition.Client\\Zionet.Competition.Client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\Zionet.Competition.Client.csproj",
+        "projectUniqueName": "C:\\Users\\Nastya\\Documents\\zionetAnn\\Zionet.Competition.Client\\Zionet.Competition.Client.csproj",
         "projectName": "Zionet.Competition.Client",
-        "projectPath": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\Zionet.Competition.Client.csproj",
-        "packagesPath": "C:\\Users\\ignps\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\obj\\",
+        "projectPath": "C:\\Users\\Nastya\\Documents\\zionetAnn\\Zionet.Competition.Client\\Zionet.Competition.Client.csproj",
+        "packagesPath": "C:\\Users\\Nastya\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Nastya\\Documents\\zionetAnn\\Zionet.Competition.Client\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\ignps\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Nastya\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +27,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -100,6 +106,10 @@
             "Smart.Blazor": {
               "target": "Package",
               "version": "[14.4.39, )"
+            },
+            "System.IdentityModel.Tokens.Jwt": {
+              "target": "Package",
+              "version": "[6.25.1, )"
             }
           },
           "imports": [
@@ -116,7 +126,7 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.NETCore.App.Runtime.Mono.browser-wasm",
-              "version": "[7.0.1, 7.0.1]"
+              "version": "[7.0.2, 7.0.2]"
             }
           ],
           "frameworkReferences": {
@@ -124,7 +134,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {

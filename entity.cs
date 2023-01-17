@@ -110,4 +110,14 @@ namespace ClientEntity
         public DateTime update_date { get; set; }
         public int id_status { get; set; }
     }
+
+    public class MUsers
+    {
+        public int id {get; set;}
+        public string user_email{ get; set; }
+        public string user_name { get; set; }
+        public string user_role { get; set; }
+        public string user_id { get; set; }
+        public bool status { get; set; }
+    }
 }
