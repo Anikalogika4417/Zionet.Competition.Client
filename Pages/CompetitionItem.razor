@@ -136,7 +136,7 @@
 
         ListOfTasks = await data.GetMainTasks();
         ListOfGroups = await data.GetGroupsByIdComp(curentComp.id);
-        ListOfBonusToTask = await data.GetAllBonusTask();
+        ListOfBonusToTask = await data.GetLinkToBonusTask();
         var linksCompToMainTask = await data.GetTasksByIdComp(curentComp.id);
         ListOfTasks = await findAllTask(linksCompToMainTask);
     }

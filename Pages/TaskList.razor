@@ -172,7 +172,7 @@ else{
     protected override async Task OnInitializedAsync()
     {
         ListOfTasks = await data.GetMainTasks();
-        ListOfBonusToTask = await data.GetAllBonusTask();
+        ListOfBonusToTask = await data.GetLinkToBonusTask();
         choosenTask = null;
         if(compId != null){
             var linksCompToMainTask = await data.GetTasksByIdComp((int)compId);

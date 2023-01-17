@@ -1,0 +1,193 @@
+@page "/List/{compId:int}/{groupId:int}"
+
+@using ClientEntity
+@inject DataService data
+@inject NavigationManager NavigationManager;
+
+@if(loadingStatus){
+    <h1>Loading...</h1>
+}
+else{
+    if(totalTasks <=5){
+            modeQuantity = false;
+    }
+    <DataGrid   TItem="MTask"
+                Data="@ListOfTasksForTable"
+                ReadData="@OnReadData"
+                TotalItems="@totalTasks"
+                CommandMode="DataGridCommandMode.ButtonRow"
+                @bind-SelectedRow="selectedTask"
+                PageSize="5"
+                ShowPager = "true"
+                Responsive>
+        <DataGridColumn Field="@nameof(MTask.task_name)" Caption="Name" Sortable="true" />
+        <DataGridColumn Field="@nameof(MTask.task_points)" Caption="Points" Sortable="true" />
+        <DataGridColumn Field="@nameof(MTask.task_duration)" Caption="Duration" Sortable="true" />
+        <DataGridColumn Field="@nameof(MTask.task_file_name)" Caption="Submiting" Sortable="true">
+            <DisplayTemplate>
+                @{
+                    var idCont = ( context as MTask )?.id;
+                    
+                    <NewCommandTemplate>
+                        <Button Disabled="(idCont != selectedTask.id)" Color="Color.Success" Clicked="@onSubmitTask">Submit</Button>
+                    </NewCommandTemplate>
+                
+                }
+            </DisplayTemplate>
+        </DataGridColumn>
+        <DataGridColumn Field="@nameof(MTask.task_file_name)" Caption="Bonus Task" Sortable="true">
+            <DisplayTemplate>
+                @{
+                    var dateCont = ( context as MTask )?.id;
+                    var linkIndex = ListOfBonusToTask.FindIndex((p)=>p.id_main_task == dateCont);
+
+                    if ( linkIndex != -1 )
+                    {
+                        var bonusIndex = ListOfBonusTasks.FindIndex((p)=>p.id == ListOfBonusToTask[linkIndex].id_bonus_task);
+                        @ListOfBonusTasks[bonusIndex].task_name
+                    }
+                    else{
+                        @($"-")
+                    }
+                }
+            </DisplayTemplate>
+        </DataGridColumn>
+        <DataGridColumn Field="@nameof(MTask.task_file_name)" Caption="Bonus Task(points)" Sortable="true">
+            <DisplayTemplate>
+                @{
+                    var dateCont = ( context as MTask )?.id;
+                    var linkIndex = ListOfBonusToTask.FindIndex((p)=>p.id_main_task == dateCont);
+
+                    if ( linkIndex != -1 )
+                    {
+                        var bonusIndex = ListOfBonusTasks.FindIndex((p)=>p.id == ListOfBonusToTask[linkIndex].id_bonus_task);
+                        @ListOfBonusTasks[bonusIndex].task_points
+                    }
+                    else{
+                        @($"-")
+                    }
+                }
+            </DisplayTemplate>
+        </DataGridColumn>
+        <DataGridColumn Field="@nameof(MTask.task_file_name)" Caption="Bonus Task(duration)" Sortable="true">
+            <DisplayTemplate>
+                @{
+                    var dateCont = ( context as MTask )?.id;
+                    var linkIndex = ListOfBonusToTask.FindIndex((p)=>p.id_main_task == dateCont);
+
+                    if ( linkIndex != -1 )
+                    {
+                        var bonusIndex = ListOfBonusTasks.FindIndex((p)=>p.id == ListOfBonusToTask[linkIndex].id_bonus_task);
+                        @ListOfBonusTasks[bonusIndex].task_duration
+                    }
+                    else{
+                        @($"-")
+                    }
+                }
+            </DisplayTemplate>
+        </DataGridColumn>
+        <DataGridColumn Field="@nameof(MTask.task_file_name)" Caption="Submiting" Sortable="true">
+            @* <DisplayTemplate>
+                @{
+                    var dateCont = ( context as MTask )?.id;
+                    var linkIndex = ListOfBonusToTask.FindIndex((p)=>p.id_main_task == dateCont);
+
+                    if ( linkIndex != -1 )
+                    {
+                        <NewCommandTemplate>
+                            <Button Color="Color.Success" Clicked="@onSubmitTask">Submit</Button>
+                        </NewCommandTemplate>
+                    }
+                    else{
+                        @($"-")
+                    }
+                }
+            </DisplayTemplate> *@
+        </DataGridColumn>
+    </DataGrid>
+}
+
+@code{
+    [Parameter]
+    public int compId {get; set;}
+    [Parameter]
+    public int groupId {get; set;}
+    private List<MTask> ListOfTasks = new List<MTask>();
+    private List<MTask> ListOfTasksForTable = new List<MTask>();
+    private List<MTask> ListOfBonusTasks = new List<MTask>();
+    private List<MBonusToTask> ListOfBonusToTask = new List<MBonusToTask>();
+    private MTask selectedTask = new MTask(); 
+    private int totalTasks = 0;
+    private bool loadingStatus = true;
+    private bool modeQuantity = true;
+    private MConnectionTaskToGroup submittesTask = new MConnectionTaskToGroup();
+
+
+    @*----------------Downloading main task and all bonus tasks----------------*@
+    protected override async Task OnInitializedAsync()
+    {
+        ListOfTasks = await data.GetMainTasks();
+        ListOfBonusTasks = await data.GetBonusTasks();
+        ListOfBonusToTask = await data.GetLinkToBonusTask();
+
+        var linksCompToMainTask = await data.GetTasksByIdComp((int)compId);
+        ListOfTasks = await findAllTask(linksCompToMainTask, ListOfTasks);
+        totalTasks = ListOfTasks.Count;
+        loadingStatus = false;
+    }
+
+    @*----------------Defining lines of table----------------*@
+    private async Task OnReadData( DataGridReadDataEventArgs<MTask> e )
+    {
+        if ( !e.CancellationToken.IsCancellationRequested )
+        {
+            List<MTask> response = null;
+                if ( e.ReadDataMode is DataGridReadDataMode.Virtualize )
+                    response = ListOfTasks.Skip( e.VirtualizeOffset ).Take( e.VirtualizeCount ).ToList();
+                else if ( e.ReadDataMode is DataGridReadDataMode.Paging )
+                    response = ListOfTasks.Skip( ( e.Page - 1 ) * e.PageSize ).Take( e.PageSize ).ToList();
+                else
+                    throw new Exception( "Unhandled ReadDataMode" );
+
+                if ( !e.CancellationToken.IsCancellationRequested )
+                {
+                    ListOfTasksForTable = new List<MTask>( response ); // an actual data for the current page
+                } 
+        }
+    }
+
+     @*----------------Find all tasks for spesial competition----------------*@
+    private async Task<List<MTask>> findAllTask(List<MConnectionCompToTask> links, List<MTask> _curentList){
+        var newList = new List<MTask>();
+        foreach (var link in links)
+        {
+            var a = _curentList.FindIndex(p => p.id == link.id_task);
+            if(a != -1){
+                newList.Add(_curentList[a]);
+            }          
+        }
+        return newList;
+    }
+
+    private async Task onSubmitTask(){
+        Console.WriteLine(selectedTask.id);
+        Console.WriteLine(selectedTask.task_duration);
+        await data.PostTaskToGroup(initiateConTaskToGroup());
+    }
+
+    private MConnectionTaskToGroup initiateConTaskToGroup(){
+        var duration = new TimeSpan(0,selectedTask.task_duration,0);
+        var initiateConnection = new MConnectionTaskToGroup();
+        
+        Console.WriteLine(selectedTask.id);
+        Console.WriteLine(groupId);
+        
+
+        initiateConnection.id_task = selectedTask.id;
+        initiateConnection.id_group = groupId;
+        initiateConnection.start_time = DateTime.Now;
+        initiateConnection.end_time = initiateConnection.start_time.Add(duration);
+        initiateConnection.repo_link = " ";
+        return initiateConnection;  
+    }
+}

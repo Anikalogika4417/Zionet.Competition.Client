@@ -61,6 +61,12 @@ namespace Zionet.Competition.Client.Services
                 ($"https://localhost:44361/api/Task/MainTask");
         }
 
+        public async Task<List<MTask>> GetBonusTasks()
+        {
+            return await http.GetFromJsonAsync<List<MTask>>
+                ($"https://localhost:44361/api/Task/BonusTask");
+        }
+
         public async Task<List<MTask>> GetTaskById(int id_task)
         {
             return await http.GetFromJsonAsync<List<MTask>>
@@ -106,7 +112,7 @@ namespace Zionet.Competition.Client.Services
                 ($"https://localhost:44361/api/BonusTask/ByMainId?_id={id_main_task}");
         }
 
-        public async Task<List<MBonusToTask>> GetAllBonusTask()
+        public async Task<List<MBonusToTask>> GetLinkToBonusTask()
         {
             return await http.GetFromJsonAsync<List<MBonusToTask>>
                 ($"https://localhost:44361/api/BonusTask");
@@ -121,6 +127,11 @@ namespace Zionet.Competition.Client.Services
         {
             return await http.GetFromJsonAsync<List<MConnectionTaskToGroup>>
                 ($"https://localhost:44361/api/TaskToGroup");
+        }
+
+        public async Task PostTaskToGroup(MConnectionTaskToGroup connection)
+        {
+            var response = await http.PostAsJsonAsync<MConnectionTaskToGroup>("https://localhost:44361/api/TaskToGroup", connection);
         }
 
 
