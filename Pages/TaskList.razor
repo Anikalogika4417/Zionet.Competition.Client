@@ -11,49 +11,63 @@
 
 <PageTitle>Create a task</PageTitle>
 
-<DataGrid TItem="MTask"
-          Data="@ListOfTasks"
-          ReadData="@OnReadData"
-          TotalItems="@totalTasks"
-          CommandMode="DataGridCommandMode.ButtonRow"
-          @bind-SelectedRows="selectedTask"
-          PageSize="5"
-          ShowPager
-          Responsive>
-    <DataGridColumn Field="@nameof(MTask.task_name)" Caption="Name" Sortable="true">
-        <DisplayTemplate>
-            @{
-                var idCont = ( context as MTask )?.id;
-                var nameCont = ( context as MTask )?.task_name;
-                var link = "task/"+idCont;
+@if(loadingStatus){
+    <Div>Loading...</Div>
+}
+else{
+    @if(totalTasks <=5){
+        modeQuantity = false;
+    }
+    <DataGrid TItem="MTask"
+            Data="@ListOfTasksForTable"
+            ReadData="@OnReadData"
+            TotalItems="@totalTasks"
+            CommandMode="DataGridCommandMode.ButtonRow"
+            @bind-SelectedRows="selectedTask"
+            PageSize="5"
+            ShowPager = "@modeQuantity"
+            Responsive>
+        <DataGridColumn Field="@nameof(MTask.task_name)" Caption="Name" Sortable="true">
+            <DisplayTemplate>
+                @{
+                    var idCont = ( context as MTask )?.id;
+                    var nameCont = ( context as MTask )?.task_name;
+                    var link = "task/"+idCont;
 
-                <Blazorise.Link To=@link>
-                    @nameCont
-                </Blazorise.Link>
-            }
-        </DisplayTemplate>
-    </DataGridColumn>
-    <DataGridColumn Field="@nameof(MTask.task_points)" Caption="Points" Sortable="true" />
-    <DataGridColumn Field="@nameof(MTask.task_duration)" Caption="Duration" Sortable="true" />
-    <DataGridColumn Field="@nameof(MTask.task_file_name)" Caption="File name" Sortable="true" />
-    <DataGridColumn Field="@nameof(MTask.task_file_name)" Caption="Bonus Task" Sortable="true">
-    <DisplayTemplate>
-        @{
-            var dateCont = ( context as MTask )?.id;
+                    <Blazorise.Link To=@link>
+                        @nameCont
+                    </Blazorise.Link>
+                }
+            </DisplayTemplate>
+        </DataGridColumn>
+        <DataGridColumn Field="@nameof(MTask.task_points)" Caption="Points" Sortable="true" />
+        <DataGridColumn Field="@nameof(MTask.task_duration)" Caption="Duration" Sortable="true" />
+        <DataGridColumn Field="@nameof(MTask.task_file_name)" Caption="File name" Sortable="true" />
+        <DataGridColumn Field="@nameof(MTask.task_file_name)" Caption="Bonus Task" Sortable="true">
+            <DisplayTemplate>
+                @{
+                    var dateCont = ( context as MTask )?.id;
 
-            if ( ListOfBonusToTask.FindIndex((p)=>p.id_main_task == dateCont) == -1 )
-            {
-                <NewCommandTemplate>
-                    <Button Color="Color.Success" Clicked="@onAddBTTaskClcik">Add task</Button>
-                </NewCommandTemplate>
-            }
-            else{
-                @($"YES")
-            }
-        }
-    </DisplayTemplate>
-    </DataGridColumn>
-</DataGrid>
+                    if ( ListOfBonusToTask.FindIndex((p)=>p.id_main_task == dateCont) == -1 )
+                    {
+                        <NewCommandTemplate>
+                            <Button Color="Color.Success" Clicked="@onAddBTTaskClcik">Add task</Button>
+                        </NewCommandTemplate>
+                    }
+                    else{
+                        @($"YES")
+                    }
+                }
+            </DisplayTemplate>
+        </DataGridColumn>
+    </DataGrid>
+    <Button Color="Color.Success" Clicked="@onAddCliclk">Add</Button>
+    //<Button Color="Color.Primary" Clicked="@onEditModeChange">Edit</Button>
+}
+
+@if(modalShow){
+    <TaskCreateModal @bind-modalVisible="modalShow" id_competition="@compId"/>
+}
 
 
 @* 
@@ -124,10 +138,7 @@
         }
     </table> *@
 
-    <NavLink href="taskCreator">
-                <span class="oi oi-list-rich" aria-hidden="true"></span>Create new task
-    </NavLink>
-    <br>
+
 
     @if(choosenTask != null){
         <NavLink href="@($"task/{@choosenTask.id}")">
@@ -147,60 +158,66 @@
     [Parameter]
     public int? compId { get; set; }
     List<MTask> ListOfTasks = new List<MTask>();
+    private List<MTask> ListOfTasksForTable = new List<MTask>();
     MTask choosenTask = new MTask();
     List<MBonusToTask> ListOfBonusToTask = new List<MBonusToTask>();
-
     private int totalTasks;
     private List<MTask> selectedTask = new List<MTask>(); 
-
-
-    private async Task OnReadData( DataGridReadDataEventArgs<MTask> e )
-    {
-        if ( !e.CancellationToken.IsCancellationRequested )
-        {
-            List<MTask> response = null;
-
-            // this can be call to anything, in this case we're calling a fictional api
-            //var response = await Http.GetJsonAsync<Employee[]>( $"some-api/employees?page={e.Page}&pageSize={e.PageSize}" );
-            if ( e.ReadDataMode is DataGridReadDataMode.Virtualize )
-                response = (await data.GetMainTasks()).Skip( e.VirtualizeOffset ).Take( e.VirtualizeCount ).ToList();
-            else if ( e.ReadDataMode is DataGridReadDataMode.Paging )
-                response = (await data.GetMainTasks()).Skip( ( e.Page - 1 ) * e.PageSize ).Take( e.PageSize ).ToList();
-            else
-                throw new Exception( "Unhandled ReadDataMode" );
-
-            if ( !e.CancellationToken.IsCancellationRequested )
-            {
-                totalTasks = (await data.GetMainTasks()).Count;
-                ListOfTasks = new List<MTask>( response ); // an actual data for the current page
-            }
-        }
-    }
+    private bool loadingStatus = true;
+    private bool modeQuantity = true;
+    private bool modalShow = false;
 
 
     @*----------------Downloading main task and all bonus tasks----------------*@
     protected override async Task OnInitializedAsync()
     {
         ListOfTasks = await data.GetMainTasks();
-        ListOfBonusToTask = await data.GetAllBonusTask();
+        ListOfBonusToTask = await data.GetLinkToBonusTask();
         choosenTask = null;
         if(compId != null){
             var linksCompToMainTask = await data.GetTasksByIdComp((int)compId);
-            ListOfTasks = await findAllTask(linksCompToMainTask);
+            ListOfTasks = await findAllTask(linksCompToMainTask, ListOfTasks);
+        }
+        totalTasks = ListOfTasks.Count;
+        loadingStatus = false;
+    }
+
+    @*----------------Defining lines of table----------------*@
+    private async Task OnReadData( DataGridReadDataEventArgs<MTask> e )
+    {
+        if ( !e.CancellationToken.IsCancellationRequested )
+        {
+            List<MTask> response = null;
+                if ( e.ReadDataMode is DataGridReadDataMode.Virtualize )
+                    response = ListOfTasks.Skip( e.VirtualizeOffset ).Take( e.VirtualizeCount ).ToList();
+                else if ( e.ReadDataMode is DataGridReadDataMode.Paging )
+                    response = ListOfTasks.Skip( ( e.Page - 1 ) * e.PageSize ).Take( e.PageSize ).ToList();
+                else
+                    throw new Exception( "Unhandled ReadDataMode" );
+
+                if ( !e.CancellationToken.IsCancellationRequested )
+                {
+                    ListOfTasksForTable = new List<MTask>( response ); // an actual data for the current page
+                }
+            
         }
     }
 
     @*----------------Find all tasks for spesial competition----------------*@
-    private async Task<List<MTask>> findAllTask(List<MConnectionCompToTask> links){
+    private async Task<List<MTask>> findAllTask(List<MConnectionCompToTask> links, List<MTask> _curentList){
         var newList = new List<MTask>();
         foreach (var link in links)
         {
-            var a = ListOfTasks.FindIndex(p => p.id == link.id_task);
+            var a = _curentList.FindIndex(p => p.id == link.id_task);
             if(a != -1){
-                newList.Add(ListOfTasks[a]);
+                newList.Add(_curentList[a]);
             }          
         }
         return newList;
+    }
+
+    private void onAddCliclk(){
+        modalShow =  true;
     }
 
     @*----------------Changing choosen task by radio button----------------*@

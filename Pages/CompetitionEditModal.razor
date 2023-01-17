@@ -1,0 +1,80 @@
+@using ClientEntity
+@inject DataService data
+
+<Modal @bind-Visible="@modalVisible">
+    <ModalContent Centered>
+        <ModalHeader>
+            <ModalTitle>Competition edit</ModalTitle>
+            <CloseButton />
+        </ModalHeader>
+        <ModalBody>
+            <Field>
+                <FieldLabel>Name</FieldLabel>
+                <TextEdit @bind-Text="editCompetition.competition_name" Placeholder="Enter competition..." />
+            </Field>
+            <Field>
+                <FieldLabel>Quantity of tasks</FieldLabel>
+                <NumericEdit @bind-Value="editCompetition.task_quantity" />
+            </Field>
+            <Field>
+                <FieldLabel>Start time</FieldLabel>
+                <DateEdit TValue="DateTime" @bind-Date="@editCompetition.competition_start" Placeholder="Start competition..."/>
+                <TimeEdit TValue="TimeSpan" @bind-Time="@startTime" />
+            </Field>
+            <Field>
+                <FieldLabel>End time</FieldLabel>
+                <DateEdit TValue="DateTime" @bind-Date="@editCompetition.competition_end" Placeholder="End competition..."/>
+                <TimeEdit TValue="TimeSpan" @bind-Time="@endTime" />
+            </Field>
+        </ModalBody>
+        <ModalFooter>
+            <Button Color="Color.Secondary" Clicked="@HideModal">Close</Button>
+            <Button Color="Color.Primary" Clicked="@SaveModal">Save Changes</Button>
+        </ModalFooter>
+    </ModalContent>
+</Modal>
+
+@code{
+    [Parameter]
+    public bool modalVisible {get; set; }
+    [Parameter]
+    public EventCallback<bool> modalVisibleChanged { get; set; }
+    [Parameter]
+    public MCompetition editCompetition {get; set; }
+    [Parameter]
+    public EventCallback<MCompetition> editCompetitionChanged { get; set; }
+    TimeSpan startTime;
+    TimeSpan endTime;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var sh = editCompetition.competition_start.Hour;
+        var sm = editCompetition.competition_start.Minute;
+        var eh = editCompetition.competition_end.Hour;
+        var em = editCompetition.competition_end.Minute;
+
+        startTime = new TimeSpan(sh,sm,0);
+        endTime = new TimeSpan(eh,em,0);
+
+        modalVisible = true;
+    }
+    
+
+    private async Task SaveModal()
+    {
+        editCompetition.competition_start = initiateDate(editCompetition.competition_start, startTime.Hours, startTime.Minutes);
+        editCompetition.competition_end = initiateDate(editCompetition.competition_end, endTime.Hours, endTime.Minutes);
+        await data.PutCompetition(editCompetition);
+        modalVisible = false;
+    }
+
+    private void HideModal()
+    {
+        modalVisible = false;
+    }
+
+    private DateTime initiateDate(DateTime date, int hours = 0, int min = 0){
+        return new DateTime(date.Year, date.Month, date.Day, hours, min, 0);
+    }
+
+}

@@ -1,43 +1,179 @@
 @using ClientEntity
 @inject DataService data
 @inject HttpClient Http
+@inject NavigationManager NavigationManager;
 
-<div>
-    <h1>Competition Name</h1> @curentComp.competition_name
-    <br>
-    <h1>Competition start</h1> @curentComp.competition_start
-    <br>
-    <h1>Competition end</h1> @curentComp.competition_end
-    <br>
-    <h1>Task quantity</h1> @curentComp.task_quantity
-    <br>
+<Card>
+    <CardBody>
+       <Heading Size="HeadingSize.Is1">Competition card</Heading>
+    </CardBody>
+    <CardBody>
+        <Fields>
+            <Field >
+                <FieldLabel>Competition Name</FieldLabel>
+                <TextEdit @bind-Text="curentComp.competition_name" Placeholder="Enter name" ReadOnly="@modeRead" />
+            </Field>
+            <Field >
+                <FieldLabel>Quantity of tasks</FieldLabel>
+                <NumericEdit @bind-Value="curentComp.task_quantity" ReadOnly="@modeRead"/>
+            </Field>
+        </Fields>
+    </CardBody>
+    <CardBody>
+        <Fields>
+            <Field>
+                <FieldLabel>Start time</FieldLabel>
+                <DateEdit TValue="DateTime" @bind-Date="@curentComp.competition_start" Placeholder="Start time competition..." ReadOnly="@modeRead"/>
+                <TimeEdit TValue="TimeSpan" @bind-Time="@startTime" ReadOnly="@modeRead"/>
+            </Field>
+            <Field>
+                <FieldLabel>End time</FieldLabel>
+                <DateEdit TValue="DateTime" @bind-Date="@curentComp.competition_end" Placeholder="Start competition..." ReadOnly="@modeRead"/>
+                <TimeEdit TValue="TimeSpan" @bind-Time="@endTime" ReadOnly="@modeRead"/>
+            </Field>
+        </Fields>
+        <Button Color="Color.Primary" Clicked="@onEditModeChange">@buttonName</Button>
+    </CardBody>
+</Card>
+<Card>
+    <CardBody>
+        <Heading Size="HeadingSize.Is1">List of tasks</Heading>
+    </CardBody>
+    <CardBody>
+        <DataGrid TItem="MTask"
+          Data="@ListOfTasks"
+          Responsive
+          PageSize="50"
+          FixedHeader
+          FixedHeaderDataGridMaxHeight="300px">
+            <DataGridColumn Field="@nameof(MTask.task_name)" Caption="Name" Sortable="true">
+                <DisplayTemplate>
+                    @{
+                        var idCont = ( context as MTask )?.id;
+                        var nameCont = ( context as MTask )?.task_name;
+                        var link = "task/"+idCont;
 
-    <div class="nav-item px-3">
-        <NavLink class="nav-link" href="@($"/Competition/{@curentComp.id}/tasks")">
-            <span class="oi oi-list-rich" aria-hidden="true"></span> Tasks
-        </NavLink>
-    </div>
+                        <Blazorise.Link To=@link>
+                            @nameCont
+                        </Blazorise.Link>
+                    }
+                </DisplayTemplate>
+            </DataGridColumn>
+            <DataGridColumn Field="@nameof(MTask.task_points)" Caption="Points" Sortable="true" />
+            <DataGridColumn Field="@nameof(MTask.task_duration)" Caption="Duration" Sortable="true" />
+            <DataGridColumn Field="@nameof(MTask.task_file_name)" Caption="File name" Sortable="true" />
+            <DataGridColumn Field="@nameof(MTask.task_file_name)" Caption="Bonus Task" Sortable="true">
+                <DisplayTemplate>
+                    @{
+                        var dateCont = ( context as MTask )?.id;
 
-    <div class="nav-item px-3">
-        <NavLink class="nav-link" href="@($"/Competition/{@curentComp.id}/categories")">
-            <span class="oi oi-list-rich" aria-hidden="true"></span> Categories
-        </NavLink>
-    </div>
+                        if ( ListOfBonusToTask.FindIndex((p)=>p.id_main_task == dateCont) == -1 )
+                        {
+                            <NewCommandTemplate>
+                                <Button Color="Color.Success" Clicked="@onAddBTTaskClcik">Add task</Button>
+                            </NewCommandTemplate>
+                        }
+                        else{
+                            @($"YES")
+                        }
+                    }
+                </DisplayTemplate>
+            </DataGridColumn>
+        </DataGrid>
+    <Link To=@linkToTasks>
+        Task manager
+    </Link>
+    </CardBody>
+</Card>
+<Card>
+    <CardBody>
+         <Fields>
+            <Field >
+                <Heading Size="HeadingSize.Is1">List of Groups</Heading>
+                <DataGrid   TItem="MGroup"
+                            Data="@ListOfGroups"
+                            Responsive
+                            PageSize="50"
+                            FixedHeader
+                            FixedHeaderDataGridMaxHeight="300px">
+                    <DataGridColumn Field="@nameof(MGroup.group_name)" Caption="Name" Sortable="true" />
+                </DataGrid>
+                <Link To=@linkToGroups>
+                    Group manager
+                </Link>
+                @* <NumericEdit @bind-Value="curentComp.task_quantity" ReadOnly="@modeRead"/> *@
+            </Field>
+        </Fields>
+    </CardBody>
+</Card>
 
-    <div class="nav-item px-3">
-        <NavLink class="nav-link" href="@($"/Competition/{@curentComp.id}/groups")">
-            <span class="oi oi-list-rich" aria-hidden="true"></span> Groups
-        </NavLink>
-    </div>
-
-    @* <div class="nav-item px-3">
-        <NavLink class="nav-link" href="CompetitionList">
-            <span class="oi oi-list-rich" aria-hidden="true"></span> Competitions
-        </NavLink>
-    </div> *@
-</div>
 
 @code{
     [Parameter]
     public MCompetition curentComp {get; set;}
+
+    private TimeSpan startTime;
+    private TimeSpan endTime;
+    private bool modeRead = true;
+    private string buttonName = "Edit"; 
+    List<MTask> ListOfTasks = new List<MTask>();
+    private List<MGroup> ListOfGroups = new List<MGroup>();
+    List<MBonusToTask> ListOfBonusToTask = new List<MBonusToTask>();
+    private string linkToTasks;
+    private string linkToCategories;
+    private string linkToGroups;
+
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        startTime = new TimeSpan(curentComp.competition_start.Hour, curentComp.competition_start.Minute, curentComp.competition_start.Second);
+        endTime  = new TimeSpan(curentComp.competition_end.Hour, curentComp.competition_end.Minute, curentComp.competition_end.Second);
+
+        linkToTasks = "/Competition/"+curentComp.id+"/tasks";
+        linkToCategories = "/Competition/"+curentComp.id+"/categories";
+        linkToGroups = "/Competition/"+curentComp.id+"/groups";
+
+        ListOfTasks = await data.GetMainTasks();
+        ListOfGroups = await data.GetGroupsByIdComp(curentComp.id);
+        ListOfBonusToTask = await data.GetLinkToBonusTask();
+        var linksCompToMainTask = await data.GetTasksByIdComp(curentComp.id);
+        ListOfTasks = await findAllTask(linksCompToMainTask);
+    }
+    
+    @*----------------Find all tasks for spesial competition----------------*@
+    private async Task<List<MTask>> findAllTask(List<MConnectionCompToTask> links){
+        var newList = new List<MTask>();
+        foreach (var link in links)
+        {
+            var a = ListOfTasks.FindIndex(p => p.id == link.id_task);
+            if(a != -1){
+                newList.Add(ListOfTasks[a]);
+            }          
+        }
+        return newList;
+    }
+    private async Task onEditModeChange(){
+        if(modeRead == false){
+            curentComp.competition_start = initiateDate(curentComp.competition_start, startTime.Hours, startTime.Minutes);
+            curentComp.competition_end = initiateDate(curentComp.competition_end, endTime.Hours, endTime.Minutes);
+            await data.PutCompetition(curentComp);
+        }
+        modeRead = modeRead == false? true: false;
+        buttonName = modeRead == false? "Save": "Edit";
+    }
+
+    private DateTime initiateDate(DateTime date, int hours = 0, int min = 0){
+        return new DateTime(date.Year, date.Month, date.Day, hours, min, 0);
+    }
+
+
+    private void onAddBTTaskClcik(){
+        //TODO Сделать ссылку, когда она будет готова
+        Console.WriteLine("I'm working");
+    }
+
+    private void onEditModeTaskChange(){
+        NavigationManager.NavigateTo("/Competition/"+curentComp.id+"/tasks", true);
+    }
 }

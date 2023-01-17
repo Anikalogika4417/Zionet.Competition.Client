@@ -27,10 +27,14 @@ namespace Zionet.Competition.Client.Services
                 ($"https://localhost:44361/api/Category", category);
         }
 
-        public async Task PostCategory(MCategory category)
+        public async Task PostCategory(string _category_name)
         {
-            await http.PostAsJsonAsync<MCategory>
-                ($"https://localhost:44361/api/Category", category);
+            var postBody = new 
+            { 
+                category_name = _category_name
+            };
+            using var response = await http.PostAsJsonAsync
+                ($"https://localhost:44361/api/Category", postBody);
         }
 
         public async Task<List<MCompetition>> GetCompetitions()
@@ -45,10 +49,22 @@ namespace Zionet.Competition.Client.Services
                 ($"https://localhost:44361/api/Competition/ById?_id={id_competition}");
         }
 
+        public async Task PutCompetition(MCompetition competition)
+        {
+            await http.PutAsJsonAsync<MCompetition>
+                ($"https://localhost:44361/api/Competition", competition);
+        }
+
         public async Task<List<MTask>> GetMainTasks()
         {
             return await http.GetFromJsonAsync<List<MTask>>
                 ($"https://localhost:44361/api/Task/MainTask");
+        }
+
+        public async Task<List<MTask>> GetBonusTasks()
+        {
+            return await http.GetFromJsonAsync<List<MTask>>
+                ($"https://localhost:44361/api/Task/BonusTask");
         }
 
         public async Task<List<MTask>> GetTaskById(int id_task)
@@ -56,6 +72,26 @@ namespace Zionet.Competition.Client.Services
             return await http.GetFromJsonAsync<List<MTask>>
                 ($"https://localhost:44361/api/Task/ById?_id={id_task}");
         }
+
+        public async Task<int> GetTaskIdByName(string task_name)
+        {
+            return await http.GetFromJsonAsync<int>
+                ($"https://localhost:44361/api/TestTask/ByName?taskName={task_name}");
+        }
+
+        public async Task PostLinkTaskToCompetition(int _id_task, int _id_comp)
+        {
+            var postBody = new 
+            { 
+                id_task = _id_task, 
+                id_competition = _id_comp
+            };
+            using var response = await http.PostAsJsonAsync("https://localhost:44361/api/TaskToCompetition", postBody);
+        }
+
+        
+
+        
 
         public async Task<List<MConnectionCompToTask>> GetTasksByIdComp(int id_comp)
         {
@@ -76,7 +112,7 @@ namespace Zionet.Competition.Client.Services
                 ($"https://localhost:44361/api/BonusTask/ByMainId?_id={id_main_task}");
         }
 
-        public async Task<List<MBonusToTask>> GetAllBonusTask()
+        public async Task<List<MBonusToTask>> GetLinkToBonusTask()
         {
             return await http.GetFromJsonAsync<List<MBonusToTask>>
                 ($"https://localhost:44361/api/BonusTask");
@@ -85,6 +121,17 @@ namespace Zionet.Competition.Client.Services
         public async Task UpdateTask(MTask task)
         {
             await http.PutAsJsonAsync<MTask>($"https://localhost:44361/api/TestTask", task);
+        }
+
+        public async Task<List<MConnectionTaskToGroup>> GetTasksToGroup()
+        {
+            return await http.GetFromJsonAsync<List<MConnectionTaskToGroup>>
+                ($"https://localhost:44361/api/TaskToGroup");
+        }
+
+        public async Task PostTaskToGroup(MConnectionTaskToGroup connection)
+        {
+            var response = await http.PostAsJsonAsync<MConnectionTaskToGroup>("https://localhost:44361/api/TaskToGroup", connection);
         }
 
 
@@ -100,16 +147,14 @@ namespace Zionet.Competition.Client.Services
                 ($"https://localhost:44361/api/Group/ByCompId?_id={id_comp}");
         }
 
+        public async Task PostGroup(MGroup group)
+        {
+            await http.PostAsJsonAsync<MGroup>
+                ($"https://localhost:44361/api/Group", group);
+        }
+
         public async Task PostTask(MTask task) {
             var a = await http.PostAsJsonAsync<MTask>($"https://localhost:44361/api/TestTask", task);
         }
-        public async Task GetFiles() {
-            var a = await http.GetFromJsonAsync<List<MUploadFile>>($"https://localhost:44361/api/TestFile");
-            foreach (var taska in a)
-                    {
-                        Console.WriteLine(taska.FileName);
-                    }
-        }
-
     }
 }

@@ -9,6 +9,7 @@
 
 <DataGrid TItem="MCompetition"
           Data="@ListOfCompetitions"
+          @bind-SelectedRow="@selectedCompetition"
           Responsive>
 <DataGridCommandColumn />
     <DataGridColumn Field="@nameof(MCompetition.competition_name)" Caption="Name" Sortable="true">
@@ -27,14 +28,61 @@
     <DataGridColumn Field="@nameof(MCompetition.competition_start)" Caption="Start" Sortable="true" />
     <DataGridColumn Field="@nameof(MCompetition.competition_end)" Caption="End" Sortable="true" />
     <DataGridColumn Field="@nameof(MCompetition.task_quantity)" Caption="Quantity of tasks" Sortable="true" />
+    <DataGridColumn Field="@nameof(MCompetition.is_able_registrate)" Caption="Registrate status" Sortable="true">
+        <DisplayTemplate>
+            @{
+                var registStatus = ( context as MCompetition )?.is_able_registrate;
+                if(registStatus == true){
+                    @($"REGISTRATION IS OPEN")
+                }
+                else{
+                    @($"REGISTRATION IS CLOSED")
+                }
+            }
+        </DisplayTemplate>
+    </DataGridColumn>
 </DataGrid>
+
+
+<Button Color="Color.Danger" Disabled="(selectedCompetition is null)" Clicked="onDeleteClick">Delete</Button>
+<Button Color="Color.Primary" Disabled="(selectedCompetition is null)" Clicked="@ShowModal">Edit</Button>
+
+@if(modalVisible == true){
+    <CompetitionEditModal @bind-editCompetition="selectedCompetition" @bind-modalVisible="modalVisible"/>
+}
+
 
 
 @code
 {
     List<MCompetition> ListOfCompetitions = new List<MCompetition>();
     MCompetition choosenCompetition = new MCompetition();
-    private MCompetition selectedCompetition;
+    private bool modalVisible = false;
+    private MCompetition selectedCompetition = new (){
+        id=0,
+        competition_name="no name",
+        competition_start=new DateTime(),
+        competition_end=new DateTime(),
+        task_quantity=0,
+        sm_hash_code = "#lalala",
+        is_able_work = true,
+        is_able_registrate = true,
+        id_create_user=1,
+        id_update_user=1,
+        create_date = new DateTime(),
+        update_date = new DateTime(),
+        id_status=2
+    };
+    private Task ShowModal()
+    {
+        modalVisible = true;
+        return Task.CompletedTask;
+    }
+
+    private void onDeleteClick(){
+        Console.WriteLine(selectedCompetition.id);
+        //TODO Продумать, какие запросы на удаление тут должны быть
+    }
     
     @*----------------Downloading all competitions----------------*@
     protected override async Task OnInitializedAsync()
@@ -42,6 +90,9 @@
         ListOfCompetitions = await data.GetCompetitions();
         choosenCompetition = null;
         await base.OnInitializedAsync();
+        selectedCompetition = ListOfCompetitions[0];
+        modalVisible = false;
+
     }
 
     @*----------------Changing choosen competition by radio button----------------*@

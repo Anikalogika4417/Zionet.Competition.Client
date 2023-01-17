@@ -1,32 +1,157 @@
 @inject DataService data
-@inject HttpClient Http
+@using ClientEntity
+@inject NavigationManager uriHelper;
 
-@switch (mode)
-{
-    case "Edit": {
-        <div>
-            <input @bind="CurentCategory" type="text"/>
-            <br>
-        </div>
-        break;
+
+@if(loadingStatus){
+    <Div>Loading...</Div>
+}
+else{
+    @if(totalCategories <=5){
+        modeQuantity = false;
     }
-    case "Watch": {
-        <div>
-            @CurentCategory
-            <br>
-        </div>
-        break;
-    }    
-    default:
-        <div>No mode choosen</div>
-        break;
+    <DataGrid TItem="MCategory"
+            Data="@listOfCategoriesForTable"
+            ReadData="@OnReadData"
+            TotalItems="@totalCategories"
+            CommandMode="DataGridCommandMode.ButtonRow"
+            @bind-SelectedRow="@selectedCategory"
+            PageSize="5"
+            ShowPager = "@modeQuantity"
+            Editable
+            EditMode="DataGridEditMode.Inline"
+            Responsive>
+        <DataGridColumns>
+            <DataGridColumn Field="@nameof(MCategory.category_name)" Caption="Name" Sortable="true"/>
+        </DataGridColumns>
+        <ButtonRowTemplate>
+            @if(createMode == false){
+                <Button Color="Color.Success" Clicked="@onAddCliclk">Add</Button>
+            }
+            else{
+                <Field>
+                    <FieldLabel>Name</FieldLabel>
+                    <TextEdit @bind-Text="inputNewCategory" Placeholder="Enter category..." />
+                </Field>
+                <Button Color="Color.Success" Clicked="onCreateClick">Create</Button>
+            }
+            <Button Color="Color.Primary" Disabled="(selectedCategory is null)" Clicked="onEditModeChange">Edit</Button>
+        </ButtonRowTemplate>
+    </DataGrid>
+
+
+    <Modal @bind-Visible="@modalVisible">
+        <ModalContent Centered>
+            <ModalHeader>
+                <ModalTitle>Category edit</ModalTitle>
+                <CloseButton />
+            </ModalHeader>
+            <ModalBody>
+                <Field>
+                    <FieldLabel>Name</FieldLabel>
+                    <TextEdit @bind-Text="selectedCategory.category_name" Placeholder="Enter competition..." />
+                </Field>
+                
+            </ModalBody>
+            <ModalFooter>
+                <Button Color="Color.Secondary" Clicked="HideModal">Close</Button>
+                <Button Color="Color.Primary" Clicked="onEditSave">Save Changes</Button>
+            </ModalFooter>
+        </ModalContent>
+    </Modal>
+}
+ 
+    
+
+@code {
+    [Parameter]
+    public int? compId { get; set; }
+    public List<MCategory> listOfCategories {get; set;}
+    private List<MCategory> listOfCategoriesForTable;
+    private bool loadingStatus = true;
+    private bool modeQuantity = true;
+    private MCategory selectedCategory = new MCategory();
+    private int totalCategories;
+    private string inputNewCategory;
+    private bool createMode = false;
+    private bool modalVisible = false;
+
+
+
+
+    @*----------------Downloading main task and all bonus tasks----------------*@
+    protected override async Task OnInitializedAsync()
+    {
+        listOfCategories = await data.GetCategory();
+        if(compId != null){
+            var linksCompToCategory = await data.GetCategoriesByIdComp((int)compId);
+            listOfCategories = await findAllCategories(linksCompToCategory);
+        }
+        totalCategories = listOfCategories.Count;
+        loadingStatus = false;
+    }
+
+    @*----------------Find all categories for spesial competition----------------*@
+    private async Task<List<MCategory>> findAllCategories(List<MConnectionCompToCategory> links){
+        var newList = new List<MCategory>();
+        foreach (var link in links)
+        {
+            var a = listOfCategories.FindIndex(p => p.id == link.id_category);
+            if(a != -1){
+                newList.Add(listOfCategories[a]);
+            }          
+        }
+        return newList;
+    }
+
+    @*----------------Defining lines of table----------------*@
+    private async Task OnReadData( DataGridReadDataEventArgs<MCategory> e )
+    {
+        if ( !e.CancellationToken.IsCancellationRequested )
+        {
+            List<MCategory> response = null;
+                if ( e.ReadDataMode is DataGridReadDataMode.Virtualize )
+                    response = listOfCategories.Skip( e.VirtualizeOffset ).Take( e.VirtualizeCount ).ToList();
+                else if ( e.ReadDataMode is DataGridReadDataMode.Paging )
+                    response = listOfCategories.Skip( ( e.Page - 1 ) * e.PageSize ).Take( e.PageSize ).ToList();
+                else
+                    throw new Exception( "Unhandled ReadDataMode" );
+
+                if ( !e.CancellationToken.IsCancellationRequested )
+                {
+                    listOfCategoriesForTable = new List<MCategory>( response ); // an actual data for the current page
+                    selectedCategory = listOfCategoriesForTable[0];
+                }
+            
+        }
+    }
+
+    private void onAddCliclk(){
+        createMode = true;   
+    }
+
+    private async Task onCreateClick(){
+        await data.PostCategory(inputNewCategory);       
+        createMode = false;
+        uriHelper.NavigateTo(uriHelper.Uri, forceLoad: true);
+
+    }
+
+    private async Task onEditModeChange(){
+        modalVisible = true;
+    }
+
+    private void onDeleteClick(){
+        Console.WriteLine(selectedCategory.category_name);
+    }
+
+     private async Task onEditSave(){
+        await data.PutCategory(selectedCategory);
+        modalVisible = false;
+    }
+
+    private void HideModal(){
+        modalVisible = false;
+    }
 }
 
-@code{
-    [Parameter]
-    public string CurentCategory {get; set;}
-    [Parameter]
-    public EventCallback<string> CurentCategoryChanged { get; set; }
-    [Parameter]
-    public string mode {get; set; }
-}

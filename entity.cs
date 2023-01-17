@@ -70,6 +70,9 @@ namespace ClientEntity
         public DateTime competition_start { get; set; }
         public DateTime competition_end { get; set; }
         public int task_quantity { get; set; }
+        public string sm_hash_code { get; set; }
+        public bool is_able_work { get; set; }
+        public bool is_able_registrate { get; set; }
         public int id_create_user { get; set; }
         public int id_update_user { get; set; }
         public DateTime create_date { get; set; }
@@ -92,6 +95,22 @@ namespace ClientEntity
         public int id { get; set; }
         public int id_category { get; set; }
         public int id_competition { get; set; }
+        public int id_create_user { get; set; }
+        public int id_update_user { get; set; }
+        public DateTime create_date { get; set; }
+        public DateTime update_date { get; set; }
+        public int id_status { get; set; }
+    }
+
+    public class MConnectionTaskToGroup {
+        public int id { get; set; }
+        public int id_task { get; set; }
+        public int id_group { get; set; }
+        public DateTime start_time { get; set; }
+        public DateTime end_time { get; set; }
+        public int id_task_status { get; set; }
+        public string repo_link {get; set; }
+        public int grade { get; set; }
         public int id_create_user { get; set; }
         public int id_update_user { get; set; }
         public DateTime create_date { get; set; }

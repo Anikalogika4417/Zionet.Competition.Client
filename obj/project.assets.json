@@ -11837,11 +11837,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\Zionet.Competition.Client.csproj",
+      "projectUniqueName": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\Zionet.Competition.Client.csproj",
       "projectName": "Zionet.Competition.Client",
-      "projectPath": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\Zionet.Competition.Client.csproj",
+      "projectPath": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\Zionet.Competition.Client.csproj",
       "packagesPath": "C:\\Users\\ignps\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ignps\\Desktop\\Programms\\Zionet.Competition.Client\\obj\\",
+      "outputPath": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ignps\\AppData\\Roaming\\NuGet\\NuGet.Config",
