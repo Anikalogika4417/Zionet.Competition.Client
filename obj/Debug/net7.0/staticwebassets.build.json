@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "9Kt3rVxUZgtDq+KQ5l2b3KtO+qxJalp4aDZEOSznY7Q=",
+  "Hash": "TWjxUCzx/6kj4JbN99yR5BRMHwOdXFtp7SEUgR5Tg/s=",
   "Source": "Zionet.Competition.Client",
   "BasePath": "/",
   "Mode": "Root",
@@ -26282,6 +26282,23 @@
       "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\Zionet.Competition.Client.bundle.scp.css"
     },
     {
+      "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\wwwroot\\appsettings.json",
+      "SourceId": "Zionet.Competition.Client",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "appsettings.json",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "BlazorWebAssemblyResource",
+      "AssetTraitValue": "settings",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\appsettings.json"
+    },
+    {
       "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\wwwroot\\css\\app.css",
       "SourceId": "Zionet.Competition.Client",
       "SourceType": "Discovered",
@@ -26569,23 +26586,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\index.html"
-    },
-    {
-      "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\wwwroot\\sample-data\\appsettings.json",
-      "SourceId": "Zionet.Competition.Client",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "sample-data/appsettings.json",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\sample-data\\appsettings.json"
     },
     {
       "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\wwwroot\\sample-data\\weather.json",

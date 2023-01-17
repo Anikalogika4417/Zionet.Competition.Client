@@ -1,6 +1,8 @@
 {
   "cacheBootResources": true,
-  "config": [ ],
+  "config": [
+    "appsettings.json"
+  ],
   "debugBuild": true,
   "entryAssembly": "Zionet.Competition.Client",
   "icuDataMode": 0,
@@ -231,13 +233,13 @@
       "mscorlib.dll": "sha256-UH9jptJH1wZ3XMBPuMMAEaUKpfRxc5AgXkLdAFAvNVE=",
       "netstandard.dll": "sha256-+jUzj0FB0YcoBUeSkSNEjhVDTG08qbZ2twfCBMbzT+Q=",
       "System.Private.CoreLib.dll": "sha256-l+\/quNqfNCSUDSMJcp0+IxlSdOdnAtwVVWMXmYGHMpg=",
-      "Zionet.Competition.Client.dll": "sha256-dUb41+10aWni671h9AKnoyNIJFLXxyzTX5o\/j0aaED4="
+      "Zionet.Competition.Client.dll": "sha256-cFFKmQvuR9gQjYeyRnUrFeCvMIDJKqNJdQPZb7RrFyQ="
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
-      "Zionet.Competition.Client.pdb": "sha256-vpidi4wXCF5hcIEaQ9zIT8Rv6+pw4wzR1A6ihJ\/dEck="
+      "Zionet.Competition.Client.pdb": "sha256-RiIvo71YwfracpOPI8lm+aUiH8j0zgdY2jR0vVw6ZIg="
     },
     "runtime": {
       "dotnet.7.0.1.9nabnxd0wo.js": "sha256-jjax3FMRXzFAziWowdtJf6vipP2xXAaA5gD6VBYB6Y0=",
