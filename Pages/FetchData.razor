@@ -4,83 +4,80 @@
 @using System.Text.Json
 @using System.Text.Json.Serialization
 @using System.Net.Http.Headers
+@using System.Net
+@using System.Threading.Tasks;
+@using Microsoft.AspNetCore.Authorization;
+@using Microsoft.AspNetCore.Components;
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
+@using System.IdentityModel.Tokens.Jwt
+@attribute [Authorize]
+@inject IAccessTokenProvider TokenProviderv
 
 <PageTitle>Users</PageTitle>
 
 <h1>Users</h1>
 
 
-@if (users == null)
-{
-    <p>
-        <em>Loading...</em>
-    </p>
-}
-else
-{
     <table class="table">
         <thead>
         <tr>
-            <th></th>
             <th>Name</th>
             <th>Email</th>
             <th>Role</th>
         </tr>
         </thead>
         <tbody>
-        @foreach (var user in users)
+        @foreach (var user in users.recordset)
         {
             <tr>
-                <td><img class="image" src="@user.picture" /></td>
-                <td>@user.name</td>
-                <td>@user.email</td>
-                <td>@user.app_metadata</td>
+                <td>@user.user_name</td>
+                <td>@user.user_email</td>
+                <td>@user.user_role</td>
             </tr>
         }
         </tbody>
     </table>
-}
 
 
 @code {
-    private Users[] users;
+    private Responce users;
 
     protected override async Task OnInitializedAsync()
     {
-        Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer","eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Iks4YTdrLVJsOXViLU82REtxX2d4eCJ9.eyJpc3MiOiJodHRwczovL2Rldi04dGg0ajY1MHdnaXR1MHJwLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJFa3QzQ2pCWUdHMjZXS1JlMjlDOFEyNmJablM0TTZmaEBjbGllbnRzIiwiYXVkIjoiaHR0cHM6Ly9kZXYtOHRoNGo2NTB3Z2l0dTBycC51cy5hdXRoMC5jb20vYXBpL3YyLyIsImlhdCI6MTY3MzkxNjcxNCwiZXhwIjoxNjc0MDAzMTE0LCJhenAiOiJFa3QzQ2pCWUdHMjZXS1JlMjlDOFEyNmJablM0TTZmaCIsInNjb3BlIjoicmVhZDpjbGllbnRfZ3JhbnRzIGNyZWF0ZTpjbGllbnRfZ3JhbnRzIGRlbGV0ZTpjbGllbnRfZ3JhbnRzIHVwZGF0ZTpjbGllbnRfZ3JhbnRzIHJlYWQ6dXNlcnMgdXBkYXRlOnVzZXJzIGRlbGV0ZTp1c2VycyBjcmVhdGU6dXNlcnMgcmVhZDp1c2Vyc19hcHBfbWV0YWRhdGEgdXBkYXRlOnVzZXJzX2FwcF9tZXRhZGF0YSBkZWxldGU6dXNlcnNfYXBwX21ldGFkYXRhIGNyZWF0ZTp1c2Vyc19hcHBfbWV0YWRhdGEgcmVhZDp1c2VyX2N1c3RvbV9ibG9ja3MgY3JlYXRlOnVzZXJfY3VzdG9tX2Jsb2NrcyBkZWxldGU6dXNlcl9jdXN0b21fYmxvY2tzIGNyZWF0ZTp1c2VyX3RpY2tldHMgcmVhZDpjbGllbnRzIHVwZGF0ZTpjbGllbnRzIGRlbGV0ZTpjbGllbnRzIGNyZWF0ZTpjbGllbnRzIHJlYWQ6Y2xpZW50X2tleXMgdXBkYXRlOmNsaWVudF9rZXlzIGRlbGV0ZTpjbGllbnRfa2V5cyBjcmVhdGU6Y2xpZW50X2tleXMgcmVhZDpjb25uZWN0aW9ucyB1cGRhdGU6Y29ubmVjdGlvbnMgZGVsZXRlOmNvbm5lY3Rpb25zIGNyZWF0ZTpjb25uZWN0aW9ucyByZWFkOnJlc291cmNlX3NlcnZlcnMgdXBkYXRlOnJlc291cmNlX3NlcnZlcnMgZGVsZXRlOnJlc291cmNlX3NlcnZlcnMgY3JlYXRlOnJlc291cmNlX3NlcnZlcnMgcmVhZDpkZXZpY2VfY3JlZGVudGlhbHMgdXBkYXRlOmRldmljZV9jcmVkZW50aWFscyBkZWxldGU6ZGV2aWNlX2NyZWRlbnRpYWxzIGNyZWF0ZTpkZXZpY2VfY3JlZGVudGlhbHMgcmVhZDpydWxlcyB1cGRhdGU6cnVsZXMgZGVsZXRlOnJ1bGVzIGNyZWF0ZTpydWxlcyByZWFkOnJ1bGVzX2NvbmZpZ3MgdXBkYXRlOnJ1bGVzX2NvbmZpZ3MgZGVsZXRlOnJ1bGVzX2NvbmZpZ3MgcmVhZDpob29rcyB1cGRhdGU6aG9va3MgZGVsZXRlOmhvb2tzIGNyZWF0ZTpob29rcyByZWFkOmFjdGlvbnMgdXBkYXRlOmFjdGlvbnMgZGVsZXRlOmFjdGlvbnMgY3JlYXRlOmFjdGlvbnMgcmVhZDplbWFpbF9wcm92aWRlciB1cGRhdGU6ZW1haWxfcHJvdmlkZXIgZGVsZXRlOmVtYWlsX3Byb3ZpZGVyIGNyZWF0ZTplbWFpbF9wcm92aWRlciBibGFja2xpc3Q6dG9rZW5zIHJlYWQ6c3RhdHMgcmVhZDppbnNpZ2h0cyByZWFkOnRlbmFudF9zZXR0aW5ncyB1cGRhdGU6dGVuYW50X3NldHRpbmdzIHJlYWQ6bG9ncyByZWFkOmxvZ3NfdXNlcnMgcmVhZDpzaGllbGRzIGNyZWF0ZTpzaGllbGRzIHVwZGF0ZTpzaGllbGRzIGRlbGV0ZTpzaGllbGRzIHJlYWQ6YW5vbWFseV9ibG9ja3MgZGVsZXRlOmFub21hbHlfYmxvY2tzIHVwZGF0ZTp0cmlnZ2VycyByZWFkOnRyaWdnZXJzIHJlYWQ6Z3JhbnRzIGRlbGV0ZTpncmFudHMgcmVhZDpndWFyZGlhbl9mYWN0b3JzIHVwZGF0ZTpndWFyZGlhbl9mYWN0b3JzIHJlYWQ6Z3VhcmRpYW5fZW5yb2xsbWVudHMgZGVsZXRlOmd1YXJkaWFuX2Vucm9sbG1lbnRzIGNyZWF0ZTpndWFyZGlhbl9lbnJvbGxtZW50X3RpY2tldHMgcmVhZDp1c2VyX2lkcF90b2tlbnMgY3JlYXRlOnBhc3N3b3Jkc19jaGVja2luZ19qb2IgZGVsZXRlOnBhc3N3b3Jkc19jaGVja2luZ19qb2IgcmVhZDpjdXN0b21fZG9tYWlucyBkZWxldGU6Y3VzdG9tX2RvbWFpbnMgY3JlYXRlOmN1c3RvbV9kb21haW5zIHVwZGF0ZTpjdXN0b21fZG9tYWlucyByZWFkOmVtYWlsX3RlbXBsYXRlcyBjcmVhdGU6ZW1haWxfdGVtcGxhdGVzIHVwZGF0ZTplbWFpbF90ZW1wbGF0ZXMgcmVhZDptZmFfcG9saWNpZXMgdXBkYXRlOm1mYV9wb2xpY2llcyByZWFkOnJvbGVzIGNyZWF0ZTpyb2xlcyBkZWxldGU6cm9sZXMgdXBkYXRlOnJvbGVzIHJlYWQ6cHJvbXB0cyB1cGRhdGU6cHJvbXB0cyByZWFkOmJyYW5kaW5nIHVwZGF0ZTpicmFuZGluZyBkZWxldGU6YnJhbmRpbmcgcmVhZDpsb2dfc3RyZWFtcyBjcmVhdGU6bG9nX3N0cmVhbXMgZGVsZXRlOmxvZ19zdHJlYW1zIHVwZGF0ZTpsb2dfc3RyZWFtcyBjcmVhdGU6c2lnbmluZ19rZXlzIHJlYWQ6c2lnbmluZ19rZXlzIHVwZGF0ZTpzaWduaW5nX2tleXMgcmVhZDpsaW1pdHMgdXBkYXRlOmxpbWl0cyBjcmVhdGU6cm9sZV9tZW1iZXJzIHJlYWQ6cm9sZV9tZW1iZXJzIGRlbGV0ZTpyb2xlX21lbWJlcnMgcmVhZDplbnRpdGxlbWVudHMgcmVhZDphdHRhY2tfcHJvdGVjdGlvbiB1cGRhdGU6YXR0YWNrX3Byb3RlY3Rpb24gcmVhZDpvcmdhbml6YXRpb25zIHVwZGF0ZTpvcmdhbml6YXRpb25zIGNyZWF0ZTpvcmdhbml6YXRpb25zIGRlbGV0ZTpvcmdhbml6YXRpb25zIGNyZWF0ZTpvcmdhbml6YXRpb25fbWVtYmVycyByZWFkOm9yZ2FuaXphdGlvbl9tZW1iZXJzIGRlbGV0ZTpvcmdhbml6YXRpb25fbWVtYmVycyBjcmVhdGU6b3JnYW5pemF0aW9uX2Nvbm5lY3Rpb25zIHJlYWQ6b3JnYW5pemF0aW9uX2Nvbm5lY3Rpb25zIHVwZGF0ZTpvcmdhbml6YXRpb25fY29ubmVjdGlvbnMgZGVsZXRlOm9yZ2FuaXphdGlvbl9jb25uZWN0aW9ucyBjcmVhdGU6b3JnYW5pemF0aW9uX21lbWJlcl9yb2xlcyByZWFkOm9yZ2FuaXphdGlvbl9tZW1iZXJfcm9sZXMgZGVsZXRlOm9yZ2FuaXphdGlvbl9tZW1iZXJfcm9sZXMgY3JlYXRlOm9yZ2FuaXphdGlvbl9pbnZpdGF0aW9ucyByZWFkOm9yZ2FuaXphdGlvbl9pbnZpdGF0aW9ucyBkZWxldGU6b3JnYW5pemF0aW9uX2ludml0YXRpb25zIHJlYWQ6b3JnYW5pemF0aW9uc19zdW1tYXJ5IGNyZWF0ZTphY3Rpb25zX2xvZ19zZXNzaW9ucyBjcmVhdGU6YXV0aGVudGljYXRpb25fbWV0aG9kcyByZWFkOmF1dGhlbnRpY2F0aW9uX21ldGhvZHMgdXBkYXRlOmF1dGhlbnRpY2F0aW9uX21ldGhvZHMgZGVsZXRlOmF1dGhlbnRpY2F0aW9uX21ldGhvZHMiLCJndHkiOiJjbGllbnQtY3JlZGVudGlhbHMifQ.Pz7fTEcki3Rmj_IrURkojnEO87ZD2Wtk_6atLhH2FcgAMho4FwR5XWcibTV6lyGSPDBncMFpGFANCCR-LBk2HCgg73SL8HErfQQ_K7XtbZCWaGd7373fYbI6Uf_xjOX9L02Pd4YjNGAs8NLSptMVYImG-6M7nTRXxuiaBa3H96bRZ0Tf9a6jH98piGFIi-ibGTYxqRDXp_kX3cUo387fXxjIC2RTyBS0ZhFQNf_73cMgMg2_3C_yzjVQvOLndmqbZaXFAedCpBn783qAZY21rLmwawkvKn8zvkh7Gjr3dEFrX7wPK7nYKJHZUVyP12YEiZJsy72FolLIFm_LaSSC6w");
-        users = await Http.GetFromJsonAsync<Users[]>("https://dev-8th4j650wgitu0rp.us.auth0.com/api/v2/users");
-
-        foreach (var user in users)
+        @* HttpResponseMessage response = await Http.GetAsync("http://localhost:5000/getUsers"); *@
+        users = await Http.GetFromJsonAsync<Responce>("http://localhost:5000/getUsers");
+        Console.WriteLine("response");
+        Console.WriteLine(users.recordset);
+        foreach (var user in users.recordset)
         {
-           Console.WriteLine(user.app_metadata.ToString()); 
+           Console.WriteLine(user.user_name); 
         }
 
-    }
-
-    public class Users
-    {
-        public string name { get; set; } //c больш б
-
-        public string email { get; set; }
-
-        public string? picture { get; set; }
-        
-        public AppMetadata? app_metadata { get; set; }
+        @* HttpResponseMessage ke = await Http.PostAsync("http://localhost:5000/addUser", Role); *@
+        @* users = await Http.GetFromJsonAsync<Users[]>("https://dev-8th4j650wgitu0rp.us.auth0.com/api/v2/users"); *@
+        @* Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AccessToken); *@
+        @* HttpResponseMessage response = await Http.GetAsync("https://dev-8th4j650wgitu0rp.us.auth0.com/api/v2/users");
+        users = await Http.GetFromJsonAsync<Users[]>("https://dev-8th4j650wgitu0rp.us.auth0.com/api/v2/users"); *@
 
     }
-    
-    public class UserRoles
+
+    public class Responce
     {
-        public string[]? roles { get; set; }
+        public User[]? recordset { get; set; }
     }
 
-    public class  AppMetadata
+    public class User
     {
-        public string[]? roles { get; set; }
-        public override string ToString()
-        {
-            return string.Join(",", roles);
-        }
+        public string create_date { get; set; }
+        public int id { get; set; }
+        public int id_status { get; set; }
+        public string id_user { get; set; }
+        public string update_date { get; set; }
+        public string user_email { get; set; }
+        public string user_phone { get; set; }
+        public string user_role { get; set; }
+        public string user_surname { get; set; }
+        public string user_name { get; set; }
     }
 
 }
