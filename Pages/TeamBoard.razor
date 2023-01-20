@@ -3,6 +3,11 @@
 @using ClientEntity
 @inject DataService data
 @inject NavigationManager NavigationManager;
+@inject NavigationManager uriHelper;
+
+@using System;
+@using System.Timers;
+
 
 <Tabs SelectedTab="@selectedTab" SelectedTabChanged="@OnSelectedTabChanged">
     <Items>
@@ -31,13 +36,29 @@
                             <Paragraph>No data</Paragraph>
                         } 
                         else{
-                            <DataGrid   TItem="MTask"
+                            
+                            <DataGrid   TItem="TeamBoardTable"
                                         Data="@listForTableCurr"
                                         Responsive
                                         PageSize="50"
                                         FixedHeader
                                         FixedHeaderDataGridMaxHeight="300px">
-                                <DataGridColumn Field="@nameof(MTask.task_name)" Caption="Name" Sortable="true" />
+                                <DataGridColumn CellStyle="@((item)=>item.minLeft <= allertTime ? "background-color: LightSalmon;" : "")" Field="@nameof(TeamBoardTable.task_name)" Caption="Name" Sortable="true" >
+                                    <DisplayTemplate>
+                                        @{
+                                            var nameCont = (context as TeamBoardTable).task_name;
+                                            int idCont = (context as TeamBoardTable).id_task;
+                                            var link = "/Competition/" + 1 + "/" + groupId + "/" + idCont;
+                                            <Blazorise.Link To=@link Target="Target.Blank">
+                                                @nameCont
+                                            </Blazorise.Link>
+                                        }
+                                    </DisplayTemplate>
+                                </DataGridColumn>
+                                <DataGridColumn CellStyle="@((item)=>item.minLeft <= allertTime ? "background-color: LightSalmon;" : "")" Field="@nameof(TeamBoardTable.task_points)" Caption="Points" Sortable="true" />
+                                <DataGridColumn CellStyle="@((item)=>item.minLeft <= allertTime ? "background-color: LightSalmon;" : "")" Field="@nameof(TeamBoardTable.start_time)" Caption="Start time" Sortable="true"/>
+                                <DataGridColumn CellStyle="@((item)=>item.minLeft <= allertTime ? "background-color: LightSalmon;" : "")" Field="@nameof(TeamBoardTable.end_time)" Caption="End time" Sortable="true"/>
+                                <DataGridColumn CellStyle="@((item)=>item.minLeft <= allertTime ? "background-color: LightSalmon;" : "")" Field="@nameof(TeamBoardTable.minLeft)" Caption="Minutes left" Sortable="true"/>
                             </DataGrid>
                         }
                     </Field>
@@ -53,13 +74,42 @@
                             <Paragraph>No data</Paragraph>
                         } 
                         else{
-                            <DataGrid   TItem="MTask"
+                            <DataGrid   TItem="TeamBoardTable"
                                         Data="@listForTableSub"
                                         Responsive
                                         PageSize="50"
                                         FixedHeader
                                         FixedHeaderDataGridMaxHeight="300px">
-                                <DataGridColumn Field="@nameof(MTask.task_name)" Caption="Name" Sortable="true" />
+                                <DataGridColumn Field="@nameof(TeamBoardTable.task_name)" Caption="Name" Sortable="true" />
+                                <DataGridColumn Field="@nameof(TeamBoardTable.task_status)" Caption="Status" Sortable="true" >
+                                    <DisplayTemplate>
+                                        @{
+                                            var statusCont = (context as TeamBoardTable).task_status;
+                                            var durationCont = (context as TeamBoardTable).task_duration;
+                                            var startCont = (context as TeamBoardTable).start_time;
+                                            var endCont = (context as TeamBoardTable).end_time;
+                                            var timeDif = endCont.Subtract(startCont).Minutes;
+                                            if(timeDif >= (durationCont + 5)){
+                                                var delay = timeDif - durationCont;
+                                                <Badge Color="Color.Danger">Delay for @delay min</Badge>
+                                            }
+                                            else{
+                                                <Badge Color="Color.Success">In time</Badge>
+                                            }
+                                        }
+                                    </DisplayTemplate>
+                                </DataGridColumn>
+                                <DataGridColumn Field="@nameof(TeamBoardTable.end_time)" Caption="Finish time" Sortable="true" />
+                                <DataGridColumn Field="@nameof(TeamBoardTable.grade)" Caption="Check status" Sortable="true">
+                                    <DisplayTemplate>
+                                        @{
+                                            var gradeCont = (context as TeamBoardTable).grade;
+                                            if(gradeCont == 0){
+                                                @($"On checking...")
+                                            }
+                                        }
+                                    </DisplayTemplate>
+                                </DataGridColumn>
                             </DataGrid>
                         }
                     </Field>
@@ -75,13 +125,15 @@
                             <Paragraph>No data</Paragraph>
                         } 
                         else{
-                            <DataGrid   TItem="MTask"
+                            <DataGrid   TItem="TeamBoardTable"
                                         Data="@listForTableSolv"
                                         Responsive
                                         PageSize="50"
                                         FixedHeader
                                         FixedHeaderDataGridMaxHeight="300px">
-                                <DataGridColumn Field="@nameof(MTask.task_name)" Caption="Name" Sortable="true" />
+                                <DataGridColumn Field="@nameof(TeamBoardTable.task_name)" Caption="Name" Sortable="true" />
+                                <DataGridColumn Field="@nameof(TeamBoardTable.task_points)" Caption="Possible pounts" Sortable="true" />
+                                <DataGridColumn Field="@nameof(TeamBoardTable.grade)" Caption="Points received" Sortable="true" />                                
                             </DataGrid>
                         }
                     </Field>
@@ -99,42 +151,111 @@
     private string selectedTab = "home";
     private List<MConnectionTaskToGroup> listTaskToGroup = new List<MConnectionTaskToGroup>();
     private List<MTask> listOfMainTasks = new List<MTask>();
-    private List<MTask> listForTableCurr = new List<MTask>();
-    private List<MTask> listForTableSub = new List<MTask>();
-    private List<MTask> listForTableSolv = new List<MTask>();
+    private List<TeamBoardTable> listForTableCurr = new List<TeamBoardTable>();
+    private List<TeamBoardTable> listForTableSub = new List<TeamBoardTable>();
+    private List<TeamBoardTable> listForTableSolv = new List<TeamBoardTable>();
+    private int allertTime = 5;
+
+
+    private class TeamBoardTable{
+        public int id_task {get; set;}
+        public string task_name { get; set; }
+        public int task_points { get; set; } 
+        public int task_status {get; set; }
+        public int task_duration {get; set; }
+        public int minLeft { get; set; } 
+        public int grade { get; set; } 
+        public DateTime start_time { get; set; }
+        public DateTime end_time { get; set; }
+    }
+    private List<TeamBoardTable> tableTeam = new List<TeamBoardTable>();
+
 
     protected override async Task OnInitializedAsync()
-        {
+    {
+        @* listForTableCurr = null;
+        listForTableSub = null;
+        listForTableSolv = null; *@
         listOfMainTasks = await data.GetMainTasks();
-        listTaskToGroup = await data.GetTasksToGroup();
+        listTaskToGroup = await data.GetTasksToGroupByGroup(groupId);
 
-        foreach (var task in listOfMainTasks)
-        {
-            if(listTaskToGroup.FindIndex((p)=> p.id_task == task.id) != -1){
-                listForTableCurr.Add(task);
+
+
+        for(int i = 0; i<listTaskToGroup.Count; i++){
+            var taskIndex = listOfMainTasks.FindIndex((p)=>p.id == listTaskToGroup[i].id_task);
+            if( taskIndex != -1){
+                var perem = new TeamBoardTable(){
+                    id_task = listOfMainTasks[taskIndex].id,
+                    task_name = listOfMainTasks[taskIndex].task_name,
+                    task_points =listOfMainTasks[taskIndex].task_points,
+                    task_status = listTaskToGroup[i].id_task_status,
+                    task_duration = listOfMainTasks[taskIndex].task_duration,
+                    minLeft = listOfMainTasks[taskIndex].task_duration,
+                    grade = listTaskToGroup[i].grade,
+                    start_time = listTaskToGroup[i].start_time,
+                    end_time = listTaskToGroup[i].end_time
+                };
+                var timeDif = perem.end_time.Subtract(DateTime.Now);
+                perem.minLeft = timeDif.Minutes < 0 ? 0 : timeDif.Minutes;
+                tableTeam.Add(perem);
+                foreach (var item in tableTeam)
+                {
+                    SetTimer();
+                } 
             }
         }
 
-        @* foreach (var task in listOfMainTasks)
+
+        foreach (var line in tableTeam)
         {
-            if(listTaskToGroup.FindIndex((p)=> p.id_task == task.id) != -1){
-                listForTableSub.Add(task);
+            if(line.task_status == 1 && line.grade == 0){
+                listForTableCurr.Add(line);
             }
-        } *@
+        }
 
-        listForTableSub = null;
-
-        foreach (var task in listOfMainTasks)
+        foreach (var line in tableTeam)
         {
-            if(listTaskToGroup.FindIndex((p)=> p.id_task == task.id) != -1){
-                listForTableSolv.Add(task);
+            if(line.task_status == 2 && line.grade == 0){
+                listForTableSub.Add(line);
+            }
+        }
+
+
+        foreach (var line in tableTeam)
+        {
+            if(line.task_status == 2 && line.grade != 0){
+                listForTableSolv.Add(line);
             }
         }
 
     }
 
+    private System.Timers.Timer aTimer;
+    private void SetTimer()
+   {
+        // Create a timer with a two second interval.
+        aTimer = new System.Timers.Timer(30000);
+        // Hook up the Elapsed event for the timer. 
+        aTimer.Elapsed += OnTimedEvent;
+        aTimer.AutoReset = true;
+        aTimer.Enabled = true;
+    }
+
+    private void OnTimedEvent(Object source, ElapsedEventArgs e)
+    {
+        foreach (var item in tableTeam)
+        {            
+            var calcDif = item.end_time.Subtract(DateTime.Now).Minutes;
+            item.minLeft = item.minLeft <= 0? 0 : (calcDif < 0 ? 0 : calcDif);
+            StateHasChanged(); 
+        }
+        Console.WriteLine("The Elapsed event was raised at {0:HH:mm:ss.fff}",
+                          e.SignalTime);
+    }
+
     private async Task OnSelectedTabChanged( string name )
     {
         selectedTab = name;
+        StateHasChanged(); 
     } 
 }

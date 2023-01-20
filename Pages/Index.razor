@@ -7,7 +7,7 @@
 @using System.IdentityModel.Tokens.Jwt
 @inject IAccessTokenProvider TokenProvider
 
-@attribute [Authorize(Roles = "admin")]
+@attribute [Authorize(Roles = "user")]
 
 <h1>Start page</h1>
 
@@ -25,7 +25,6 @@
             AccessToken = token.Value;
             System.Console.WriteLine("My token:");
             System.Console.WriteLine(AccessToken);
-
         }
         var handler = new JwtSecurityTokenHandler();
         var jwtSecurityToken = handler.ReadJwtToken(AccessToken);

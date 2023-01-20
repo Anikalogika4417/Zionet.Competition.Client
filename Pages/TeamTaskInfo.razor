@@ -1,0 +1,14 @@
+@page "/Competition/{compId:int}/{groupId:int}/{taskId:int}"
+
+@compId
+@groupId
+@taskId
+
+@code{
+    [Parameter]
+    public int compId {get; set;}
+    [Parameter]
+    public int groupId {get; set;}
+    [Parameter]
+    public int taskId {get; set;}
+}

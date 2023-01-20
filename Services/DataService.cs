@@ -90,6 +90,11 @@ namespace Zionet.Competition.Client.Services
         }
 
         
+        public async Task<List<MConnectionTaskToGroup>> GetTasksToGroupByGroup(int id_group)
+        {
+            return await http.GetFromJsonAsync<List<MConnectionTaskToGroup>>
+                ($"https://localhost:44361/api/TaskToGroup/ByGroupId?id_group={id_group}");
+        }
 
         
 
