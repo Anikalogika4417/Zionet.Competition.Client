@@ -88,9 +88,9 @@
                                             var durationCont = (context as TeamBoardTable).task_duration;
                                             var startCont = (context as TeamBoardTable).start_time;
                                             var endCont = (context as TeamBoardTable).end_time;
-                                            var timeDif = endCont.Subtract(startCont).Minutes;
-                                            if(timeDif >= (durationCont + 5)){
-                                                var delay = timeDif - durationCont;
+                                            var timeMinDif = endCont.Subtract(startCont).TotalMinutes;
+                                            if(timeMinDif >= (durationCont + 5)){
+                                                var delay = timeMinDif - durationCont;
                                                 <Badge Color="Color.Danger">Delay for @delay min</Badge>
                                             }
                                             else{
@@ -150,7 +150,7 @@
     public int groupId { get; set;}
     private string selectedTab = "home";
     private List<MConnectionTaskToGroup> listTaskToGroup = new List<MConnectionTaskToGroup>();
-    private List<MTask> listOfMainTasks = new List<MTask>();
+    private List<MTask> listOfTasks = new List<MTask>();
     private List<TeamBoardTable> listForTableCurr = new List<TeamBoardTable>();
     private List<TeamBoardTable> listForTableSub = new List<TeamBoardTable>();
     private List<TeamBoardTable> listForTableSolv = new List<TeamBoardTable>();
@@ -176,21 +176,21 @@
         @* listForTableCurr = null;
         listForTableSub = null;
         listForTableSolv = null; *@
-        listOfMainTasks = await data.GetMainTasks();
+        listOfTasks = await data.GetAllTasks();
         listTaskToGroup = await data.GetTasksToGroupByGroup(groupId);
 
 
 
         for(int i = 0; i<listTaskToGroup.Count; i++){
-            var taskIndex = listOfMainTasks.FindIndex((p)=>p.id == listTaskToGroup[i].id_task);
+            var taskIndex = listOfTasks.FindIndex((p)=>p.id == listTaskToGroup[i].id_task);
             if( taskIndex != -1){
                 var perem = new TeamBoardTable(){
-                    id_task = listOfMainTasks[taskIndex].id,
-                    task_name = listOfMainTasks[taskIndex].task_name,
-                    task_points =listOfMainTasks[taskIndex].task_points,
+                    id_task = listOfTasks[taskIndex].id,
+                    task_name = listOfTasks[taskIndex].task_name,
+                    task_points =listOfTasks[taskIndex].task_points,
                     task_status = listTaskToGroup[i].id_task_status,
-                    task_duration = listOfMainTasks[taskIndex].task_duration,
-                    minLeft = listOfMainTasks[taskIndex].task_duration,
+                    task_duration = listOfTasks[taskIndex].task_duration,
+                    minLeft = listOfTasks[taskIndex].task_duration,
                     grade = listTaskToGroup[i].grade,
                     start_time = listTaskToGroup[i].start_time,
                     end_time = listTaskToGroup[i].end_time
