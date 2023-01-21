@@ -1,7 +1,15 @@
 @page "/CompetitionList"
 @using ClientEntity
+@using Microsoft.AspNetCore.Authorization;
+@using Microsoft.AspNetCore.Components;
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
+@using System.IdentityModel.Tokens.Jwt
+
 @inject DataService data
 @inject HttpClient Http
+@inject IAccessTokenProvider TokenProvider
+
+@attribute [Authorize(Roles = "user, admin, competitionAdmin")]
 
 <PageTitle>Competition List</PageTitle>
 
@@ -12,40 +20,98 @@
           @bind-SelectedRow="@selectedCompetition"
           Responsive>
 <DataGridCommandColumn />
-    <DataGridColumn Field="@nameof(MCompetition.competition_name)" Caption="Name" Sortable="true">
-        <DisplayTemplate>
-            @{
-                var idCont = ( context as MCompetition )?.id;
-                var nameCont = ( context as MCompetition )?.competition_name;
-                var link = "Competition/"+idCont;
+    <DataGridColumn Field="@nameof(MCompetition.competition_name)" Caption="Name" Sortable="true" />
 
-                <Blazorise.Link To=@link>
-                    @nameCont
-                </Blazorise.Link>
-            }
-        </DisplayTemplate>
-    </DataGridColumn>
     <DataGridColumn Field="@nameof(MCompetition.competition_start)" Caption="Start" Sortable="true" />
     <DataGridColumn Field="@nameof(MCompetition.competition_end)" Caption="End" Sortable="true" />
     <DataGridColumn Field="@nameof(MCompetition.task_quantity)" Caption="Quantity of tasks" Sortable="true" />
-    <DataGridColumn Field="@nameof(MCompetition.is_able_registrate)" Caption="Registrate status" Sortable="true">
-        <DisplayTemplate>
-            @{
-                var registStatus = ( context as MCompetition )?.is_able_registrate;
-                if(registStatus == true){
-                    @($"REGISTRATION IS OPEN")
-                }
-                else{
-                    @($"REGISTRATION IS CLOSED")
-                }
-            }
-        </DisplayTemplate>
-    </DataGridColumn>
+    <AuthorizeView Roles="admin">
+        <Authorized>
+            <DataGridColumn Field="@nameof(MCompetition.competition_start)" Caption="Status" Sortable="true">
+                <DisplayTemplate Context="context1">
+                    @{
+                        var startCont = ( context1 as MCompetition ).competition_start;
+                        var endCont = ( context1 as MCompetition ).competition_end;
+                        if(DateTime.Now.Subtract(endCont).TotalMinutes > 0){
+                            <Badge Color="Color.Info" Pill>Finish</Badge>
+                        }else{
+                            if(DateTime.Now.Subtract(startCont).TotalMinutes > 0){
+                                <Badge Color="Color.Success" Pill>Runnig</Badge>
+                            }
+                            else{
+                                <Badge Color="Color.Primary" Pill>In preparation</Badge>
+                            }
+                        }
+                    }
+                </DisplayTemplate>
+            </DataGridColumn>
+        </Authorized>
+    </AuthorizeView>
+    <AuthorizeView Roles="competitionAdmin">
+        <Authorized>
+            <DataGridColumn Field="@nameof(MCompetition.is_able_registrate)" Caption="Registrate status" Sortable="true">
+                <DisplayTemplate Context="context1">
+                    @{
+                        var registStatus = ( context1 as MCompetition )?.is_able_registrate;
+                        if(registStatus == true){
+                            @($"REGISTRATION IS OPEN")
+                        }
+                        else{
+                            @($"REGISTRATION IS CLOSED")
+                        }
+                    }
+                </DisplayTemplate>
+            </DataGridColumn>
+            <DataGridColumn Field="@nameof(MCompetition.competition_name)" Caption="Name" Sortable="true">
+                <DisplayTemplate Context="context1">
+                    @{
+                        var idCont = ( context1 as MCompetition )?.id;
+                        var nameCont = ( context1 as MCompetition )?.competition_name;
+                        var link = "Competition/"+idCont;
+
+                        <Blazorise.Link To=@link>
+                            See details...
+                        </Blazorise.Link>
+                    }
+                </DisplayTemplate>
+            </DataGridColumn>
+        </Authorized>
+    </AuthorizeView>
+    <AuthorizeView Roles="user">
+        <Authorized>
+            <DataGridColumn Field="@nameof(MCompetition.competition_name)" Caption="Name" Sortable="true">
+                <DisplayTemplate Context="context1">
+                    @{
+                        var idCont = ( context1 as MCompetition )?.id;
+                        var nameCont = ( context1 as MCompetition )?.competition_name;
+                        var groupIndex = listOfGroups.FindIndex((p)=>p.id_competition == idCont);
+                        var groupId = listOfGroups[groupIndex].id;
+                        var link = "Competition/"+idCont+"/GroupTable/"+groupId;
+
+                        <Blazorise.Link To=@link>
+                            See details...
+                        </Blazorise.Link>
+                    }
+                </DisplayTemplate>
+            </DataGridColumn>
+        </Authorized>
+    </AuthorizeView>
 </DataGrid>
 
+<AuthorizeView Roles="admin">
+    <Authorized>
+        <Button Color="Color.Danger" Disabled="(selectedCompetition is null)" Clicked="onDeleteClick">Delete</Button>
+        <Button Color="Color.Info" Disabled="(selectedCompetition is null)" Clicked="onDeleteClick">Copy</Button>
+        <Button Color="Color.Warning" Disabled="(selectedCompetition is null)" Clicked="onDeleteClick">Disabled</Button>
+    </Authorized>
+</AuthorizeView>
 
-<Button Color="Color.Danger" Disabled="(selectedCompetition is null)" Clicked="onDeleteClick">Delete</Button>
-<Button Color="Color.Primary" Disabled="(selectedCompetition is null)" Clicked="@ShowModal">Edit</Button>
+<AuthorizeView Roles="competitionAdmin">
+    <Authorized>
+        <Button Color="Color.Primary" Disabled="(selectedCompetition is null)" Clicked="@ShowModal">Edit</Button>
+    </Authorized>
+</AuthorizeView>
+
 
 @if(modalVisible == true){
     <CompetitionEditModal @bind-editCompetition="selectedCompetition" @bind-modalVisible="modalVisible"/>
@@ -57,7 +123,9 @@
 {
     List<MCompetition> ListOfCompetitions = new List<MCompetition>();
     MCompetition choosenCompetition = new MCompetition();
+    private List<MGroup> listOfGroups = new List<MGroup>();
     private bool modalVisible = false;
+    
     private MCompetition selectedCompetition = new (){
         id=0,
         competition_name="no name",
@@ -87,12 +155,43 @@
     @*----------------Downloading all competitions----------------*@
     protected override async Task OnInitializedAsync()
     {
-        ListOfCompetitions = await data.GetCompetitions();
+        
         choosenCompetition = null;
-        await base.OnInitializedAsync();
-        selectedCompetition = ListOfCompetitions[0];
         modalVisible = false;
 
+        var accessTokenResult = await TokenProvider.RequestAccessToken();
+        var AccessToken = string.Empty;
+
+        if (accessTokenResult.TryGetToken(out var token))
+        {
+            AccessToken = token.Value;
+            System.Console.WriteLine("My token:");
+            System.Console.WriteLine(AccessToken);
+        }
+        var handler = new JwtSecurityTokenHandler();
+        var jwtSecurityToken = handler.ReadJwtToken(AccessToken);
+
+        var User_Id = jwtSecurityToken.Claims.First(claim => claim.Type == "user_id").Value;
+        var Role = jwtSecurityToken.Claims.First(claim => claim?.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role")?.Value;
+        switch (Role){
+            case "user":
+                ListOfCompetitions = await data.GetCompetitionByUserId("1");
+                listOfGroups = await data.GetGroupsByUserId("1");
+                break;
+            case "admin":
+                ListOfCompetitions = await data.GetCompetitions();
+                break;
+            case "competitionAdmin":
+                var prepList = await data.GetCompetitions();
+                foreach (var line in prepList)
+                {
+                    if(line.is_able_work == true){
+                        ListOfCompetitions.Add(line);
+                    }   
+                }
+                break;
+        }
+        selectedCompetition = ListOfCompetitions[0];
     }
 
     @*----------------Changing choosen competition by radio button----------------*@

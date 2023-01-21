@@ -49,6 +49,10 @@ namespace Zionet.Competition.Client.Services
                 ($"https://localhost:44361/api/Competition/ById?_id={id_competition}");
         }
 
+        public async Task<List<MCompetition>> GetCompetitionByUserId(string id_user){
+            return await http.GetFromJsonAsync<List<MCompetition>>
+                ($"https://localhost:44361/api/Competition/ByUserId?id_user={id_user}");
+        }
         public async Task PutCompetition(MCompetition competition)
         {
             await http.PutAsJsonAsync<MCompetition>
@@ -162,6 +166,15 @@ namespace Zionet.Competition.Client.Services
             return await http.GetFromJsonAsync<List<MGroup>>
                 ($"https://localhost:44361/api/Group");
         }
+
+         public async Task<List<MGroup>> GetGroupsByUserId(string id_user)
+        {
+            return await http.GetFromJsonAsync<List<MGroup>>
+                ($"https://localhost:44361/api/Group/ByUserId?id_user={id_user}");
+        }
+
+
+        
 
         public async Task<List<MGroup>> GetGroupsByIdComp(int id_comp)
         {

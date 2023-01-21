@@ -1,4 +1,5 @@
 @using ClientEntity
+@using System.Text.RegularExpressions
 @inject DataService data
 @inject HttpClient Http
 @inject NavigationManager NavigationManager;
@@ -10,29 +11,35 @@
     <CardBody>
         <Fields>
             <Field >
-                <FieldLabel>Competition Name</FieldLabel>
-                <TextEdit @bind-Text="curentComp.competition_name" Placeholder="Enter name" ReadOnly="@modeRead" />
+                <Heading Size="HeadingSize.Is4">Competition Name</Heading>
+                <Paragraph>@curentComp.competition_name</Paragraph>
             </Field>
             <Field >
-                <FieldLabel>Quantity of tasks</FieldLabel>
-                <NumericEdit @bind-Value="curentComp.task_quantity" ReadOnly="@modeRead"/>
+                <Heading Size="HeadingSize.Is4">Quantity of tasks</Heading>
+                <Paragraph>@curentComp.task_quantity</Paragraph>
+            </Field>
+            <Field >
+                <Heading Size="HeadingSize.Is4">Hash codes</Heading>
+                <Paragraph>@curentComp.sm_hash_code</Paragraph>
             </Field>
         </Fields>
     </CardBody>
     <CardBody>
         <Fields>
             <Field>
-                <FieldLabel>Start time</FieldLabel>
-                <DateEdit TValue="DateTime" @bind-Date="@curentComp.competition_start" Placeholder="Start time competition..." ReadOnly="@modeRead"/>
-                <TimeEdit TValue="TimeSpan" @bind-Time="@startTime" ReadOnly="@modeRead"/>
+                <Heading Size="HeadingSize.Is4">Start time</Heading>
+                <Paragraph>@curentComp.competition_start</Paragraph>
             </Field>
             <Field>
-                <FieldLabel>End time</FieldLabel>
-                <DateEdit TValue="DateTime" @bind-Date="@curentComp.competition_end" Placeholder="Start competition..." ReadOnly="@modeRead"/>
-                <TimeEdit TValue="TimeSpan" @bind-Time="@endTime" ReadOnly="@modeRead"/>
+                <Heading Size="HeadingSize.Is4">End time</Heading>
+                <Paragraph>@curentComp.competition_end</Paragraph>
             </Field>
         </Fields>
-        <Button Color="Color.Primary" Clicked="@onEditModeChange">@buttonName</Button>
+        <Button Color="Color.Primary" Clicked="@onEditModeChange">Edit</Button>
+        <br>
+        <Blazorise.Link To=@linkToDashboard Target="Target.Blank">
+            Competition dashboard
+        </Blazorise.Link>
     </CardBody>
 </Card>
 <Card>
@@ -112,38 +119,39 @@
                 <Link To=@linkToGroups>
                     Group manager
                 </Link>
-                @* <NumericEdit @bind-Value="curentComp.task_quantity" ReadOnly="@modeRead"/> *@
             </Field>
         </Fields>
     </CardBody>
 </Card>
 
+@if(modalVisible == true){
+    <CompetitionEditModal @bind-editCompetition="curentComp" @bind-modalVisible="modalVisible"/>
+}
+
 
 @code{
     [Parameter]
     public MCompetition curentComp {get; set;}
-
     private TimeSpan startTime;
     private TimeSpan endTime;
-    private bool modeRead = true;
-    private string buttonName = "Edit"; 
     List<MTask> ListOfTasks = new List<MTask>();
     private List<MGroup> ListOfGroups = new List<MGroup>();
     List<MBonusToTask> ListOfBonusToTask = new List<MBonusToTask>();
     private string linkToTasks;
     private string linkToCategories;
     private string linkToGroups;
-
-
+    private string linkToDashboard = "";
+    private bool modalVisible = false;
 
     protected override async Task OnInitializedAsync()
     {
         startTime = new TimeSpan(curentComp.competition_start.Hour, curentComp.competition_start.Minute, curentComp.competition_start.Second);
         endTime  = new TimeSpan(curentComp.competition_end.Hour, curentComp.competition_end.Minute, curentComp.competition_end.Second);
-
+        linkToDashboard = "/Competition/" + curentComp.id + "/Dashboard";
         linkToTasks = "/Competition/"+curentComp.id+"/tasks";
         linkToCategories = "/Competition/"+curentComp.id+"/categories";
         linkToGroups = "/Competition/"+curentComp.id+"/groups";
+        modalVisible = false;
 
         ListOfTasks = await data.GetMainTasks();
         ListOfGroups = await data.GetGroupsByIdComp(curentComp.id);
@@ -165,26 +173,11 @@
         return newList;
     }
     private async Task onEditModeChange(){
-        if(modeRead == false){
-            curentComp.competition_start = initiateDate(curentComp.competition_start, startTime.Hours, startTime.Minutes);
-            curentComp.competition_end = initiateDate(curentComp.competition_end, endTime.Hours, endTime.Minutes);
-            await data.PutCompetition(curentComp);
-        }
-        modeRead = modeRead == false? true: false;
-        buttonName = modeRead == false? "Save": "Edit";
+        modalVisible = true;
     }
-
-    private DateTime initiateDate(DateTime date, int hours = 0, int min = 0){
-        return new DateTime(date.Year, date.Month, date.Day, hours, min, 0);
-    }
-
 
     private void onAddBTTaskClcik(){
         //TODO Сделать ссылку, когда она будет готова
         Console.WriteLine("I'm working");
-    }
-
-    private void onEditModeTaskChange(){
-        NavigationManager.NavigateTo("/Competition/"+curentComp.id+"/tasks", true);
     }
 }
