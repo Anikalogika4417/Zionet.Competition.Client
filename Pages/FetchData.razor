@@ -10,8 +10,8 @@
 @using Microsoft.AspNetCore.Components;
 @using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 @using System.IdentityModel.Tokens.Jwt
-@attribute [Authorize]
-@inject IAccessTokenProvider TokenProviderv
+@inject IAccessTokenProvider TokenProvider
+@attribute [Authorize(Roles = "admin")]
 
 <PageTitle>Users</PageTitle>
 
@@ -32,7 +32,14 @@
             <tr>
                 <td>@user.user_name</td>
                 <td>@user.user_email</td>
-                <td>@user.user_role</td>
+                @if(@user.user_role=="admin"){
+                    <td>@user.user_role</td>
+                } else {
+                    <Select TValue="string">
+                        <SelectItem Value="1">user</SelectItem>
+                        <SelectItem Value="2">competition admin</SelectItem>
+                    </Select>
+                }
             </tr>
         }
         </tbody>
@@ -53,12 +60,41 @@
            Console.WriteLine(user.user_name); 
         }
 
-        @* HttpResponseMessage ke = await Http.PostAsync("http://localhost:5000/addUser", Role); *@
-        @* users = await Http.GetFromJsonAsync<Users[]>("https://dev-8th4j650wgitu0rp.us.auth0.com/api/v2/users"); *@
-        @* Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AccessToken); *@
-        @* HttpResponseMessage response = await Http.GetAsync("https://dev-8th4j650wgitu0rp.us.auth0.com/api/v2/users");
-        users = await Http.GetFromJsonAsync<Users[]>("https://dev-8th4j650wgitu0rp.us.auth0.com/api/v2/users"); *@
+        GetToken tokenParams = new GetToken() 
+        {
+            grant_type = "client_credentials",
+            client_id  = "3uv1uKVFiYFZ4GV9AxzARZF1kJ2doeNQ",
+            client_secret = "A4BVRnNFA-VQF77qp4_9D-fDnxOTKgg1g47F1jMrkrXZNyZ8vXtXojkDetQ7P8p3",
+            audience = "https://masa-api/"
+        };
+        string parseTokenParams = JsonConvert.SerializeObject(tokenParams);
+        @* Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("content-type", "application/x-www-form-urlencoded");
+        await Http.PostAsJsonAsync("https://dev-8th4j650wgitu0rp.us.auth0.com/oauth/token",parseTokenParams); *@
 
+        var accessTokenResult = await TokenProvider.RequestAccessToken();
+        var AccessToken = string.Empty;
+
+        if (accessTokenResult.TryGetToken(out var token))
+        {
+            AccessToken = token.Value;
+            System.Console.WriteLine("My token:");
+            System.Console.WriteLine(AccessToken);
+
+        }
+
+        @* Http.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", AccessToken);
+        HttpResponseMessage response = await Http.GetAsync("https://dev-8th4j650wgitu0rp.us.auth0.com/api/v2/users"); *@
+        @* users = await Http.GetFromJsonAsync<Users[]>("https://dev-8th4j650wgitu0rp.us.auth0.com/api/v2/users"); *@
+
+    }
+
+
+    public class GetToken 
+    {
+        public string grant_type { get; set; }
+        public string client_id { get; set; }
+        public string client_secret { get; set; }
+        public string audience { get; set; }
     }
 
     public class Responce
