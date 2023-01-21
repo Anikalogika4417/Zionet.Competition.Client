@@ -129,4 +129,22 @@ namespace ClientEntity
         public DateTime update_date { get; set; }
         public int id_status { get; set; }
     }
+
+    public class Responce
+    {
+        public User[]? recordset { get; set; }
+    }
+
+    public class User
+    {
+        public string create_date { get; set; }
+        public int id_status { get; set; }
+        public string id_user { get; set; }
+        public string update_date { get; set; }
+        public string user_email { get; set; }
+        public string user_phone { get; set; }
+        public string user_role { get; set; }
+        public string user_surname { get; set; }
+        public string user_name { get; set; }
+    }
 }
