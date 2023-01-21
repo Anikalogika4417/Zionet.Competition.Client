@@ -3,6 +3,7 @@
 @using ClientEntity
 @inject DataService data
 @inject NavigationManager NavigationManager;
+@inject NavigationManager uriHelper;
 
 @if(loadingStatus){
     <h1>Loading...</h1>
@@ -121,6 +122,8 @@ else{
     private bool loadingStatus = true;
     private bool modeQuantity = true;
     private MConnectionTaskToGroup submittesTask = new MConnectionTaskToGroup();
+    private List<MConnectionTaskToGroup> listTaskToGroup = new List<MConnectionTaskToGroup>();
+
 
 
     @*----------------Downloading main task and all bonus tasks----------------*@
@@ -129,6 +132,8 @@ else{
         ListOfTasks = await data.GetMainTasks();
         ListOfBonusTasks = await data.GetBonusTasks();
         ListOfBonusToTask = await data.GetLinkToBonusTask();
+        listTaskToGroup = await data.GetTasksToGroupByGroup(groupId);
+
 
         var linksCompToMainTask = await data.GetTasksByIdComp((int)compId);
         ListOfTasks = await findAllTask(linksCompToMainTask, ListOfTasks);
@@ -161,7 +166,7 @@ else{
         var newList = new List<MTask>();
         foreach (var link in links)
         {
-            var a = _curentList.FindIndex(p => p.id == link.id_task);
+            var a = _curentList.FindIndex(p => p.id == link.id_task && (listTaskToGroup.FindIndex((a)=>a.id_task == p.id) == -1));
             if(a != -1){
                 newList.Add(_curentList[a]);
             }          
@@ -173,6 +178,7 @@ else{
         Console.WriteLine(selectedTask.id);
         Console.WriteLine(selectedTask.task_duration);
         await data.PostTaskToGroup(initiateConTaskToGroup());
+        uriHelper.NavigateTo(uriHelper.Uri, forceLoad: true);
     }
 
     private MConnectionTaskToGroup initiateConTaskToGroup(){

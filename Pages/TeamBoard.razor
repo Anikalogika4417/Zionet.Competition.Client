@@ -3,138 +3,321 @@
 @using ClientEntity
 @inject DataService data
 @inject NavigationManager NavigationManager;
+@inject NavigationManager uriHelper;
+@attribute [Authorize(Roles = "user, admin")]
 
-<Tabs SelectedTab="@selectedTab" SelectedTabChanged="@OnSelectedTabChanged">
-    <Items>
-        <Tab Name="home">Home</Tab>
-        <Tab Name="currTask">Current tasks</Tab>
-        <Tab Name="subTask">Submitted tasks</Tab>
-        <Tab Name="solvTask">Solved tasks</Tab>
-    </Items>
-    <Content>
-        <TabPanel Name="home">
-            <Card>
-                <CardBody>
-                    <Field >
-                        <Heading Size="HeadingSize.Is4">Group settings</Heading>
-                            
-                    </Field>
-                </CardBody>
-            </Card>
-        </TabPanel>
-        <TabPanel Name="currTask">
-            <Card>
-                <CardBody>
-                    <Field >
-                        <Heading Size="HeadingSize.Is4">Current tasks</Heading> 
-                        @if(listForTableCurr == null){
-                            <Paragraph>No data</Paragraph>
-                        } 
-                        else{
-                            <DataGrid   TItem="MTask"
-                                        Data="@listForTableCurr"
-                                        Responsive
-                                        PageSize="50"
-                                        FixedHeader
-                                        FixedHeaderDataGridMaxHeight="300px">
-                                <DataGridColumn Field="@nameof(MTask.task_name)" Caption="Name" Sortable="true" />
-                            </DataGrid>
-                        }
-                    </Field>
-                </CardBody>
-            </Card>
-        </TabPanel>
-        <TabPanel Name="subTask">
-            <Card>
-                <CardBody>
-                    <Field >
-                        <Heading Size="HeadingSize.Is4">Submitted tasks</Heading>  
-                        @if(listForTableSub == null){
-                            <Paragraph>No data</Paragraph>
-                        } 
-                        else{
-                            <DataGrid   TItem="MTask"
-                                        Data="@listForTableSub"
-                                        Responsive
-                                        PageSize="50"
-                                        FixedHeader
-                                        FixedHeaderDataGridMaxHeight="300px">
-                                <DataGridColumn Field="@nameof(MTask.task_name)" Caption="Name" Sortable="true" />
-                            </DataGrid>
-                        }
-                    </Field>
-                </CardBody>
-            </Card>
-        </TabPanel>
-        <TabPanel Name="solvTask">
-            <Card>
-                <CardBody>
-                    <Field >
-                        <Heading Size="HeadingSize.Is4">Solved tasks</Heading>    
-                        @if(listForTableSolv == null){
-                            <Paragraph>No data</Paragraph>
-                        } 
-                        else{
-                            <DataGrid   TItem="MTask"
-                                        Data="@listForTableSolv"
-                                        Responsive
-                                        PageSize="50"
-                                        FixedHeader
-                                        FixedHeaderDataGridMaxHeight="300px">
-                                <DataGridColumn Field="@nameof(MTask.task_name)" Caption="Name" Sortable="true" />
-                            </DataGrid>
-                        }
-                    </Field>
-                </CardBody>
-            </Card>
-        </TabPanel>
-    </Content>
-</Tabs>
+@using System;
+@using System.Timers;
+
+        <Tabs SelectedTab="@selectedTab" SelectedTabChanged="@OnSelectedTabChanged">
+            <Items>
+                <Tab Name="home">Home</Tab>
+                <Tab Name="currTask">Current tasks</Tab>
+                <Tab Name="subTask">Submitted tasks</Tab>
+                <Tab Name="solvTask">Solved tasks</Tab>
+            </Items>
+            <Content>
+                <TabPanel Name="home">
+                    <Card>
+                        <CardBody>
+                            <Field >
+                                <Heading Size="HeadingSize.Is4">Group settings</Heading>
+                                    
+                            </Field>
+                        </CardBody>
+                    </Card>
+                </TabPanel>
+                <TabPanel Name="currTask">
+                    <Card>
+                        <CardBody>
+                            <Field >
+                                <Heading Size="HeadingSize.Is4">Current tasks</Heading> 
+                                @if(listForTableCurr.Count == 0){
+                                    <Paragraph>No data</Paragraph>
+                                } 
+                                else{
+                                    
+                                    <DataGrid   TItem="TeamBoardTable"
+                                                Data="@listForTableCurr"
+                                                Responsive
+                                                PageSize="50"
+                                                FixedHeader
+                                                FixedHeaderDataGridMaxHeight="300px">
+                                        <DataGridColumn CellStyle="@((item)=>item.minLeft <= allertTime ? "background-color: LightSalmon;" : "")" Field="@nameof(TeamBoardTable.task_name)" Caption="Name" Sortable="true" >
+                                            <DisplayTemplate Context="context1">
+                                                @{
+                                                    var nameCont = (context1 as TeamBoardTable).task_name;
+                                                    int idCont = (context1 as TeamBoardTable).id_task;
+                                                    var link = "/Competition/" + 1 + "/" + groupId + "/" + idCont;
+                                                    <Blazorise.Link To=@link Target="Target.Blank">
+                                                        @nameCont
+                                                    </Blazorise.Link>
+                                                }
+                                            </DisplayTemplate>
+                                        </DataGridColumn>
+                                        <DataGridColumn CellStyle="@((item)=>item.minLeft <= allertTime ? "background-color: LightSalmon;" : "")" Field="@nameof(TeamBoardTable.task_points)" Caption="Points" Sortable="true" />
+                                        <DataGridColumn CellStyle="@((item)=>item.minLeft <= allertTime ? "background-color: LightSalmon;" : "")" Field="@nameof(TeamBoardTable.start_time)" Caption="Start time" Sortable="true"/>
+                                        <DataGridColumn CellStyle="@((item)=>item.minLeft <= allertTime ? "background-color: LightSalmon;" : "")" Field="@nameof(TeamBoardTable.end_time)" Caption="End time" Sortable="true"/>
+                                        <DataGridColumn CellStyle="@((item)=>item.minLeft <= allertTime ? "background-color: LightSalmon;" : "")" Field="@nameof(TeamBoardTable.minLeft)" Caption="Minutes left" Sortable="true"/>
+                                    </DataGrid>
+                                }
+                            </Field>
+                        </CardBody>
+                    </Card>
+                </TabPanel>
+                <TabPanel Name="subTask">
+                    <Card>
+                        <CardBody>
+                            <Field >
+                                <Heading Size="HeadingSize.Is4">Submitted tasks</Heading>  
+                                @if(listForTableSub.Count == 0){
+                                    <Paragraph>No data</Paragraph>
+                                } 
+                                else{
+                                    <DataGrid   TItem="TeamBoardTable"
+                                                Data="@listForTableSub"
+                                                @bind-SelectedRow="selectedLine"
+                                                Responsive
+                                                PageSize="50"
+                                                FixedHeader
+                                                FixedHeaderDataGridMaxHeight="300px">
+                                        <DataGridColumn Field="@nameof(TeamBoardTable.task_name)" Caption="Name" Sortable="true" />
+                                        <DataGridColumn Field="@nameof(TeamBoardTable.end_time)" Caption="Finish time" Sortable="true" />
+                                        <DataGridColumn Field="@nameof(TeamBoardTable.grade)" Caption="Check status" Sortable="true">
+                                            <DisplayTemplate Context="context1">
+                                                @{
+                                                    var gradeCont = (context1 as TeamBoardTable).grade;
+                                                    if(gradeCont == 0){
+                                                        @($"On checking...")
+                                                    }
+                                                }
+                                            </DisplayTemplate>
+                                        </DataGridColumn>
+                                        <AuthorizeView Roles="admin">
+                                            <Authorized>
+                                                <DataGridColumn Field="@nameof(TeamBoardTable.task_status)" Caption="End status" Sortable="true" >
+                                                    <DisplayTemplate Context="context1">
+                                                        @{
+                                                            var statusCont = (context1 as TeamBoardTable).task_status;
+                                                            var durationCont = (context1 as TeamBoardTable).task_duration;
+                                                            var startCont = (context1 as TeamBoardTable).start_time;
+                                                            var endCont = (context1 as TeamBoardTable).end_time;
+                                                            var timeMinDif = endCont.Subtract(startCont).TotalMinutes;
+                                                            if(timeMinDif >= (durationCont + 5)){
+                                                                var delay = timeMinDif - durationCont;
+                                                                <Badge Color="Color.Danger">Delay for @delay min</Badge>
+                                                            }
+                                                            else{
+                                                                <Badge Color="Color.Success">In time</Badge>
+                                                            }
+                                                        }
+                                                    </DisplayTemplate>
+                                                </DataGridColumn>
+                                                <DataGridColumn Field="@nameof(TeamBoardTable.repo_link)" Caption="Git link" Sortable="true" >
+                                                    <DisplayTemplate Context="context1">
+                                                        @{
+                                                            var link = (context1 as TeamBoardTable).repo_link;
+                                                            <Blazorise.Link To=@link Target="Target.Blank">
+                                                                Link to the repo
+                                                            </Blazorise.Link>
+                                                        }
+                                                    </DisplayTemplate>
+                                                </DataGridColumn>
+                                                <DataGridColumn Field="@nameof(TeamBoardTable.grade)" Caption="Estimate points" Sortable="true" >
+                                                    <DisplayTemplate Context="context1">
+                                                        @{
+                                                            var gradeCont = (context1 as TeamBoardTable).grade;
+                                                            var idCont = (context1 as TeamBoardTable).id_line;
+                                                            var indexTable = tableTeam.FindIndex((p)=>p.id_line == idCont);
+                                                            <NumericEdit @bind-Value="tableTeam[indexTable].grade" Min=0 Max=@tableTeam[indexTable].task_points />
+                                                        }
+                                                    </DisplayTemplate>
+                                                </DataGridColumn>
+                                                <DataGridColumn Field="@nameof(TeamBoardTable.grade)" Caption="Estimate points" Sortable="true" >
+                                                    <DisplayTemplate Context="context1">
+                                                        @{
+                                                            var idCont = (context1 as TeamBoardTable).id_line;
+                                                            <Button Disabled="(idCont != selectedLine.id_line)" Color="Color.Success" Clicked="onEstimateClick">Estimate</Button>
+                                                        }
+                                                    </DisplayTemplate>
+                                                </DataGridColumn>
+                                            </Authorized>
+                                        </AuthorizeView>
+                                    </DataGrid>
+                                }
+                            </Field>
+                        </CardBody>
+                    </Card>
+                </TabPanel>
+                <TabPanel Name="solvTask">
+                    <Card>
+                        <CardBody>
+                            <Field >
+                                <Heading Size="HeadingSize.Is4">Solved tasks</Heading>    
+                                @if(listForTableSolv.Count == 0){
+                                    <Paragraph>No data</Paragraph>
+                                } 
+                                else{
+                                    <DataGrid   TItem="TeamBoardTable"
+                                                Data="@listForTableSolv"
+                                                Responsive
+                                                PageSize="50"
+                                                FixedHeader
+                                                FixedHeaderDataGridMaxHeight="300px">
+                                        <DataGridColumn Field="@nameof(TeamBoardTable.task_name)" Caption="Name" Sortable="true" />
+                                        <DataGridColumn Field="@nameof(TeamBoardTable.task_points)" Caption="Possible pounts" Sortable="true" />
+                                        <DataGridColumn Field="@nameof(TeamBoardTable.grade)" Caption="Points received" Sortable="true" />                                
+                                    </DataGrid>
+                                }
+                            </Field>
+                        </CardBody>
+                    </Card>
+                </TabPanel>
+            </Content>
+        </Tabs>
+
+
+
 
 
 
 @code{
     [Parameter]
     public int groupId { get; set;}
+
     private string selectedTab = "home";
     private List<MConnectionTaskToGroup> listTaskToGroup = new List<MConnectionTaskToGroup>();
-    private List<MTask> listOfMainTasks = new List<MTask>();
-    private List<MTask> listForTableCurr = new List<MTask>();
-    private List<MTask> listForTableSub = new List<MTask>();
-    private List<MTask> listForTableSolv = new List<MTask>();
+    private List<MTask> listOfTasks = new List<MTask>();
+    private List<TeamBoardTable> listForTableCurr = new List<TeamBoardTable>();
+    private List<TeamBoardTable> listForTableSub = new List<TeamBoardTable>();
+    private List<TeamBoardTable> listForTableSolv = new List<TeamBoardTable>();
+    private int allertTime = 5;
+    private TeamBoardTable selectedLine = new TeamBoardTable();
+
+
+    private class TeamBoardTable{
+        public int id_task {get; set;}
+        public int id_line {get; set;}
+        public string task_name { get; set; }
+        public string repo_link { get; set; }
+        public int task_points { get; set; } 
+        public int task_status {get; set; }
+        public int task_duration {get; set; }
+        public int minLeft { get; set; } 
+        public int grade { get; set; } 
+        public DateTime start_time { get; set; }
+        public DateTime end_time { get; set; }
+    }
+    private List<TeamBoardTable> tableTeam = new List<TeamBoardTable>();
+
 
     protected override async Task OnInitializedAsync()
-        {
-        listOfMainTasks = await data.GetMainTasks();
-        listTaskToGroup = await data.GetTasksToGroup();
+    {
+        @* listForTableCurr = null;
+        listForTableSub = null;
+        listForTableSolv = null; *@
+        listOfTasks = await data.GetAllTasks();
+        listTaskToGroup = await data.GetTasksToGroupByGroup(groupId);
 
-        foreach (var task in listOfMainTasks)
-        {
-            if(listTaskToGroup.FindIndex((p)=> p.id_task == task.id) != -1){
-                listForTableCurr.Add(task);
+
+
+        for(int i = 0; i<listTaskToGroup.Count; i++){
+            var taskIndex = listOfTasks.FindIndex((p)=>p.id == listTaskToGroup[i].id_task);
+            if( taskIndex != -1){
+                var perem = new TeamBoardTable(){
+                    id_task = listOfTasks[taskIndex].id,
+                    id_line = listTaskToGroup[i].id,
+                    task_name = listOfTasks[taskIndex].task_name,
+                    task_points =listOfTasks[taskIndex].task_points,
+                    task_status = listTaskToGroup[i].id_task_status,
+                    task_duration = listOfTasks[taskIndex].task_duration,
+                    repo_link = listTaskToGroup[i].repo_link,
+                    minLeft = listOfTasks[taskIndex].task_duration,
+                    grade = listTaskToGroup[i].grade,
+                    start_time = listTaskToGroup[i].start_time,
+                    end_time = listTaskToGroup[i].end_time
+                };
+                var timeDif = perem.end_time.Subtract(DateTime.Now);
+                perem.minLeft = timeDif.Minutes < 0 ? 0 : timeDif.Minutes;
+                tableTeam.Add(perem);
+                foreach (var item in tableTeam)
+                {
+                    SetTimer();
+                } 
             }
         }
 
-        @* foreach (var task in listOfMainTasks)
+
+        foreach (var line in tableTeam)
         {
-            if(listTaskToGroup.FindIndex((p)=> p.id_task == task.id) != -1){
-                listForTableSub.Add(task);
+            if(line.task_status == 1 && line.grade == 0){
+                listForTableCurr.Add(line);
             }
-        } *@
+        }
 
-        listForTableSub = null;
-
-        foreach (var task in listOfMainTasks)
+        foreach (var line in tableTeam)
         {
-            if(listTaskToGroup.FindIndex((p)=> p.id_task == task.id) != -1){
-                listForTableSolv.Add(task);
+            if(line.task_status == 2 && line.grade == 0){
+                listForTableSub.Add(line);
+            }
+        }
+
+
+        foreach (var line in tableTeam)
+        {
+            if(line.task_status == 2 && line.grade != 0){
+                listForTableSolv.Add(line);
             }
         }
 
     }
 
+    private System.Timers.Timer aTimer;
+    private void SetTimer()
+   {
+        // Create a timer with a two second interval.
+        aTimer = new System.Timers.Timer(30000);
+        // Hook up the Elapsed event for the timer. 
+        aTimer.Elapsed += OnTimedEvent;
+        aTimer.AutoReset = true;
+        aTimer.Enabled = true;
+    }
+
+    private void OnTimedEvent(Object source, ElapsedEventArgs e)
+    {
+        foreach (var item in tableTeam)
+        {            
+            var calcDif = item.end_time.Subtract(DateTime.Now).Minutes;
+            item.minLeft = item.minLeft <= 0? 0 : (calcDif < 0 ? 0 : calcDif);
+            StateHasChanged(); 
+        }
+        Console.WriteLine("The Elapsed event was raised at {0:HH:mm:ss.fff}",
+                          e.SignalTime);
+    }
+
     private async Task OnSelectedTabChanged( string name )
     {
         selectedTab = name;
+        StateHasChanged(); 
     } 
+
+    private async Task onEstimateClick(){
+        var sendLine = initiateConTaskToGroup();
+        await data.PutConnectionLinkTG(sendLine);
+        uriHelper.NavigateTo(uriHelper.Uri, forceLoad: true);
+    }
+
+    private MConnectionTaskToGroup initiateConTaskToGroup(){
+        var initiateConnection = new MConnectionTaskToGroup();
+
+        initiateConnection.id = selectedLine.id_line;
+        initiateConnection.id_task = selectedLine.id_task;
+        initiateConnection.id_group = groupId;
+        initiateConnection.start_time = selectedLine.start_time;
+        initiateConnection.end_time = selectedLine.end_time;
+        initiateConnection.id_task_status = 2;
+        initiateConnection.repo_link = selectedLine.repo_link;
+        initiateConnection.grade = selectedLine.grade;
+        return initiateConnection;  
+    }
 }

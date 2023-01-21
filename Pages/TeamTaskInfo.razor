@@ -1,0 +1,86 @@
+@page "/Competition/{compId:int}/{groupId:int}/{taskId:int}"
+@using ClientEntity
+@inject DataService data
+@inject NavigationManager NavigationManager;
+
+<PageTitle>Task info</PageTitle>
+
+<Card>
+    <CardBody>
+        <CardTitle Size="5">Task name</CardTitle>
+        <CardText>@currentTask.task_name</CardText>
+        <CardTitle Size="5">Task description</CardTitle>
+        <CardText>@currentTask.task_description</CardText>
+        <CardTitle Size="5">Task points</CardTitle>
+        <CardText>@currentTask.task_points</CardText>
+        <CardTitle Size="5">Task duration</CardTitle>
+        <CardText>@currentTask.task_duration</CardText>
+
+        <CardTitle Size="5">Github link</CardTitle>
+        <TextEdit @bind-Text="currentTGLine.repo_link" Placeholder="Enter the link" />
+
+        <CardTitle Size="5">List of members</CardTitle>
+        <Select TValue="int" SelectedValues="listCoosenUsers" Multiple>
+            <SelectItem Value="1">One</SelectItem>
+            <SelectItem Value="2">Two</SelectItem>
+            <SelectItem Value="3">Three</SelectItem>
+            <SelectItem Value="4">Four</SelectItem>
+        </Select>
+        <Label>Example label</Label>
+
+        <Button Color="Color.Primary" Clicked="onFinishClick">Finish</Button>
+        <Button Color="Color.Info">Start bonus task</Button>
+    </CardBody>
+</Card>
+
+@code{
+    [Parameter]
+    public int compId {get; set;}
+    [Parameter]
+    public int groupId {get; set;}
+    [Parameter]
+    public int taskId {get; set;}
+    private MTask currentTask = new MTask();
+    private MConnectionTaskToGroup currentTGLine = new MConnectionTaskToGroup();
+    private string message = "";
+    private List<int> listCoosenUsers = new List<int>();
+    protected override async Task OnInitializedAsync()
+    {
+        var list = await data.GetTaskById(taskId);
+        if(list != null){
+            currentTask = list[0]; 
+        }
+        else{
+            message = "No data";
+        }
+        var linkList = await data.GetLinkTGbyIds(groupId, taskId);
+        if(linkList != null){
+            currentTGLine = linkList[0]; 
+        }
+        else{
+            message = "No data";
+        }
+    }
+
+    private MConnectionTaskToGroup initiateLink(){
+        var _linkLine = new MConnectionTaskToGroup();
+        _linkLine.id = currentTGLine.id;
+        _linkLine.id_task = taskId;
+        _linkLine.id_group = groupId;
+        _linkLine.start_time = currentTGLine.start_time;
+        _linkLine.end_time = DateTime.Now;
+        _linkLine.id_task_status = 2;
+        _linkLine.repo_link = currentTGLine.repo_link;
+        _linkLine.grade = 0;
+        _linkLine.create_date = currentTGLine.create_date;
+        _linkLine.update_date = currentTGLine.update_date;
+        _linkLine.id_status = currentTGLine.id_status;
+        return _linkLine;
+    }
+
+    private async Task onFinishClick(){
+        var sendingTask = initiateLink();
+        await data.PutConnectionLinkTG(sendingTask);
+        NavigationManager.NavigateTo("/GroupTable/" + groupId, true);
+    }
+}

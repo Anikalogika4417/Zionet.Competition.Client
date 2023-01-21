@@ -47,7 +47,6 @@
             AccessToken = token.Value;
             System.Console.WriteLine("My token:");
             System.Console.WriteLine(AccessToken);
-
         }
         var handler = new JwtSecurityTokenHandler();
         var jwtSecurityToken = handler.ReadJwtToken(AccessToken);

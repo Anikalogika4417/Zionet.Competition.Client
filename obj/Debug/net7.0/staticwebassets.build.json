@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "TWjxUCzx/6kj4JbN99yR5BRMHwOdXFtp7SEUgR5Tg/s=",
+  "Hash": "XmRSqznnLs9jRlRl9QuHostB0mTJ1EiNragK+jZ1Ec4=",
   "Source": "Zionet.Competition.Client",
   "BasePath": "/",
   "Mode": "Root",
@@ -170,10 +170,44 @@
       "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise.datagrid\\1.1.5\\staticwebassets\\datagrid.js"
     },
     {
-      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\blazorise.css",
+      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise.snackbar\\1.1.6\\staticwebassets\\blazorise.snackbar.css",
+      "SourceId": "Blazorise.Snackbar",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise.snackbar\\1.1.6\\staticwebassets\\",
+      "BasePath": "_content/Blazorise.Snackbar",
+      "RelativePath": "blazorise.snackbar.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise.snackbar\\1.1.6\\staticwebassets\\blazorise.snackbar.css"
+    },
+    {
+      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise.snackbar\\1.1.6\\staticwebassets\\blazorise.snackbar.min.css",
+      "SourceId": "Blazorise.Snackbar",
+      "SourceType": "Package",
+      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise.snackbar\\1.1.6\\staticwebassets\\",
+      "BasePath": "_content/Blazorise.Snackbar",
+      "RelativePath": "blazorise.snackbar.min.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise.snackbar\\1.1.6\\staticwebassets\\blazorise.snackbar.min.css"
+    },
+    {
+      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\blazorise.css",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "blazorise.css",
       "AssetKind": "All",
@@ -184,13 +218,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\blazorise.css"
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\blazorise.css"
     },
     {
-      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\blazorise.min.css",
+      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\blazorise.min.css",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "blazorise.min.css",
       "AssetKind": "All",
@@ -201,13 +235,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\blazorise.min.css"
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\blazorise.min.css"
     },
     {
-      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\breakpoint.js",
+      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\breakpoint.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "breakpoint.js",
       "AssetKind": "All",
@@ -218,13 +252,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\breakpoint.js"
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\breakpoint.js"
     },
     {
-      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\button.js",
+      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\button.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "button.js",
       "AssetKind": "All",
@@ -235,13 +269,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\button.js"
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\button.js"
     },
     {
-      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\closable.js",
+      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\closable.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "closable.js",
       "AssetKind": "All",
@@ -252,13 +286,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\closable.js"
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\closable.js"
     },
     {
-      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\colorPicker.js",
+      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\colorPicker.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "colorPicker.js",
       "AssetKind": "All",
@@ -269,13 +303,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\colorPicker.js"
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\colorPicker.js"
     },
     {
-      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\datePicker.js",
+      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\datePicker.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "datePicker.js",
       "AssetKind": "All",
@@ -286,13 +320,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\datePicker.js"
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\datePicker.js"
     },
     {
-      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\dragDrop.js",
+      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\dragDrop.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "dragDrop.js",
       "AssetKind": "All",
@@ -303,13 +337,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\dragDrop.js"
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\dragDrop.js"
     },
     {
-      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\dropdown.js",
+      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\dropdown.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "dropdown.js",
       "AssetKind": "All",
@@ -320,13 +354,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\dropdown.js"
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\dropdown.js"
     },
     {
-      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\fileEdit.js",
+      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\fileEdit.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "fileEdit.js",
       "AssetKind": "All",
@@ -337,13 +371,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\fileEdit.js"
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\fileEdit.js"
     },
     {
-      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\filePicker.js",
+      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\filePicker.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "filePicker.js",
       "AssetKind": "All",
@@ -354,13 +388,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\filePicker.js"
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\filePicker.js"
     },
     {
-      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\inputMask.js",
+      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\inputMask.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "inputMask.js",
       "AssetKind": "All",
@@ -371,13 +405,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\inputMask.js"
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\inputMask.js"
     },
     {
-      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\io.js",
+      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\io.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "io.js",
       "AssetKind": "All",
@@ -388,13 +422,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\io.js"
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\io.js"
     },
     {
-      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\memoEdit.js",
+      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\memoEdit.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "memoEdit.js",
       "AssetKind": "All",
@@ -405,13 +439,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\memoEdit.js"
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\memoEdit.js"
     },
     {
-      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\numericPicker.js",
+      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\numericPicker.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "numericPicker.js",
       "AssetKind": "All",
@@ -422,13 +456,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\numericPicker.js"
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\numericPicker.js"
     },
     {
-      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\observer.js",
+      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\observer.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "observer.js",
       "AssetKind": "All",
@@ -439,13 +473,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\observer.js"
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\observer.js"
     },
     {
-      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\popper.js",
+      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\popper.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "popper.js",
       "AssetKind": "All",
@@ -456,13 +490,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\popper.js"
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\popper.js"
     },
     {
-      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\table.js",
+      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\table.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "table.js",
       "AssetKind": "All",
@@ -473,13 +507,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\table.js"
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\table.js"
     },
     {
-      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\textEdit.js",
+      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\textEdit.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "textEdit.js",
       "AssetKind": "All",
@@ -490,13 +524,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\textEdit.js"
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\textEdit.js"
     },
     {
-      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\theme.js",
+      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\theme.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "theme.js",
       "AssetKind": "All",
@@ -507,13 +541,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\theme.js"
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\theme.js"
     },
     {
-      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\timePicker.js",
+      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\timePicker.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "timePicker.js",
       "AssetKind": "All",
@@ -524,13 +558,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\timePicker.js"
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\timePicker.js"
     },
     {
-      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\tooltip.js",
+      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\tooltip.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "tooltip.js",
       "AssetKind": "All",
@@ -541,13 +575,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\tooltip.js"
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\tooltip.js"
     },
     {
-      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\utilities.js",
+      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\utilities.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "utilities.js",
       "AssetKind": "All",
@@ -558,13 +592,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\utilities.js"
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\utilities.js"
     },
     {
-      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\validators\\DateTimeMaskValidator.js",
+      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\validators\\DateTimeMaskValidator.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "validators/DateTimeMaskValidator.js",
       "AssetKind": "All",
@@ -575,13 +609,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\validators\\DateTimeMaskValidator.js"
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\validators\\DateTimeMaskValidator.js"
     },
     {
-      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\validators\\NoValidator.js",
+      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\validators\\NoValidator.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "validators/NoValidator.js",
       "AssetKind": "All",
@@ -592,13 +626,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\validators\\NoValidator.js"
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\validators\\NoValidator.js"
     },
     {
-      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\validators\\NumericMaskValidator.js",
+      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\validators\\NumericMaskValidator.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "validators/NumericMaskValidator.js",
       "AssetKind": "All",
@@ -609,13 +643,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\validators\\NumericMaskValidator.js"
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\validators\\NumericMaskValidator.js"
     },
     {
-      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\validators\\RegExMaskValidator.js",
+      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\validators\\RegExMaskValidator.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "validators/RegExMaskValidator.js",
       "AssetKind": "All",
@@ -626,13 +660,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\validators\\RegExMaskValidator.js"
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\validators\\RegExMaskValidator.js"
     },
     {
-      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\vendors\\autoNumeric.js",
+      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\vendors\\autoNumeric.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "vendors/autoNumeric.js",
       "AssetKind": "All",
@@ -643,13 +677,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\vendors\\autoNumeric.js"
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\vendors\\autoNumeric.js"
     },
     {
-      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\vendors\\Behave.js",
+      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\vendors\\Behave.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "vendors/Behave.js",
       "AssetKind": "All",
@@ -660,13 +694,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\vendors\\Behave.js"
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\vendors\\Behave.js"
     },
     {
-      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\vendors\\flatpickr.js",
+      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\vendors\\flatpickr.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "vendors/flatpickr.js",
       "AssetKind": "All",
@@ -677,13 +711,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\vendors\\flatpickr.js"
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\vendors\\flatpickr.js"
     },
     {
-      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\vendors\\inputmask.js",
+      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\vendors\\inputmask.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "vendors/inputmask.js",
       "AssetKind": "All",
@@ -694,13 +728,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\vendors\\inputmask.js"
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\vendors\\inputmask.js"
     },
     {
-      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\vendors\\Pickr.js",
+      "Identity": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\vendors\\Pickr.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "vendors/Pickr.js",
       "AssetKind": "All",
@@ -711,7 +745,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\staticwebassets\\vendors\\Pickr.js"
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\staticwebassets\\vendors\\Pickr.js"
     },
     {
       "Identity": "C:\\Users\\ignps\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly.authentication\\7.0.2\\staticwebassets\\AuthenticationService.js",
@@ -18343,6 +18377,23 @@
       "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise.bootstrap\\1.1.5\\lib\\net7.0\\Blazorise.Bootstrap.dll"
     },
     {
+      "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Blazorise.Components.dll",
+      "SourceId": "Zionet.Competition.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Blazorise.Components.dll",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "BlazorWebAssemblyResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise.components\\1.1.6\\lib\\net7.0\\Blazorise.Components.dll"
+    },
+    {
       "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Blazorise.DataGrid.dll",
       "SourceId": "Zionet.Competition.Client",
       "SourceType": "Computed",
@@ -18374,7 +18425,7 @@
       "AssetTraitValue": "runtime",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.5\\lib\\net7.0\\Blazorise.dll"
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise\\1.1.6\\lib\\net7.0\\Blazorise.dll"
     },
     {
       "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Blazorise.Icons.FontAwesome.dll",
@@ -18392,6 +18443,23 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise.icons.fontawesome\\1.1.5\\lib\\net7.0\\Blazorise.Icons.FontAwesome.dll"
+    },
+    {
+      "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Blazorise.Snackbar.dll",
+      "SourceId": "Zionet.Competition.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Blazorise.Snackbar.dll",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "BlazorWebAssemblyResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\blazorise.snackbar\\1.1.6\\lib\\net7.0\\Blazorise.Snackbar.dll"
     },
     {
       "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\dotnet.7.0.1.9nabnxd0wo.js",
@@ -19089,6 +19157,74 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\microsoft.extensions.primitives\\7.0.0\\lib\\net7.0\\Microsoft.Extensions.Primitives.dll"
+    },
+    {
+      "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.IdentityModel.Abstractions.dll",
+      "SourceId": "Zionet.Competition.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.IdentityModel.Abstractions.dll",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "BlazorWebAssemblyResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\microsoft.identitymodel.abstractions\\6.25.1\\lib\\net6.0\\Microsoft.IdentityModel.Abstractions.dll"
+    },
+    {
+      "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.IdentityModel.JsonWebTokens.dll",
+      "SourceId": "Zionet.Competition.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.IdentityModel.JsonWebTokens.dll",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "BlazorWebAssemblyResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\6.25.1\\lib\\net6.0\\Microsoft.IdentityModel.JsonWebTokens.dll"
+    },
+    {
+      "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.IdentityModel.Logging.dll",
+      "SourceId": "Zionet.Competition.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.IdentityModel.Logging.dll",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "BlazorWebAssemblyResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\microsoft.identitymodel.logging\\6.25.1\\lib\\net6.0\\Microsoft.IdentityModel.Logging.dll"
+    },
+    {
+      "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.IdentityModel.Tokens.dll",
+      "SourceId": "Zionet.Competition.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.IdentityModel.Tokens.dll",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "BlazorWebAssemblyResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.25.1\\lib\\net6.0\\Microsoft.IdentityModel.Tokens.dll"
     },
     {
       "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.JSInterop.dll",
@@ -20075,6 +20211,23 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\microsoft.netcore.app.runtime.mono.browser-wasm\\7.0.1\\runtimes\\browser-wasm\\lib\\net7.0\\System.Globalization.Extensions.dll"
+    },
+    {
+      "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.IdentityModel.Tokens.Jwt.dll",
+      "SourceId": "Zionet.Competition.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/System.IdentityModel.Tokens.Jwt.dll",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "BlazorWebAssemblyResource",
+      "AssetTraitValue": "runtime",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\ignps\\.nuget\\packages\\system.identitymodel.tokens.jwt\\6.25.1\\lib\\net6.0\\System.IdentityModel.Tokens.Jwt.dll"
     },
     {
       "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.Interactive.Async.dll",
@@ -22372,6 +22525,23 @@
       "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.IO.FileSystem.AccessControl.dll"
     },
     {
+      "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\build-gz\\+l5S6Ypx.gz",
+      "SourceId": "Zionet.Competition.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Blazorise.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Blazorise.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Blazorise.dll"
+    },
+    {
       "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\build-gz\\+tnSCG6Z.gz",
       "SourceId": "Zionet.Competition.Client",
       "SourceType": "Computed",
@@ -22780,23 +22950,6 @@
       "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.Net.HttpListener.dll"
     },
     {
-      "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\build-gz\\6C1wGalC.gz",
-      "SourceId": "Zionet.Competition.Client",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "_framework/Blazorise.dll.gz",
-      "AssetKind": "Build",
-      "AssetMode": "All",
-      "AssetRole": "Alternative",
-      "RelatedAsset": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Blazorise.dll",
-      "AssetTraitName": "Content-Encoding",
-      "AssetTraitValue": "gzip",
-      "CopyToOutputDirectory": "PreserveNewest",
-      "CopyToPublishDirectory": "Never",
-      "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Blazorise.dll"
-    },
-    {
       "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\build-gz\\6cD0m2LL.gz",
       "SourceId": "Zionet.Competition.Client",
       "SourceType": "Computed",
@@ -22914,6 +23067,23 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.Net.Security.dll"
+    },
+    {
+      "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\build-gz\\8toQZeT2.gz",
+      "SourceId": "Zionet.Competition.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.IdentityModel.Abstractions.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.IdentityModel.Abstractions.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.IdentityModel.Abstractions.dll"
     },
     {
       "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\build-gz\\969USV7h.gz",
@@ -23681,6 +23851,23 @@
       "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.Net.dll"
     },
     {
+      "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\build-gz\\f5A3NTk4.gz",
+      "SourceId": "Zionet.Competition.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.IdentityModel.JsonWebTokens.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.IdentityModel.JsonWebTokens.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.IdentityModel.JsonWebTokens.dll"
+    },
+    {
       "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\build-gz\\F79aPvGa.gz",
       "SourceId": "Zionet.Competition.Client",
       "SourceType": "Computed",
@@ -23817,6 +24004,23 @@
       "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.Threading.Timer.dll"
     },
     {
+      "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\build-gz\\gF1yux89.gz",
+      "SourceId": "Zionet.Competition.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.IdentityModel.Logging.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.IdentityModel.Logging.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.IdentityModel.Logging.dll"
+    },
+    {
       "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\build-gz\\GHWHq4NP.gz",
       "SourceId": "Zionet.Competition.Client",
       "SourceType": "Computed",
@@ -23900,6 +24104,23 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.Security.Cryptography.Csp.dll"
+    },
+    {
+      "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\build-gz\\GV7fJteo.gz",
+      "SourceId": "Zionet.Competition.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Blazorise.Snackbar.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Blazorise.Snackbar.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Blazorise.Snackbar.dll"
     },
     {
       "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\build-gz\\Gx0Wo5Bp.gz",
@@ -24308,6 +24529,23 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.IO.Compression.Brotli.dll"
+    },
+    {
+      "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\build-gz\\JOqQ5YuE.gz",
+      "SourceId": "Zionet.Competition.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Microsoft.IdentityModel.Tokens.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.IdentityModel.Tokens.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.IdentityModel.Tokens.dll"
     },
     {
       "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\build-gz\\jU1PZJf6.gz",
@@ -25211,6 +25449,23 @@
       "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.Net.WebSockets.dll"
     },
     {
+      "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\build-gz\\QWUSvV77.gz",
+      "SourceId": "Zionet.Competition.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/Blazorise.Components.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Blazorise.Components.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Blazorise.Components.dll"
+    },
+    {
       "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\build-gz\\r8oR07sm.gz",
       "SourceId": "Zionet.Competition.Client",
       "SourceType": "Computed",
@@ -25617,6 +25872,23 @@
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\Microsoft.AspNetCore.Components.Authorization.dll"
+    },
+    {
+      "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\build-gz\\usIqq4lq.gz",
+      "SourceId": "Zionet.Competition.Client",
+      "SourceType": "Computed",
+      "ContentRoot": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "_framework/System.IdentityModel.Tokens.Jwt.dll.gz",
+      "AssetKind": "Build",
+      "AssetMode": "All",
+      "AssetRole": "Alternative",
+      "RelatedAsset": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.IdentityModel.Tokens.Jwt.dll",
+      "AssetTraitName": "Content-Encoding",
+      "AssetTraitValue": "gzip",
+      "CopyToOutputDirectory": "PreserveNewest",
+      "CopyToPublishDirectory": "Never",
+      "OriginalItemSpec": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\bin\\Debug\\net7.0\\wwwroot\\_framework\\System.IdentityModel.Tokens.Jwt.dll"
     },
     {
       "Identity": "C:\\Users\\ignps\\Desktop\\Programms\\Hanukah-project\\Zionet.Competition.Client\\obj\\Debug\\net7.0\\build-gz\\v4fUo4qd.gz",

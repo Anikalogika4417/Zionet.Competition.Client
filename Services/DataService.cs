@@ -67,6 +67,13 @@ namespace Zionet.Competition.Client.Services
                 ($"https://localhost:44361/api/Task/BonusTask");
         }
 
+        public async Task<List<MTask>> GetAllTasks()
+        {
+            return await http.GetFromJsonAsync<List<MTask>>
+                ($" https://localhost:44361/api/Task/AllTasks");
+        }
+       
+
         public async Task<List<MTask>> GetTaskById(int id_task)
         {
             return await http.GetFromJsonAsync<List<MTask>>
@@ -89,7 +96,22 @@ namespace Zionet.Competition.Client.Services
             using var response = await http.PostAsJsonAsync("https://localhost:44361/api/TaskToCompetition", postBody);
         }
 
+
+        public async Task<List<MConnectionTaskToGroup>> GetLinkTGbyIds(int id_group, int id_task){
+            return await http.GetFromJsonAsync<List<MConnectionTaskToGroup>>
+                ($"https://localhost:44361/api/TaskToGroup/ByGroupIdAnfTaskId?id_group={id_group}&id_task={id_task}");
+        }
+
+        public async Task PutConnectionLinkTG(MConnectionTaskToGroup link)
+        {
+            await http.PutAsJsonAsync<MConnectionTaskToGroup>($"https://localhost:44361/api/TaskToGroup", link);
+        }
         
+        public async Task<List<MConnectionTaskToGroup>> GetTasksToGroupByGroup(int id_group)
+        {
+            return await http.GetFromJsonAsync<List<MConnectionTaskToGroup>>
+                ($"https://localhost:44361/api/TaskToGroup/ByGroupId?id_group={id_group}");
+        }
 
         
 

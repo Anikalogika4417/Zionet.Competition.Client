@@ -97,6 +97,17 @@
                             FixedHeader
                             FixedHeaderDataGridMaxHeight="300px">
                     <DataGridColumn Field="@nameof(MGroup.group_name)" Caption="Name" Sortable="true" />
+                    <DataGridColumn Field="@nameof(MGroup.id)" Caption="Link to Dashboard" Sortable="true">
+                        <DisplayTemplate>
+                            @{
+                                var idCont = (context as MGroup).id;
+                                var link = "/GroupTable/"+idCont;
+                                <Blazorise.Link To=@link Target="Target.Blank">
+                                    See group dashboard...
+                                </Blazorise.Link>
+                            }
+                        </DisplayTemplate>
+                    </DataGridColumn>
                 </DataGrid>
                 <Link To=@linkToGroups>
                     Group manager
