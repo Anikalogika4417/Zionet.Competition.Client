@@ -178,5 +178,17 @@ namespace Zionet.Competition.Client.Services
         public async Task PostTask(MTask task) {
             var a = await http.PostAsJsonAsync<MTask>($"https://localhost:44361/api/TestTask", task);
         }
+
+        ///// Nodejs/////
+
+        public async Task<Responce> GetUsers () {
+            return await http.GetFromJsonAsync<Responce>("http://localhost:5000/getUsers");
+        }
+
+        public async Task AddUser(User postUserInfo) {
+            await http.PostAsJsonAsync<User>("http://localhost:5000/addUser", postUserInfo);
+        }
+
+        /////////////////
     }
 }

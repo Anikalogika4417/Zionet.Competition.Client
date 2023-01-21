@@ -6,20 +6,42 @@
 @using Microsoft.AspNetCore.Components.WebAssembly.Authentication;
 @using System.IdentityModel.Tokens.Jwt
 @inject IAccessTokenProvider TokenProvider
+@using ClientEntity
+@inject DataService data
 
-@attribute [Authorize(Roles = "user")]
+@attribute [Authorize]
 
-<h1>Start page</h1>
+<h1>Profile</h1>
+
+@if(@String.IsNullOrEmpty(@Role)){
+    <p>PLEASE WAIT UNTIL ADMINISTRATOR NE CONFIRM YOUR EMAIL</p>
+    <p>Relod your page cherez 5 minut</p>
+} else {
+    <b><p>Name:</p></b>
+    <p>@First_Name</p>
+    <b><p>Surname:</p></b>
+    <p>@Last_Name</p>
+    <b><p>Email:</p></b>
+    <p>@Email</p>
+}
+
 
 @code {
-    // private Users[] users;
+    private Responce users;
+    private string Email;
+    private string First_Name;
+    private string Last_Name;
+    private string User_Id;
+    private string Role;
+    private string Created_At;
 
     protected override async Task OnInitializedAsync()
     {
-        
+        bool statusUser = default(bool);
+        users = await data.GetUsers();
+        @*= await Http.GetFromJsonAsync<Responce>("http://localhost:5000/getUsers"); *@
         var accessTokenResult = await TokenProvider.RequestAccessToken();
         var AccessToken = string.Empty;
-
         if (accessTokenResult.TryGetToken(out var token))
         {
             AccessToken = token.Value;
@@ -28,13 +50,60 @@
         }
         var handler = new JwtSecurityTokenHandler();
         var jwtSecurityToken = handler.ReadJwtToken(AccessToken);
-        var Name = jwtSecurityToken.Claims.First(claim => claim.Type == "name").Value;
-        var User_Id = jwtSecurityToken.Claims.First(claim => claim.Type == "id_user").Value;
-        var Role = jwtSecurityToken.Claims.First(claim => claim.Type == "role").Value;
-        var Email = jwtSecurityToken.Claims.First(claim => claim.Type == "mail").Value;
-        Console.WriteLine(Name);
-        Console.WriteLine(User_Id);
-        Console.WriteLine(Role);
-        Console.WriteLine(Email);
+        
+        Email = jwtSecurityToken.Claims.First(claim => claim.Type == "mail").Value;
+        First_Name = jwtSecurityToken.Claims.First(claim => claim.Type == "given_name").Value;
+        Last_Name = jwtSecurityToken.Claims.First(claim => claim.Type == "family_name").Value;
+        User_Id = jwtSecurityToken.Claims.First(claim => claim.Type == "user_id").Value;
+        Role = jwtSecurityToken.Claims.First(claim => claim?.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role")?.Value;
+        Created_At = jwtSecurityToken.Claims.First(claim => claim.Type == "created_at").Value;
+
+        User postUserInfo = new User() 
+        {
+            create_date = Created_At,
+            id_status  = 1,
+            id_user = User_Id,
+            update_date = "2023-01-20",
+            user_email = Email,
+            user_phone = "puk",
+            user_surname = Last_Name,
+            user_name = First_Name,
+            user_role = Role
+        };
+
+        string stringjson = JsonConvert.SerializeObject(postUserInfo);
+
+        foreach (var user in users.recordset)
+        {
+            if(user.user_email.Contains(Email)){
+                statusUser = true; 
+                break;
+            } else {
+                statusUser = false;
+            }
+        }
+
+        if(!statusUser){
+            await data.AddUser(postUserInfo);
+            @* await Http.PostAsJsonAsync<User>("http://localhost:5000/addUser", postUserInfo); *@
+        }
     }
+
+    @* public class Responce
+    {
+        public User[]? recordset { get; set; }
+    }
+
+    public class User
+    {
+        public string create_date { get; set; }
+        public int id_status { get; set; }
+        public string id_user { get; set; }
+        public string update_date { get; set; }
+        public string user_email { get; set; }
+        public string user_phone { get; set; }
+        public string user_role { get; set; }
+        public string user_surname { get; set; }
+        public string user_name { get; set; }
+    } *@
 } 
