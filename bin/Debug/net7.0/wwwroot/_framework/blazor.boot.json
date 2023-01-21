@@ -10,10 +10,12 @@
   "resources": {
     "assembly": {
       "BlazorBootstrap.dll": "sha256-vojWRQgI9doG\/7kVfoEGDOhJMTlAT3BEM61pJt7JzPs=",
-      "Blazorise.dll": "sha256-teUuJLNdaQyz7kSZJpp+7v3d2aD3GZ0iElUCByVsjuU=",
+      "Blazorise.dll": "sha256-yPFIk4KNmmKL5w8eQ2BrF9wgtQhZaBL+cz+AxTj7c4A=",
       "Blazorise.Bootstrap.dll": "sha256-qDIkmg8jxWUk9LXm+2sD69oOjZffMzmnmuezpT8na9U=",
+      "Blazorise.Components.dll": "sha256-jlypSzu0FeJvKN9WyJRKYwXJOEfCkzmYKCuadIbwxQ0=",
       "Blazorise.DataGrid.dll": "sha256-vKwpZ0C0b4F+OSo4mjxMzSPhvBob27Bb\/mOZPCr4eCk=",
       "Blazorise.Icons.FontAwesome.dll": "sha256-+Iyy8rhBEJyrPLe0zhudEyV\/gu9CPHSI7a2fdRu4ZUo=",
+      "Blazorise.Snackbar.dll": "sha256-eG\/\/+6tAnw5ryQNLnbKQvwmhKfGG7hHv9VIdUOPFFTg=",
       "FluentlyHttpClient.dll": "sha256-AfXue9nM9C620VAP2EZkWK\/hwuO+Z5CYQhswX5C9+lc=",
       "FluentlyHttpClient.Entity.dll": "sha256-4czoslLjnZBRKfCjsoSI+J0ll3rdJm79uiA7jRpMlck=",
       "Json.dll": "sha256-7za9Si5b8XKTzg0y0vJ6jP5YxY3kgISGXUu0bOte5IU=",
@@ -238,13 +240,13 @@
       "mscorlib.dll": "sha256-UH9jptJH1wZ3XMBPuMMAEaUKpfRxc5AgXkLdAFAvNVE=",
       "netstandard.dll": "sha256-+jUzj0FB0YcoBUeSkSNEjhVDTG08qbZ2twfCBMbzT+Q=",
       "System.Private.CoreLib.dll": "sha256-l+\/quNqfNCSUDSMJcp0+IxlSdOdnAtwVVWMXmYGHMpg=",
-      "Zionet.Competition.Client.dll": "sha256-0WWaU+6ACSIP857aWDyEt3vuILRM1XSq5TQPTMf9ujg="
+      "Zionet.Competition.Client.dll": "sha256-pGNXNOsCnHUaR9LlJO4Xi0+WYt+sXOcTwtADCP50fQA="
     },
     "extensions": null,
     "lazyAssembly": null,
     "libraryInitializers": null,
     "pdb": {
-      "Zionet.Competition.Client.pdb": "sha256-q9ltqFZ9\/nByUcZpH0cLndc5URryx+x9AmzZtCOu7Nw="
+      "Zionet.Competition.Client.pdb": "sha256-0InYcH+4jyHt54W2jqKzCux1OMCd+cNZ9ZP7L2FbHgI="
     },
     "runtime": {
       "dotnet.7.0.1.9nabnxd0wo.js": "sha256-jjax3FMRXzFAziWowdtJf6vipP2xXAaA5gD6VBYB6Y0=",

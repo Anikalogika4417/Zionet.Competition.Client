@@ -1599,7 +1599,6 @@ C:\Users\ignps\Desktop\Programms\Hanukah-project\Zionet.Competition.Client\bin\D
 C:\Users\ignps\Desktop\Programms\Hanukah-project\Zionet.Competition.Client\bin\Debug\net7.0\icudt_EFIGS.dat
 C:\Users\ignps\Desktop\Programms\Hanukah-project\Zionet.Competition.Client\bin\Debug\net7.0\icudt_no_CJK.dat
 C:\Users\ignps\Desktop\Programms\Hanukah-project\Zionet.Competition.Client\obj\Debug\net7.0\build-gz\6f1+iTzI.gz
-C:\Users\ignps\Desktop\Programms\Hanukah-project\Zionet.Competition.Client\obj\Debug\net7.0\build-gz\6C1wGalC.gz
 C:\Users\ignps\Desktop\Programms\Hanukah-project\Zionet.Competition.Client\obj\Debug\net7.0\build-gz\969USV7h.gz
 C:\Users\ignps\Desktop\Programms\Hanukah-project\Zionet.Competition.Client\obj\Debug\net7.0\build-gz\ktyN4mzq.gz
 C:\Users\ignps\Desktop\Programms\Hanukah-project\Zionet.Competition.Client\obj\Debug\net7.0\build-gz\HCXSzsR0.gz
@@ -1938,3 +1937,12 @@ C:\Users\ignps\Desktop\Programms\Hanukah-project\Zionet.Competition.Client\obj\D
 C:\Users\ignps\Desktop\Programms\Hanukah-project\Zionet.Competition.Client\obj\Debug\net7.0\build-gz\gF1yux89.gz
 C:\Users\ignps\Desktop\Programms\Hanukah-project\Zionet.Competition.Client\obj\Debug\net7.0\build-gz\JOqQ5YuE.gz
 C:\Users\ignps\Desktop\Programms\Hanukah-project\Zionet.Competition.Client\obj\Debug\net7.0\build-gz\usIqq4lq.gz
+C:\Users\ignps\Desktop\Programms\Hanukah-project\Zionet.Competition.Client\bin\Debug\net7.0\wwwroot\_framework\Blazorise.Components.dll
+C:\Users\ignps\Desktop\Programms\Hanukah-project\Zionet.Competition.Client\bin\Debug\net7.0\wwwroot\_framework\Blazorise.Snackbar.dll
+C:\Users\ignps\Desktop\Programms\Hanukah-project\Zionet.Competition.Client\bin\Debug\net7.0\wwwroot\_framework\Blazorise.Snackbar.dll.gz
+C:\Users\ignps\Desktop\Programms\Hanukah-project\Zionet.Competition.Client\bin\Debug\net7.0\wwwroot\_framework\Blazorise.Components.dll.gz
+C:\Users\ignps\Desktop\Programms\Hanukah-project\Zionet.Competition.Client\bin\Debug\net7.0\Blazorise.Components.dll
+C:\Users\ignps\Desktop\Programms\Hanukah-project\Zionet.Competition.Client\bin\Debug\net7.0\Blazorise.Snackbar.dll
+C:\Users\ignps\Desktop\Programms\Hanukah-project\Zionet.Competition.Client\obj\Debug\net7.0\build-gz\+l5S6Ypx.gz
+C:\Users\ignps\Desktop\Programms\Hanukah-project\Zionet.Competition.Client\obj\Debug\net7.0\build-gz\QWUSvV77.gz
+C:\Users\ignps\Desktop\Programms\Hanukah-project\Zionet.Competition.Client\obj\Debug\net7.0\build-gz\GV7fJteo.gz
