@@ -1,5 +1,7 @@
 @using ClientEntity
 @inject DataService data
+@using System.Text.RegularExpressions
+@inject NavigationManager uriHelper;
 
 <Modal @bind-Visible="@modalVisible">
     <ModalContent Centered>
@@ -10,29 +12,58 @@
         <ModalBody>
             <Field>
                 <FieldLabel>Name</FieldLabel>
-                <TextEdit @bind-Text="editCompetition.competition_name" Placeholder="Enter competition..." />
+                <Validation Validator="ValidateName">
+                    <TextEdit @bind-Text="editCompetition.competition_name" Placeholder="Enter competition..." >
+                        <Feedback>
+                            <ValidationSuccess>Name is good.</ValidationSuccess>
+                            <ValidationError>Enter valid Name (less 10 chars)!</ValidationError>
+                        </Feedback>
+                    </TextEdit>
+                </Validation>
             </Field>
             <Field>
                 <FieldLabel>Quantity of tasks</FieldLabel>
                 <NumericEdit @bind-Value="editCompetition.task_quantity" />
             </Field>
             <Field>
+                <FieldLabel>Hash codes</FieldLabel>
+                <Validation Validator="ValidateHash">
+                    <TextEdit @bind-Text="editCompetition.sm_hash_code" Placeholder="Enter competition..." >
+                        <Feedback>
+                            <ValidationSuccess>Hash is good.</ValidationSuccess>
+                            <ValidationError>Enter valid Hash (start from "#")!</ValidationError>
+                        </Feedback>
+                    </TextEdit>
+                </Validation>
+            </Field>
+            <Field>
                 <FieldLabel>Start time</FieldLabel>
-                <DateEdit TValue="DateTime" @bind-Date="@editCompetition.competition_start" Placeholder="Start competition..."/>
+                <DateEdit TValue="DateTime" @bind-Date="@editCompetition.competition_start" Placeholder="Start competition..." />
                 <TimeEdit TValue="TimeSpan" @bind-Time="@startTime" />
             </Field>
             <Field>
                 <FieldLabel>End time</FieldLabel>
-                <DateEdit TValue="DateTime" @bind-Date="@editCompetition.competition_end" Placeholder="End competition..."/>
+                <DateEdit TValue="DateTime" @bind-Date="@editCompetition.competition_end" Placeholder="End competition..." />
                 <TimeEdit TValue="TimeSpan" @bind-Time="@endTime" />
             </Field>
         </ModalBody>
         <ModalFooter>
+            <Alert Color="Color.Danger" @bind-Visible="@visible">
+                <AlertDescription>
+                    Your end date is earlier than start date.
+                </AlertDescription>
+                <AlertMessage>
+                    Please, change it!
+                </AlertMessage>
+                <CloseButton />
+            </Alert>
             <Button Color="Color.Secondary" Clicked="@HideModal">Close</Button>
             <Button Color="Color.Primary" Clicked="@SaveModal">Save Changes</Button>
         </ModalFooter>
     </ModalContent>
 </Modal>
+
+
 
 @code{
     [Parameter]
@@ -45,6 +76,7 @@
     public EventCallback<MCompetition> editCompetitionChanged { get; set; }
     TimeSpan startTime;
     TimeSpan endTime;
+    private bool visible = false;
 
     
 
@@ -66,8 +98,14 @@
     {
         editCompetition.competition_start = initiateDate(editCompetition.competition_start, startTime.Hours, startTime.Minutes);
         editCompetition.competition_end = initiateDate(editCompetition.competition_end, endTime.Hours, endTime.Minutes);
-        await data.PutCompetition(editCompetition);
-        modalVisible = false;
+        if(editCompetition.competition_end.Subtract(editCompetition.competition_start).Minutes <=0){
+            visible = true;
+        }
+        else{
+            await data.PutCompetition(editCompetition);
+            modalVisible = false;
+            uriHelper.NavigateTo(uriHelper.Uri, forceLoad: true);
+        }
     }
 
     private void HideModal()
@@ -79,4 +117,18 @@
         return new DateTime(date.Year, date.Month, date.Day, hours, min, 0);
     }
 
+    @*----------------VALIDATIONS----------------*@
+    @*----------------Name----------------*@
+    void ValidateName( ValidatorEventArgs e )
+    {
+        var name = Convert.ToString( e.Value );
+        e.Status = Regex.IsMatch(name, "^.{1,10}$", RegexOptions.IgnoreCase) ? ValidationStatus.Success : ValidationStatus.Error;
+    }
+
+    @*----------------Hash----------------*@
+    void ValidateHash( ValidatorEventArgs e )
+    {
+        var hash = Convert.ToString( e.Value );
+        e.Status = Regex.IsMatch(hash, "^#.{1,50}$", RegexOptions.IgnoreCase) ? ValidationStatus.Success : ValidationStatus.Error;
+    }
 }

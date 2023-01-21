@@ -1,0 +1,92 @@
+@page "/Competition/{compId:int}/Dashboard"
+@using ClientEntity
+@inject DataService data
+<DataGrid   TItem="MGroup"
+            Data="@listOfGroups"
+            Responsive
+            PageSize="50"
+            FixedHeader
+            FixedHeaderDataGridMaxHeight="300px">
+    <DataGridColumn Field="@nameof(MGroup.group_name)" Caption="Group name" Sortable="true" >
+    </DataGridColumn>
+    <DataGridColumn Field="@nameof(MGroup.id)" Caption="Potential tasks" Sortable="true" >
+        <DisplayTemplate Context="context1">
+            @{
+                var idCont = (context1 as MGroup).id;
+                var count = 0;
+                foreach (var line in listOfTGLinks)
+                {
+                    if(line.id_group == idCont){
+                        count += 1;
+                    }
+                }
+                @count
+            }
+        </DisplayTemplate>
+    </DataGridColumn>
+    <DataGridColumn Field="@nameof(MGroup.id)" Caption="Potential points" Sortable="true" >
+        <DisplayTemplate Context="context1">
+            @{
+                var idCont = (context1 as MGroup).id;
+                var summ = 0;
+                foreach (var line in listOfTGLinks)
+                {
+                    var taskIndex = listOfTasks.FindIndex((p)=>p.id == line.id_task);
+                    if(line.id_group == idCont){
+                        summ += listOfTasks[taskIndex].task_points;
+                    }
+                }
+                @summ
+            }
+        </DisplayTemplate>
+    </DataGridColumn>
+
+    <DataGridColumn Field="@nameof(MGroup.id)" Caption="Compleated tasks" Sortable="true" >
+        <DisplayTemplate Context="context1">
+            @{
+                var idCont = (context1 as MGroup).id;
+                var count = 0;
+                foreach (var line in listOfTGLinks)
+                {
+                    if(line.id_group == idCont && line.grade != 0){
+                        count += 1;
+                    }
+                }
+                @count
+                
+            }
+        </DisplayTemplate>
+    </DataGridColumn>
+    <DataGridColumn Field="@nameof(MGroup.id)" Caption="Points" Sortable="true" >
+        <DisplayTemplate Context="context1">
+            @{
+                var idCont = (context1 as MGroup).id;
+                var summ = 0;
+                foreach (var line in listOfTGLinks)
+                {
+                    if(line.id_group == idCont && line.grade != 0){
+                        summ += line.grade;
+                    }
+                }
+                @summ
+            }
+        </DisplayTemplate>
+    </DataGridColumn>
+</DataGrid>
+
+
+
+@code{
+    [Parameter]
+    public int compId {get; set;}
+    private List<MGroup> listOfGroups = new List<MGroup>();
+    private List<MConnectionTaskToGroup> listOfTGLinks = new List<MConnectionTaskToGroup>();
+    private List<MTask> listOfTasks = new List<MTask>();
+    
+    protected override async Task OnInitializedAsync()
+    {
+        listOfGroups = await data.GetGroupsByIdComp(compId);
+        listOfTGLinks = await data.GetTasksToGroup();
+        listOfTasks = await data.GetAllTasks();
+    }
+}

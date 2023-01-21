@@ -15,11 +15,15 @@
 
         <AuthorizeView Roles="user">
             <Authorized>
-
              <div class="top-row px-4">
                 <div class="nav-item px-3">
                     <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
                         <span class="oi oi-home" aria-hidden="true"></span> Home
+                    </NavLink>
+                </div>
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="CompetitionList">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> Competitions
                     </NavLink>
                 </div>
                 <div class="nav-item px-3">
@@ -40,7 +44,7 @@
              </Authorized>            
         </AuthorizeView>
         
-        <AuthorizeView Roles="admin">
+        <AuthorizeView Roles="competitionAdmin">
             <Authorized>
             <div class="top-row px-4">
                 <div class="nav-item px-3">
@@ -66,6 +70,32 @@
                 <div class="nav-item px-3">
                     <NavLink class="nav-link" href="taskList">
                         <span class="oi oi-list-rich" aria-hidden="true"></span> Tasks
+                    </NavLink>
+                </div>
+                <div class="top-row px-4">
+                    <AccessControl />
+                    <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
+                </div>
+            </div>
+            </Authorized>
+        </AuthorizeView>
+
+        <AuthorizeView Roles="admin">
+            <Authorized>
+            <div class="top-row px-4">
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                        <span class="oi oi-home" aria-hidden="true"></span> Home
+                    </NavLink>
+                </div>
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="fetchdata">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> Users
+                    </NavLink>
+                </div>
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link" href="CompetitionList">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> Competitions
                     </NavLink>
                 </div>
                 <div class="top-row px-4">
