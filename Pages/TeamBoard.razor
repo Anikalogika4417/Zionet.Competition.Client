@@ -29,7 +29,9 @@
                                 </Field>
                                 <Field >
                                     <FieldLabel>Competition Name</FieldLabel>
-                                    
+                                </Field>
+                                <Field >
+                                    <Button Color="Color.Success" Clicked="onChoseTaskClick">Go to choose tasks</Button>
                                 </Field>
                             </Fields>
                         </CardBody>
@@ -329,5 +331,9 @@
         initiateConnection.repo_link = selectedLine.repo_link;
         initiateConnection.grade = selectedLine.grade;
         return initiateConnection;  
+    }
+
+    private void onChoseTaskClick(){
+        uriHelper.NavigateTo("/List/" + compId + "/" + groupId, forceLoad: true);
     }
 }
