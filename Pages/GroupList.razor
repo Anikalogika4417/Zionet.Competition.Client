@@ -25,6 +25,8 @@
                 @* <Image Source="@context.image" Text="DragDrop image example" Style="width:48px;height:48px;" /> *@
                 @context.user_name
                 <br>
+                @context.user_surname
+                <br>
                 @context.corEmail
             </CardBody>
         </Card>
@@ -38,8 +40,11 @@
 {
     [Parameter]
     public int? compId { get; set; }
+    private int idGroup;
     private List<MGroup> ListOfGroups = new List<MGroup>();
     private static List<MGroup> ListOfGroupsStat = new List<MGroup>();
+
+    
 
     public class DropItem
     {
@@ -47,37 +52,63 @@
         public string group_name { get; set; }
         public int id_user { get; set; }
         public string user_name { get; set; }
+        public string user_surname { get; set; }
         public string image { get; set; }
         public string corEmail { get; set; }
     }
 
     private List<DropItem> items = new List<DropItem>();
-    private Task ItemDropped( DraggableDroppedEventArgs<DropItem> dropItem )
-    {
-        dropItem.Item.group_name = dropItem.DropZoneName;
-        return Task.CompletedTask;
-    }
 
     @*----------------Downloading all competitions----------------*@
     protected override async Task OnInitializedAsync()
     {
+
+        ResponceUserToGroup getUserToGroup;
+        getUserToGroup = await data.GetUsersToGroup();
         @* ListOfGroups = await data.GetGroups(); *@
         if(compId != null){
             ListOfGroups = await data.GetGroupsByIdComp((int)compId);
             ListOfGroupsStat = await data.GetGroupsByIdComp((int)compId);
-            for(int i = 0; i<ListOfGroupsStat.Count;i++){
-                //TODO Здесь сделать получение по id группы всех юзеров отправлять в for список юзеров для каждой группы
+
+            foreach(var i in getUserToGroup.recordset){
+                Console.WriteLine(i.user_name);
+
                 var a = new DropItem(){
-                    id_group = ListOfGroupsStat[i].id,
-                    group_name = ListOfGroupsStat[i].group_name,
-                    id_user = 1,
-                    user_name = "Nina",
+                    id_group = i.id_group,
+                    group_name = i.group_name,
+                    id_user = i.id_user,
+                    user_name = i.user_name,
                     image = "wwwroot/human.svg",
-                    corEmail = "aaa@mail.com"
+                    corEmail = i.user_email
                 };
                 items.Add(a);
-            }           
+            }
         }
+    }
+
+    private Task ItemDropped( DraggableDroppedEventArgs<DropItem> dropItem )
+    {
+        dropItem.Item.group_name = dropItem.DropZoneName;
+        foreach(var i in ListOfGroups)
+        {
+            Console.WriteLine(i.id_group);
+            if(dropItem.Item.group_name.Contains(i.group_name))
+            {
+                idGroup = i.id;
+                break;
+            }
+        }
+
+        UpdateUserToGroup updateUserToGroup = new UpdateUserToGroup{
+            id_user = dropItem.Item.id_user,
+            id_group = idGroup
+        };
+        Update(updateUserToGroup);
+        return Task.CompletedTask;
+    }
+
+    private async void Update(UpdateUserToGroup info){
+        await data.updateUserToGroup(info);
     }
 }
 

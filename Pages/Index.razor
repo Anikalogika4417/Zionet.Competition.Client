@@ -23,22 +23,52 @@
     <p>@Last_Name</p>
     <b><p>Email:</p></b>
     <p>@Email</p>
+
+    
+    <b><p>Registration on competitions:</p></b>
+
+    <Select @bind-SelectedValue="@selectedValue">
+         <SelectItem Value="0">Choose competition</SelectItem>
+        @foreach (var competition in competitions)
+        {
+            <SelectItem Value="@competition.id">@competition.competition_name</SelectItem>
+        }
+    </Select>
+
+    <button @onclick="onRegistration">Registrate</button>
+
+    <p>@Outputt</p>
+
 }
+
+
 
 
 @code {
     private Responce users;
+    List<MCompetition> competitions = new List<MCompetition>();
+    private List<MGroup> listOfGroups;
     private string Email;
     private string First_Name;
     private string Last_Name;
     private string User_Id;
     private string Role;
     private string Created_At;
+    private string Id;
+    public string Outputt = "hello";
+    private int idUser;
+    int selectedValue;
+    @* private int selectedValue; *@
 
     protected override async Task OnInitializedAsync()
     {
         bool statusUser = default(bool);
+        @* int idUser = default(int); *@
+        @* int idUser = default(int); *@
         users = await data.GetUsers();
+        competitions =  await data.GetCompetitionsAbleReg();
+
+        Console.WriteLine(selectedValue);
         @*= await Http.GetFromJsonAsync<Responce>("http://localhost:5000/getUsers"); *@
         var accessTokenResult = await TokenProvider.RequestAccessToken();
         var AccessToken = string.Empty;
@@ -75,35 +105,59 @@
 
         foreach (var user in users.recordset)
         {
+
+            
             if(user.user_email.Contains(Email)){
                 statusUser = true; 
+                idUser = user.id;
                 break;
             } else {
                 statusUser = false;
             }
         }
 
+        Console.WriteLine(idUser);
+
         if(!statusUser){
             await data.AddUser(postUserInfo);
-            @* await Http.PostAsJsonAsync<User>("http://localhost:5000/addUser", postUserInfo); *@
         }
     }
 
-    @* public class Responce
-    {
-        public User[]? recordset { get; set; }
-    }
+    private async void onRegistration(){
+        int count;
+        ResponceUserToGroup getUserToGroup;
+        listOfGroups = await data.GetGroupsByIdComp(selectedValue);
+        int counting = listOfGroups.Count();
+        Random rnd = new Random();
+        int value = rnd.Next(0,counting);
+        Console.WriteLine("listOfGroups");
+        Console.WriteLine(listOfGroups[value].id);
+        getUserToGroup = await data.GetUsersToGroup();
 
-    public class User
-    {
-        public string create_date { get; set; }
-        public int id_status { get; set; }
-        public string id_user { get; set; }
-        public string update_date { get; set; }
-        public string user_email { get; set; }
-        public string user_phone { get; set; }
-        public string user_role { get; set; }
-        public string user_surname { get; set; }
-        public string user_name { get; set; }
-    } *@
+        UserToGroup postUserToGroup = new UserToGroup() 
+        {
+            id_user = idUser,
+            id_create_user = idUser,
+            id_update_user = idUser,
+            id_group = listOfGroups[value].id,
+            create_date = "2023-01-12",
+            update_date = "2023-01-12",
+            id_status  = 1
+        };
+
+        if(getUserToGroup.recordset.Length==0){
+            await data.AddUserToGroup(postUserToGroup);
+        } else {
+            foreach(var i in getUserToGroup.recordset){
+                if(i.id_user == idUser){
+                    Outputt = "You are already registrate";
+                    break;
+                } else {
+                    Outputt = "You registrate succsesfully";
+                    await data.AddUserToGroup(postUserToGroup);
+                }
+            }
+        }
+        StateHasChanged();
+    }
 } 
