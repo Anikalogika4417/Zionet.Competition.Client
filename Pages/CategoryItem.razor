@@ -98,6 +98,7 @@ else{
     protected override async Task OnInitializedAsync()
     {
         listOfCategories = await data.GetCategory();
+        
         if(compId != null){
             var linksCompToCategory = await data.GetCategoriesByIdComp((int)compId);
             listOfCategories = await findAllCategories(linksCompToCategory);
@@ -174,7 +175,7 @@ else{
     void ValidateCatName( ValidatorEventArgs e )
     {
         var name = Convert.ToString( e.Value );
-        string pattern = @"^[^/s]{1,50}$";
+        string pattern = @"^.{1,50}$";
         e.Status = Regex.IsMatch(name, pattern) ? ValidationStatus.Success : ValidationStatus.Error;
     }
 }

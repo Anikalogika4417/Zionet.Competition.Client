@@ -1,4 +1,5 @@
 @using ClientEntity
+@using ClientEnum
 @using System.Text.RegularExpressions
 @inject DataService data
 @inject HttpClient Http
@@ -49,6 +50,7 @@
     <CardBody>
         <DataGrid TItem="MTask"
           Data="@ListOfTasks"
+          @bind-SelectedRow="selectedTask"
           Responsive
           PageSize="50"
           FixedHeader
@@ -72,12 +74,12 @@
             <DataGridColumn Field="@nameof(MTask.task_file_name)" Caption="Bonus Task" Sortable="true">
                 <DisplayTemplate>
                     @{
-                        var dateCont = ( context as MTask )?.id;
+                        var idCont = ( context as MTask )?.id;
 
-                        if ( ListOfBonusToTask.FindIndex((p)=>p.id_main_task == dateCont) == -1 )
+                        if ( ListOfBonusToTask.FindIndex((p)=>p.id_main_task == idCont) == -1 )
                         {
                             <NewCommandTemplate>
-                                <Button Color="Color.Success" Clicked="@onAddBTTaskClcik">Add task</Button>
+                                <Button Disabled="(idCont != selectedTask.id)" Color="Color.Success" Clicked="@onAddBTTaskClcik">Add bonus task</Button>
                             </NewCommandTemplate>
                         }
                         else{
@@ -128,6 +130,10 @@
     <CompetitionEditModal @bind-editCompetition="curentComp" @bind-modalVisible="modalVisible"/>
 }
 
+@if(modalShow){
+    <TaskCreateModal @bind-modalVisible="modalShow" id_competition="@curentComp.id" isBonusTask="ETask.Bonus" mainId="selectedTask.id" />
+}
+
 
 @code{
     [Parameter]
@@ -142,6 +148,8 @@
     private string linkToGroups;
     private string linkToDashboard = "";
     private bool modalVisible = false;
+    public MTask selectedTask = new MTask();
+    public bool modalShow = false;
 
     protected override async Task OnInitializedAsync()
     {
@@ -177,7 +185,6 @@
     }
 
     private void onAddBTTaskClcik(){
-        //TODO Сделать ссылку, когда она будет готова
-        Console.WriteLine("I'm working");
+        modalShow = true;
     }
 }
