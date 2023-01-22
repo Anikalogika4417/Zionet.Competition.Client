@@ -2,6 +2,10 @@
 @using ClientEntity
 @inject DataService data
 @inject NavigationManager uriHelper;
+@using ClientEntity
+@using ClientEnum
+@inject DataService data
+@inject NavigationManager NavManager
 
 <PageTitle>Group List</PageTitle>
 
@@ -33,6 +37,26 @@
     </ItemTemplate>
 </DropContainer>
 
+<Button Color="Color.Primary" Clicked="@onCreateClick">Add Group</Button>
+
+<Modal @bind-Visible="@modalVisible">
+    <ModalContent Centered>
+        <ModalHeader>
+            <ModalTitle>Create task</ModalTitle>
+            <CloseButton />
+        </ModalHeader>
+        <ModalBody>
+            <Field>
+                <FieldLabel>Task name</FieldLabel>
+                <TextEdit @bind-Text="newGroup.group_name" Placeholder="Enter name..." />
+            </Field>
+        </ModalBody>
+        <ModalFooter>
+            <Button Color="Color.Secondary" Clicked="@HideModal">Close</Button>
+            <Button Color="Color.Primary" Clicked="@SaveModal">Save Changes</Button>
+        </ModalFooter>
+    </ModalContent>
+</Modal>        
 @* <Button Clicked="onAddGroupClick"></Button> *@
 
 
@@ -40,11 +64,30 @@
 {
     [Parameter]
     public int? compId { get; set; }
+    public bool modalVisible =false;
     private int idGroup;
+    private MGroup newGroup = new MGroup();
     private List<MGroup> ListOfGroups = new List<MGroup>();
-    private static List<MGroup> ListOfGroupsStat = new List<MGroup>();
 
     
+    private static List<MGroup> ListOfGroupsStat = new List<MGroup>();
+
+    private void HideModal()
+    {
+        modalVisible = false;
+    }
+
+    private void onCreateClick()
+    {
+        modalVisible = true;
+    }
+
+    private async Task SaveModal()
+    {
+        await data.PostGroup(newGroup);
+        uriHelper.NavigateTo(uriHelper.Uri, forceLoad: true);
+        modalVisible = false;
+    }
 
     public class DropItem
     {
@@ -57,12 +100,15 @@
         public string corEmail { get; set; }
     }
 
+
     private List<DropItem> items = new List<DropItem>();
 
     @*----------------Downloading all competitions----------------*@
     protected override async Task OnInitializedAsync()
     {
 
+        newGroup.group_icon = "test";
+        newGroup.id_competition = (int)compId;
         ResponceUserToGroup getUserToGroup;
         getUserToGroup = await data.GetUsersToGroup();
         @* ListOfGroups = await data.GetGroups(); *@
