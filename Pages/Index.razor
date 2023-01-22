@@ -14,8 +14,7 @@
 <h1>Profile</h1>
 
 @if(@String.IsNullOrEmpty(@Role)){
-    <p>PLEASE WAIT UNTIL ADMINISTRATOR NE CONFIRM YOUR EMAIL</p>
-    <p>Relod your page cherez 5 minut</p>
+    <p>Please wait while the administrator confirms your participation</p>
 } else {
     <b><p>Name:</p></b>
     <p>@First_Name</p>
@@ -27,7 +26,7 @@
     <AuthorizeView Roles="user">
         <Authorized>
     
-        <b><p>Registration on competitions:</p></b>
+        <b><p>Registration for the competition:</p></b>
 
         <Select @bind-SelectedValue="@selectedValue">
             <SelectItem Value="0">Choose competition</SelectItem>
@@ -37,9 +36,9 @@
             }
         </Select>
 
-        <button @onclick="onRegistration">Registrate</button>
+        <button @onclick="onRegistration">Кegister</button>
 
-        <p>@Outputt</p>
+        <p>@Output</p>
 
         </Authorized>
     </AuthorizeView>
@@ -60,7 +59,7 @@
     private string Role;
     private string Created_At;
     private string Id;
-    public string Outputt = "hello";
+    public string Output;
     private int idUser;
     int selectedValue;
     @* private int selectedValue; *@
@@ -155,10 +154,10 @@
         } else {
             foreach(var i in getUserToGroup.recordset){
                 if(i.id_user == idUser){
-                    Outputt = "You are already registrate";
+                    Output = "You are already registered";
                     break;
                 } else {
-                    Outputt = "You registrate succsesfully";
+                    Output = "You have successfully registered";
                     await data.AddUserToGroup(postUserToGroup);
                 }
             }
