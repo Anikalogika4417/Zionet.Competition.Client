@@ -175,8 +175,8 @@
         var Role = jwtSecurityToken.Claims.First(claim => claim?.Type == "http://schemas.microsoft.com/ws/2008/06/identity/claims/role")?.Value;
         switch (Role){
             case "user":
-                ListOfCompetitions = await data.GetCompetitionByUserId("1");
-                listOfGroups = await data.GetGroupsByUserId("1");
+                ListOfCompetitions = await data.GetCompetitionByUserId(User_Id);
+                listOfGroups = await data.GetGroupsByUserId(User_Id);
                 break;
             case "admin":
                 ListOfCompetitions = await data.GetCompetitions();
