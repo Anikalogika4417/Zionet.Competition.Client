@@ -43,6 +43,12 @@ namespace Zionet.Competition.Client.Services
                 ($"https://localhost:44361/api/Competition");
         }
 
+         public async Task<List<MCompetition>> GetCompetitionsAbleReg()
+        {
+            return await http.GetFromJsonAsync<List<MCompetition>>
+                ($"https://localhost:44361/api/Competition/AbleReg");
+        }
+
         public async Task<List<MCompetition>> GetCompetitionById(int id_competition)
         {
             return await http.GetFromJsonAsync<List<MCompetition>>
@@ -209,8 +215,20 @@ namespace Zionet.Competition.Client.Services
             return await http.GetFromJsonAsync<Responce>("http://localhost:5000/getUsers");
         }
 
+        public async Task<ResponceUserToGroup> GetUsersToGroup () {
+            return await http.GetFromJsonAsync<ResponceUserToGroup>("http://localhost:5000/getUserToGroup");
+        }
+
         public async Task AddUser(User postUserInfo) {
             await http.PostAsJsonAsync<User>("http://localhost:5000/addUser", postUserInfo);
+        }
+
+        public async Task updateUserToGroup(UpdateUserToGroup updateUserToGroupInfo) {
+            await http.PostAsJsonAsync<UpdateUserToGroup>("http://localhost:5000/updateUserToGroup", updateUserToGroupInfo);
+        }
+
+        public async Task AddUserToGroup(UserToGroup postUserInfo) {
+            await http.PostAsJsonAsync<UserToGroup>("http://localhost:5000/addUserToGroup", postUserInfo);
         }
 
         /////////////////

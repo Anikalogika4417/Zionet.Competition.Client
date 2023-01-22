@@ -122,6 +122,8 @@ namespace ClientEntity
         public int id { get; set; }
         public string group_name { get; set; }
         public string group_icon { get; set; }
+
+        public int id_group { get; set; }
         public int id_competition { get; set; }
         public int id_create_user { get; set; }
         public int id_update_user { get; set; }
@@ -135,8 +137,21 @@ namespace ClientEntity
         public User[]? recordset { get; set; }
     }
 
+    public class UpdateUserToGroup
+    {
+        public int id_user { get; set; }
+        public int id_group { get; set; }
+    }
+
+
+    public class ResponceUserToGroup
+    {
+        public GetUserToGroup[]? recordset { get; set; }
+    }
+
     public class User
     {
+        public int id { get; set; }
         public string create_date { get; set; }
         public int id_status { get; set; }
         public string id_user { get; set; }
@@ -146,5 +161,28 @@ namespace ClientEntity
         public string user_role { get; set; }
         public string user_surname { get; set; }
         public string user_name { get; set; }
+    }
+
+    public class GetUserToGroup
+    {
+        public int id_group { get; set; }
+        public int id_user { get; set; }
+        public string user_surname { get; set; }
+        public string user_name { get; set; }
+        public string user_email { get; set; }
+        public string group_name { get; set; }
+        public string group_icon { get; set; }
+        public string corr_email { get; set; }
+    }
+
+    public class UserToGroup 
+    {
+        public int id_user { get; set; }
+        public int id_group { get; set; }
+        public int id_create_user { get; set; }
+        public int id_update_user { get; set; }
+        public string create_date { get; set; }
+        public string update_date { get; set; }
+        public int id_status { get; set; }
     }
 }
