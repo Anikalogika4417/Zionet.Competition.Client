@@ -1,5 +1,6 @@
 @page "/task/{id:int}"
 @using ClientEntity
+@using ClientEnum
 @inject DataService data
 
 <div>
@@ -7,25 +8,31 @@
         <h1>Loading...</h1>
     }
     else{
-        <div>
-            <h1>Main Task</h1>
-            <TaskItem mode="Watch" curentTask="@mainTask"/>
-            @* @if(mainTask != null){
-                <div>@mainTask.task_name</div>
-            } *@
-            @* <div>@mainTask.task_name</div> *@
-        </div>
-        <div>
-            <h1>Bonus Task</h1>
+        <Fields>
+        <Field>
+            <FieldLabel>
+                <Heading Size="HeadingSize.Is2">Main Task</Heading>
+            </FieldLabel>
+            <TaskItem curentTask="@mainTask"/>
+        </Field>
+        <Field>
+            <FieldLabel>
+                <Heading Size="HeadingSize.Is2">Bonus Task</Heading>
+            </FieldLabel>
             @if(bonusTask != null){
-                <TaskItem mode="Watch" curentTask="@bonusTask"/>
+                <TaskItem curentTask="@bonusTask"/>
             }
             else{
-                <button>Add bonus task</button>
+                <Button Color="Color.Success" Clicked="@onAddBTTaskClcik">Add bonus task</Button>
             }
-        </div>
+        </Field>
+    </Fields>
     }
 </div>
+
+@if(modalShow){
+    <TaskCreateModal @bind-modalVisible="modalShow" id_competition="0" isBonusTask="ETask.Bonus" mainId="@mainTask.id" />
+}
 
 
 @code{
@@ -34,6 +41,7 @@
     MTask mainTask = new MTask();
     MTask bonusTask = new MTask();
     public bool loadingStatus = false;
+    public bool modalShow = false;
     
 
     @*----------------Downloading main task, bonus task and connection beetwen them----------------*@
@@ -68,4 +76,8 @@
     private async Task ChangeLoadStatus(){
         loadingStatus = true;
     } 
+
+    private void onAddBTTaskClcik(){
+        modalShow = true;
+    }
 }

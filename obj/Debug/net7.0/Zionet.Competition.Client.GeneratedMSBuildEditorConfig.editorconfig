@@ -32,6 +32,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2F0ZWdvcnlMaXN0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/ignps/Desktop/Programms/Hanukah-project/Zionet.Competition.Client/Pages/CompetitionDashboard.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcGV0aXRpb25EYXNoYm9hcmQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/ignps/Desktop/Programms/Hanukah-project/Zionet.Competition.Client/Pages/CompetitionEditModal.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcGV0aXRpb25FZGl0TW9kYWwucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
@@ -46,10 +50,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/ignps/Desktop/Programms/Hanukah-project/Zionet.Competition.Client/Pages/CompetitionPage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29tcGV0aXRpb25QYWdlLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/ignps/Desktop/Programms/Hanukah-project/Zionet.Competition.Client/Pages/Counter.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/ignps/Desktop/Programms/Hanukah-project/Zionet.Competition.Client/Pages/FetchData.razor]

@@ -1,5 +1,6 @@
-@inject DataService data
+@using System.Text.RegularExpressions
 @using ClientEntity
+@inject DataService data
 @inject NavigationManager uriHelper;
 
 
@@ -30,8 +31,15 @@ else{
             }
             else{
                 <Field>
-                    <FieldLabel>Name</FieldLabel>
-                    <TextEdit @bind-Text="inputNewCategory" Placeholder="Enter category..." />
+                    <FieldLabel>Category name</FieldLabel>
+                    <Validation Validator="ValidateCatName">
+                        <TextEdit @bind-Text="inputNewCategory" Placeholder="Enter category..." >
+                            <Feedback>
+                                <ValidationSuccess>Name is good.</ValidationSuccess>
+                                <ValidationError>Enter valid Name (not null and less 50 chars)!</ValidationError>
+                            </Feedback>
+                        </TextEdit>
+                    </Validation>
                 </Field>
                 <Button Color="Color.Success" Clicked="onCreateClick">Create</Button>
             }
@@ -48,8 +56,15 @@ else{
             </ModalHeader>
             <ModalBody>
                 <Field>
-                    <FieldLabel>Name</FieldLabel>
-                    <TextEdit @bind-Text="selectedCategory.category_name" Placeholder="Enter competition..." />
+                    <FieldLabel>Category name</FieldLabel>
+                    <Validation Validator="ValidateCatName">
+                        <TextEdit @bind-Text="selectedCategory.category_name" Placeholder="Enter category name..." >
+                            <Feedback>
+                                <ValidationSuccess>Name is good.</ValidationSuccess>
+                                <ValidationError>Enter valid Name (not null and less 50 chars)!</ValidationError>
+                            </Feedback>
+                        </TextEdit>
+                    </Validation>
                 </Field>
                 
             </ModalBody>
@@ -83,6 +98,7 @@ else{
     protected override async Task OnInitializedAsync()
     {
         listOfCategories = await data.GetCategory();
+        
         if(compId != null){
             var linksCompToCategory = await data.GetCategoriesByIdComp((int)compId);
             listOfCategories = await findAllCategories(linksCompToCategory);
@@ -152,6 +168,15 @@ else{
 
     private void HideModal(){
         modalVisible = false;
+    }
+
+    @*----------------VALIDATIONS----------------*@
+    @*----------------Name----------------*@
+    void ValidateCatName( ValidatorEventArgs e )
+    {
+        var name = Convert.ToString( e.Value );
+        string pattern = @"^.{1,50}$";
+        e.Status = Regex.IsMatch(name, pattern) ? ValidationStatus.Success : ValidationStatus.Error;
     }
 }
 

@@ -1,12 +1,76 @@
 @using ClientEntity
-@inject DataService data
-@inject HttpClient Http
-
 @using System 
 @using System.IO
 @using System.Net.Http.Headers
+@using System.Text.RegularExpressions
+
+@inject DataService data
+@inject HttpClient Http
 
 
+<Card>
+    <CardBody>
+        <Heading Size="HeadingSize.Is4">Task Name</Heading>
+        <Validation Validator="ValidateName">
+            <TextEdit Disabled="Editmode == false" @bind-Text="curentTask.task_name" Placeholder="Enter task name..." >
+                <Feedback>
+                    <ValidationSuccess>name is good.</ValidationSuccess>
+                    <ValidationError>Enter valid name (not null, less 50 chars)!</ValidationError>
+                </Feedback>
+            </TextEdit>
+        </Validation>
+    </CardBody>
+    <CardBody>
+        <Heading Size="HeadingSize.Is4">Task description</Heading>
+        <Validation Validator="ValidateDescription">
+            <TextEdit Disabled="Editmode == false" @bind-Text="curentTask.task_description" Placeholder="Enter task name..." >
+                <Feedback>
+                    <ValidationSuccess>description is good.</ValidationSuccess>
+                    <ValidationError>Enter valid description (not null, less 100 chars)!</ValidationError>
+                </Feedback>
+            </TextEdit>
+        </Validation>
+    </CardBody>
+     <CardBody>
+        <Heading Size="HeadingSize.Is4">Task points</Heading>
+        <Validation Validator="ValidatePoints">
+             <NumericEdit Disabled="Editmode == false" @bind-Value="curentTask.task_points" Placeholder="Enter task name..." >
+                <Feedback>
+                    <ValidationSuccess>points is good.</ValidationSuccess>
+                    <ValidationError>Enter valid points (not null, positive, less 100)!</ValidationError>
+                </Feedback>
+            </NumericEdit>
+        </Validation>
+    </CardBody>
+     <CardBody>
+        <Heading Size="HeadingSize.Is4">Task duration</Heading>
+        <Validation Validator="ValidateDuration">
+            <NumericEdit Disabled="Editmode == false" @bind-Value="curentTask.task_duration" Placeholder="Enter task name..." >
+                <Feedback>
+                    <ValidationSuccess>duration is good.</ValidationSuccess>
+                    <ValidationError>Enter valid duration (not null, positive, less 1000)!</ValidationError>
+                </Feedback>
+            </NumericEdit>
+        </Validation>
+    </CardBody>
+     <CardBody>
+        <Heading Size="HeadingSize.Is4">Category name</Heading>
+        <Select @bind-SelectedValue="@curentTask.id_category" Disabled="Editmode == false" >
+            @foreach (var category in CategoryList)
+            {
+                <SelectItem Value="@category.id">
+                    @category.category_name
+                </SelectItem>
+            }
+        </Select>
+    </CardBody>
+    <Button Color="Color.Info" Clicked="@OnModeChage">@buttonName</Button>
+</Card>
+
+
+
+
+@* 
 @switch (mode)
 {
     case "Edit": {
@@ -56,26 +120,22 @@
             <br>
             Task Category: @categoryName
             <br>
-            @* TODO Download button *@
+            @* TODO Download button 
         </div>
         break;
     }    
     default:
         <div>No mode choosen</div>
         break;
-}
-<button @onclick="@(() => OnModeChage())">@buttonName</button>
-
-    
+} *@
+@* <button @onclick="@(() => OnModeChage())">@buttonName</button> *@
 
 
 
 @code{
     [Parameter]
     public MTask curentTask {get; set;}
-
-    [Parameter]
-    public string mode {get; set;}
+    public bool Editmode {get; set;}
     List<MCategory> CategoryList = new List<MCategory>();
     private int maxAllowedFiles = int.MaxValue;
     private long maxFileSize = long.MaxValue;
@@ -88,22 +148,23 @@
     {
         CategoryList = await data.GetCategory();
         categoryName = CategoryList[CategoryList.FindIndex(p =>p.id==curentTask.id_category)].category_name;
-        buttonName = mode == "Watch"? "Edit": "Save";
+        buttonName = Editmode == true? "Save": "Edit";
     }
 
     @*----------------Changing mode and button name by button----------------*@
     private async Task OnModeChage (){
-        mode = mode == "Edit"? "Watch": "Edit";
-        buttonName = mode == "Watch"? "Edit": "Save";
-        if(mode == "Watch"){
+        if(Editmode == true){
+            //Console.WriteLine();
             await SaveAll();
         }
+        Editmode = Editmode == true? false: true;
+        buttonName = Editmode == true? "Save": "Edit";
     }
 
     @*----------------Save all values from form by clicking Save----------------*@
     async Task SaveAll()
     {
-        await data.UpdateTask(initiolizeTask(curentTask));
+        await data.UpdateTask(curentTask);
     }
 
     
@@ -130,25 +191,37 @@
                     @* } *@
     }
 
-    @*----------------Initionalizing task before sending----------------*@
-    private MTask initiolizeTask(MTask inputTask){
-        MTask fullTask = new MTask();
-        fullTask.id = inputTask.id;
-        fullTask.task_name = inputTask.task_name;
-        fullTask.task_description = inputTask.task_description;
-        fullTask.task_file_name = inputTask.task_file_name;
-        fullTask.task_points = inputTask.task_points;
-        fullTask.task_duration = inputTask.task_duration;
-        fullTask.id_category = CategoryList[CategoryList.FindIndex(p =>p.category_name==categoryName)].id; 
-        fullTask.is_bonus_task = inputTask.is_bonus_task;
-        return fullTask;
-    }
-
     @*----------------Deleting file by clicking Remove!----------------*@
     private async Task OnFileRemove(){
         curentTask.task_file_name = null;
         //TODO Удалять файл!!!
     }
 
-    //TODO Добавить возможночть скачивания файла
+    @*----------------VALIDATIONS----------------*@
+    @*----------------Name----------------*@
+    void ValidateName( ValidatorEventArgs e )
+    {
+        var name = Convert.ToString( e.Value );
+        e.Status = Regex.IsMatch(name, "^.{1,10}$", RegexOptions.IgnoreCase) ? ValidationStatus.Success : ValidationStatus.Error;
+    }
+
+    @*----------------Description----------------*@
+    void ValidateDescription( ValidatorEventArgs e )
+    {
+        var name = Convert.ToString( e.Value );
+        e.Status = Regex.IsMatch(name, "^.{1,100}$", RegexOptions.IgnoreCase) ? ValidationStatus.Success : ValidationStatus.Error;
+    }
+
+    @*----------------Points----------------*@
+    void ValidatePoints( ValidatorEventArgs e )
+    {
+        var name = Convert.ToString( e.Value );
+        e.Status = Regex.IsMatch(name, "^(100|[1-9][0-9]?)$", RegexOptions.IgnoreCase) ? ValidationStatus.Success : ValidationStatus.Error;
+    }
+    @*----------------Duration----------------*@
+    void ValidateDuration( ValidatorEventArgs e )
+    {
+        var name = Convert.ToString( e.Value );
+        e.Status = Regex.IsMatch(name, "^(1000|[1-9][0-9]{0,2})$", RegexOptions.IgnoreCase) ? ValidationStatus.Success : ValidationStatus.Error;
+    }
 }

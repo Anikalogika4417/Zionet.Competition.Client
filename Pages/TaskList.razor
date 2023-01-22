@@ -7,6 +7,7 @@
 @using System 
 @using System.IO
 @using System.Net.Http.Headers
+@using ClientEnum
 @inject NavigationManager NavManager
 
 <PageTitle>Create a task</PageTitle>
@@ -23,7 +24,7 @@ else{
             ReadData="@OnReadData"
             TotalItems="@totalTasks"
             CommandMode="DataGridCommandMode.ButtonRow"
-            @bind-SelectedRows="selectedTask"
+            @bind-SelectedRow="selectedTask"
             PageSize="5"
             ShowPager = "@modeQuantity"
             Responsive>
@@ -46,12 +47,12 @@ else{
         <DataGridColumn Field="@nameof(MTask.task_file_name)" Caption="Bonus Task" Sortable="true">
             <DisplayTemplate>
                 @{
-                    var dateCont = ( context as MTask )?.id;
+                    var idCont = ( context as MTask )?.id;
 
-                    if ( ListOfBonusToTask.FindIndex((p)=>p.id_main_task == dateCont) == -1 )
+                    if ( ListOfBonusToTask.FindIndex((p)=>p.id_main_task == idCont) == -1 )
                     {
                         <NewCommandTemplate>
-                            <Button Color="Color.Success" Clicked="@onAddBTTaskClcik">Add task</Button>
+                            <Button Disabled="(idCont != selectedTask.id)" Color="Color.Success" Clicked="@onAddBTTaskClcik">Add task</Button>
                         </NewCommandTemplate>
                     }
                     else{
@@ -62,110 +63,25 @@ else{
         </DataGridColumn>
     </DataGrid>
     <Button Color="Color.Success" Clicked="@onAddCliclk">Add</Button>
-    //<Button Color="Color.Primary" Clicked="@onEditModeChange">Edit</Button>
 }
 
 @if(modalShow){
-    <TaskCreateModal @bind-modalVisible="modalShow" id_competition="@compId"/>
+    <TaskCreateModal @bind-modalVisible="modalShow" id_competition="@compId" isBonusTask="@sendingIsBT" mainId="selectedTask.id" />
 }
 
-
-@* 
-<h1>Tasks:</h1>
-    <table>
-        <tr>
-            <th> </th>
-            <th>Task</th>
-            <th> </th>
-            <th>Points</th>
-            <th>Duration</th>
-            <th>File name</th>
-            <th>Has Bonus Task</th>
-        </tr>
-        @for (var i=0;i<ListOfTasks.Count;i++)
-        {       
-            <tr>
-                <td>
-                    <input  type="radio" 
-                            id="@i" 
-                            name="taskList" 
-                            value="@ListOfTasks[i].id"
-                            @onchange="@OnListTaskChange">
-                </td>                
-                <td>
-                    <label for="@i">
-                        @ListOfTasks[i].task_name
-                    </label>
-                </td>
-                <td>
-                    <NavLink href="@($"task/{@ListOfTasks[i].id}")">
-                        See details..
-                    </NavLink>
-                </td>
-                <td>
-                    <label for="@i">
-                        @ListOfTasks[i].task_points
-                    </label>
-                </td>
-                <td>
-                    <label for="@i">
-                        @ListOfTasks[i].task_duration
-                    </label>
-                </td>
-                <td>
-                    <label for="@i">
-                        @ListOfTasks[i].task_file_name
-                    </label>
-                </td>
-                @foreach (var bonusToTask in ListOfBonusToTask)
-                {
-                    @if(ListOfTasks[i].id == bonusToTask.id_main_task){
-                        <td>
-                            <label for="@i">
-                                true
-                            </label>
-                        </td>            
-                    }
-                    else{
-                        <td>
-                            <label for="@i">
-                                false
-                            </label>
-                        </td>            
-                    }
-                }
-            </tr>
-        }
-    </table> *@
-
-
-
-    @if(choosenTask != null){
-        <NavLink href="@($"task/{@choosenTask.id}")">
-                <span class="oi oi-list-rich" aria-hidden="true"></span>Edit
-        </NavLink>
-        <br>
-        @if(ListOfBonusToTask.FindIndex(p =>p.id_main_task==choosenTask.id) == -1)
-        {
-            <NavLink href="taskCreator">
-                <span class="oi oi-list-rich" aria-hidden="true"></span>Add Bonus task
-            </NavLink>
-        }
-    }   
-    
 
 @code {
     [Parameter]
     public int? compId { get; set; }
     List<MTask> ListOfTasks = new List<MTask>();
     private List<MTask> ListOfTasksForTable = new List<MTask>();
-    MTask choosenTask = new MTask();
     List<MBonusToTask> ListOfBonusToTask = new List<MBonusToTask>();
     private int totalTasks;
-    private List<MTask> selectedTask = new List<MTask>(); 
+    private MTask selectedTask = new MTask(); 
     private bool loadingStatus = true;
     private bool modeQuantity = true;
     private bool modalShow = false;
+    public ETask sendingIsBT = ETask.Main;
 
 
     @*----------------Downloading main task and all bonus tasks----------------*@
@@ -173,7 +89,6 @@ else{
     {
         ListOfTasks = await data.GetMainTasks();
         ListOfBonusToTask = await data.GetLinkToBonusTask();
-        choosenTask = null;
         if(compId != null){
             var linksCompToMainTask = await data.GetTasksByIdComp((int)compId);
             ListOfTasks = await findAllTask(linksCompToMainTask, ListOfTasks);
@@ -217,19 +132,13 @@ else{
     }
 
     private void onAddCliclk(){
+        sendingIsBT = ETask.Main;
         modalShow =  true;
-    }
-
-    @*----------------Changing choosen task by radio button----------------*@
-    private void OnListTaskChange(ChangeEventArgs e){
-        if(e.Value != ""){
-            var IndexSelectedTask = ListOfTasks.FindIndex(p => p.id == int.Parse(e.Value.ToString()));
-            choosenTask = ListOfTasks[IndexSelectedTask];
-        }
     }
 
     //TODO Поправить! Сейчас ведет на создание таски main. Не Бонусной!!!
     private void onAddBTTaskClcik(){
-        NavManager.NavigateTo("/taskCreator");
+        sendingIsBT = ETask.Bonus;
+        modalShow =  true;
     }
 }

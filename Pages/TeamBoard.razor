@@ -1,5 +1,4 @@
-@page "/GroupTable/{groupId:int}"
-@page "/GroupTable"
+@page "/Competition/{compId:int}/GroupTable/{groupId:int}"
 @using ClientEntity
 @inject DataService data
 @inject NavigationManager NavigationManager;
@@ -20,10 +19,19 @@
                 <TabPanel Name="home">
                     <Card>
                         <CardBody>
-                            <Field >
-                                <Heading Size="HeadingSize.Is4">Group settings</Heading>
+                            <Heading Size="HeadingSize.Is4">Group settings</Heading>
+                        </CardBody>
+                        <CardBody>
+                            <Fields>
+                                <Field >
+                                    <FieldLabel>Group Name</FieldLabel>
                                     
-                            </Field>
+                                </Field>
+                                <Field >
+                                    <FieldLabel>Competition Name</FieldLabel>
+                                    
+                                </Field>
+                            </Fields>
                         </CardBody>
                     </Card>
                 </TabPanel>
@@ -184,6 +192,8 @@
 @code{
     [Parameter]
     public int groupId { get; set;}
+    [Parameter]
+    public int compId { get; set;}
 
     private string selectedTab = "home";
     private List<MConnectionTaskToGroup> listTaskToGroup = new List<MConnectionTaskToGroup>();

@@ -53,26 +53,37 @@
     public EventCallback<bool> modalVisibleChanged { get; set; }
     [Parameter]
     public int? id_competition {get; set; }
+    [Parameter]
+    public ETask isBonusTask { get; set; }
+    [Parameter]
+    public int? mainId { get; set; }
+
     private MTask newTask = new MTask();   
     private List<MCategory> CategoryList = new List<MCategory>();
-    private int idSelectedCategory;
+    
 
     @*----------------Downloading all Categories for drop-down list----------------*@
     protected override async Task OnInitializedAsync()
     {
-        //todo поправить, чтобы только компетишеновские
         CategoryList = await data.GetCategory();
+        newTask.id_category = 1;
     }
 
     private async Task SaveModal()
     {
-        await data.PostTask(initiolizeTask(newTask));
+        var sendingTask = initiolizeTask(newTask);
+        await data.PostTask(sendingTask);
         var lastId = await data.GetTaskIdByName(newTask.task_name);
-        if(id_competition != null){
+        if(id_competition > 0){
             await data.PostLinkTaskToCompetition(lastId, (int)id_competition);
         }
-        NavManager.NavigateTo("/task/"+lastId);
-
+        if(sendingTask.is_bonus_task == true){
+            await data.PostLinkTaskToBonus((int)mainId, lastId);
+            NavManager.NavigateTo("/task/"+ (int)mainId);
+        }
+        else{
+            NavManager.NavigateTo("/task/"+lastId);
+        }
         modalVisible = false;
     }
 
@@ -86,7 +97,7 @@
         fullTask.task_points = inputTask.task_points;
         fullTask.task_duration = inputTask.task_duration;
         fullTask.id_category = inputTask.id_category; 
-        fullTask.is_bonus_task = Convert.ToBoolean(ETask.Main);
+        fullTask.is_bonus_task = Convert.ToBoolean(isBonusTask);
 
         return fullTask;
     }
