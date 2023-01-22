@@ -24,20 +24,25 @@
     <b><p>Email:</p></b>
     <p>@Email</p>
 
+    <AuthorizeView Roles="user">
+        <Authorized>
     
-    <b><p>Registration on competitions:</p></b>
+        <b><p>Registration on competitions:</p></b>
 
-    <Select @bind-SelectedValue="@selectedValue">
-         <SelectItem Value="0">Choose competition</SelectItem>
-        @foreach (var competition in competitions)
-        {
-            <SelectItem Value="@competition.id">@competition.competition_name</SelectItem>
-        }
-    </Select>
+        <Select @bind-SelectedValue="@selectedValue">
+            <SelectItem Value="0">Choose competition</SelectItem>
+            @foreach (var competition in competitions)
+            {
+                <SelectItem Value="@competition.id">@competition.competition_name</SelectItem>
+            }
+        </Select>
 
-    <button @onclick="onRegistration">Registrate</button>
+        <button @onclick="onRegistration">Registrate</button>
 
-    <p>@Outputt</p>
+        <p>@Outputt</p>
+
+        </Authorized>
+    </AuthorizeView>
 
 }
 
